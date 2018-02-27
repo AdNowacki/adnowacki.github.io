@@ -1,0 +1,807 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300i,400,400i,600,600i,700,700i&subset=latin-ext");
+@import url("https://fonts.googleapis.com/css?family=Kanit:300,300i,400,400i,500,500i,600,600i,700,700i&subset=latin-ext");
+$font: normal 16px/1.3 "Kanit", "Arial", sans-serif;
+$fontSize: 16px;
+$fontColor: #009612;
+$lineHeight: 1.4;
+$width: 960px;
+$maxWidth: 960px;
+$col: 8.33333333%;
+
+html, body {
+	font: $font;
+	min-height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+a, input, button, img {
+	border: 0;
+	outline: 0;
+
+	&:focus, &:active {
+		border: 0;
+		outline: 0;
+	}
+}
+
+.bss-map {
+	background: url(../images/map2.jpg) center top no-repeat;
+	transition: transform .3s;
+}
+
+
+.bss-mobile {display: none;}
+
+.text-right {text-align: right;}
+.text-left {text-align: left;}
+.text-center {text-align: center;}
+.text-justify {text-align: justify;}
+
+nav {
+	text-align: left;
+	padding: 5px 160px;
+	position: relative;
+}
+
+#bsstour {
+	img {
+		width: 190px;
+		margin-top: 15px;
+	}
+}
+
+#lang {
+	float: right;
+	padding-top: 20px;
+
+	a {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
+		background: #fff;
+		color: #322f31;
+		font-family: 'Open Sans';
+		font-size: 8px;
+		line-height: 18px;
+		text-align: center;
+		border: 1px solid #322f31;
+		font-weight: 700;
+		-webkit-transition: all .3s;
+		transition: all .3s;
+
+		&:hover, &.act {
+			border-color: transparent;
+			background: #322f31;
+			color: #fff;
+		}
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+.bss-tour {
+		position: relative;
+		overflow: hidden;
+
+	-webkit-transition: all .3s;
+	transition: all .3s;
+	left: 0;
+}
+.bss-map {
+	// height: 1121px;
+	// background: url(../images/map2.jpg) center top no-repeat;
+	// background-size: cover;
+	
+	.container {
+		min-height: 100vh;
+		position: relative;
+		// margin-bottom: 20px;
+	}
+	position: relative;
+	opacity: 0;
+	-webkit-animation: show .9s ease .6s 1 forwards;
+	animation: show .9s ease .6s 1 forwards;
+}
+
+.not-action {
+	cursor: default;
+}
+
+.point-layer {
+}
+
+#proprogressio-logo {
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+	z-index: 10001;
+	img {
+		width: 120px;
+		vertical-align: middle;
+	}
+}
+
+.city-point {
+	background: #e0b618;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	z-index: 3;
+	opacity: 0;
+	-webkit-animation: show .9s ease 1.7s 1 forwards;
+	animation: show .9s ease 1.7s 1 forwards;
+
+	&-top-position {
+		z-index: 90;
+	}
+
+	&.history {
+		background: #8f8f8f;
+
+		.city-detail figure {
+			-webkit-filter: grayscale(100%);
+    		filter: grayscale(100%);
+		}
+	}
+
+	&:hover {
+		.city-detail figure {
+			pointer-events: none;
+			opacity: 1;
+		}
+	}
+
+	a {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 15;
+	}
+
+	&[data-city=trojmiasto] {
+		left: 532px;
+		top: 114px;
+	}
+
+	&[data-city=bydgoszcz] {
+		left: 492px;
+		top: 293px;
+
+		.city-detail {
+			left: -135px;
+		}
+	}
+
+	&[data-city=lublin] {
+		left: 835px;
+		top: 453px;
+
+		.city-detail-right-top {
+			right: -121px;
+		}
+	}
+
+	&[data-city=poznan] {
+		left: 427px;
+		top: 339px;
+
+		.city-detail {
+			left: -126px;
+		}
+	}
+
+	&[data-city=opole] {
+		left: 506px;
+		top: 551px;
+
+		.city-detail {
+			left: -113px;
+		}
+	}
+
+	&[data-city=rzeszow] {
+		left: 782px;
+		top: 605px;
+	}
+
+	&[data-city=warszawa] {
+		left: 710px;
+		top: 365px;
+	}
+
+	&[data-city=szczecin] {
+		left: 270px;
+		top: 205px;
+
+		.city-detail {
+			left: -126px;
+		}
+	}
+
+	&[data-city=olsztyn] {
+		left: 690px;
+		top: 190px;
+
+		.city-detail-right-top {
+			right: -122px;
+		}
+	}
+
+	&[data-city=lodz] {
+		left: 598px;
+		top: 411px;
+
+		.city-detail {
+			left: -113px;
+		}
+	}
+
+	&[data-city=kielce] {
+		left: 698px;
+		top: 521px;
+
+		.city-detail {
+			left: -113px;
+		}
+	}
+
+	&[data-city=katowice] {
+		left: 578px;
+		top: 600px;
+
+		.city-detail {
+			left: -132px;
+		}
+	}
+
+	&[data-city=wroclaw] {
+		left: 438px;
+		top: 480px;
+
+		.city-detail {
+			left: -132px;
+		}
+	}
+
+	&[data-city=zielona-gora] {
+		left: 328px;
+		top: 390px;
+	}
+
+	&[data-city=bialystok] {
+		left: 854px;
+		top: 265px;
+
+		.city-detail {
+			left: -132px;
+		}
+	}
+
+	
+}
+
+.city-line {
+	position: absolute;
+	width: 4px;
+	background: url(../images/border.png);
+	border-bottom: 0;
+	border-left: 0;
+	border-top: 0;
+	opacity: 0;
+	-webkit-animation: show .9s ease 2.8s 1 forwards;
+	animation: show .9s ease 2.8s 1 forwards;
+
+	&.history {
+		background: url(../images/border-history.png);
+	}
+
+	&[data-line='bydgoszcz-trojmiasto'] {
+		left: 521px;
+		top: 114px;
+		height: 188px;
+		transform: rotate(13deg);
+		-webkit-animation: show .9s ease 2.8s 1 forwards, border-down-move 2s linear 65 forwards;
+		animation: show .9s ease 2.8s 1 forwards, border-down-move 2s linear 65 forwards;
+	}
+
+	&[data-line='trojmiasto-opole'] {
+		left: 528px;
+		top: 114px;
+		height: 445px;
+		transform: rotate(3.4deg);
+	}
+
+	&[data-line='bydgoszcz-poznan'] {
+		left: 439px;
+		top: 114px;
+		height: 107px;
+		transform: rotate(47deg);
+	}
+
+	&[data-line='lublin-bydgoszcz'] {
+		left: 663px;
+		top: 186px;
+		height: 385px;
+		transform: rotate(-64deg);
+		-webkit-animation: show .9s ease 2.8s 1 forwards, border-down-move 2s linear 65 forwards;
+		animation: show .9s ease 2.8s 1 forwards, border-down-move 2s linear 65 forwards;
+	}
+
+	&[data-line='opole-poznan'] {
+		left: 473px;
+		top: 343px;
+		height: 221px;
+		transform: rotate(-22deg);
+	}
+
+	&[data-line='poznan-rzeszow'] {
+		left: 603px;
+		top: 252px;
+		height: 447px;
+		transform: rotate(-52deg);
+	}
+
+	&[data-line='rzeszow-warszawa'] {
+		left: 753px;
+		top: 371px;
+		height: 246px;
+		transform: rotate(-18deg);
+	}
+
+	&[data-line='warszawa-trojmiasto'] {
+		left: 589px;
+		top: 139px;
+		height: 303px;
+		transform: rotate(-36deg);
+	}
+}
+
+.city-detail {
+	max-width: 183px;
+	height: 60px;
+	position: absolute;
+	left: -160px;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	z-index: 10;
+	pointer-events: none;
+
+	a {
+		pointer-events: auto;
+	}
+
+	&-top {
+		left: 50%;
+		top: -33px;
+		-webkit-transform: translateY(0);
+		transform: translateY(0);
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+	}
+
+	&-right {
+		left: auto;
+		right: -153px;
+		top: 45px;
+
+		&-top {
+			left: auto;
+			right: -153px;
+			top: 15px;
+		}
+	}
+
+	figure {
+		width: 153px;
+		height: 113px;
+		position: absolute;
+		pointer-events: none;
+		left: 50%;
+		top: -168px;
+		opacity: 0;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+		position: relative;
+		-webkit-transition: all .3s;
+		transition: all .3s;
+
+		img {
+			max-width: 100%;
+			position: relative;
+			z-index: 200;
+		}
+
+		.bss-date {
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			left: 50%;
+			top: 50%;
+			-webkit-transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%);
+			color: #fff;
+			font-size: 20px;
+			z-index: 300;
+		}
+	}
+
+	i {
+		font-size: 30px;
+		position: absolute;
+		left: 50%;
+		bottom: -21px;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+		color: #3b7cc0;
+	}
+}
+
+.city-txt {
+	text-align: center;
+	font-size: 14px;
+
+	strong {
+		font-size: 20px;
+	}
+}
+
+.bss-ctn {
+	width: 50%;
+	background: rgba(255,255,255,.9);
+	color: #000;
+	position: absolute;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	padding: 40px 20px;
+	top: 647px;
+	display: none;
+
+	h1 {
+		font-weight: 300;
+		font-size: 35px;
+		margin-bottom: 20px;
+		margin-top: 0;
+	}
+
+	h2 {
+		font-weight: 400;
+		font-size: 14px;
+	}
+}
+
+
+footer {
+	display: none;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background: #322f31;
+	padding: 20px 0 10px;
+	z-index: 56;
+	color: #fff;
+	font-size: 11px;
+
+	img {
+		display: inline-block;
+		margin-left: 6px;
+		vertical-align: bottom;
+		width: 70px;
+	}
+
+	.copy {
+		text-align: right;
+	}
+
+	a {
+		color: #fff;
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: none;
+			color: #fff;
+		}
+	}
+}
+
+.bss-text {
+	position: fixed;
+	left: -50%;
+	top: 0;
+	width: 50%;
+	height: 100%;
+	background: #fff;
+	z-index: 1000;
+	transition: all .3s;
+	border-right: 1px solid #e0b618;
+
+	.bss-ctn {
+		position: static;
+		padding: 120px 40px;
+		box-sizing: border-box;
+		-webkit-transform: none;
+		transform: none;
+		max-width: 100%;
+		width: 100%;
+		display: block;
+	}
+}
+
+.overlay {
+	background: #000;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 900;
+	pointer-events: none;
+	opacity: 0;
+	transition: all .3s;
+}
+
+#close {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	font-size: 24px;
+	padding: 5px;
+	background: none;
+	border: 0;
+	color: #e0b618;
+}
+
+.read-open {
+	overflow: hidden;
+	.bss-text {
+		left: 0;
+	} 
+
+	.overlay {
+		opacity: .4;
+		pointer-events: auto;
+	}
+
+	.bss-map {
+		-webkit-transform: translateX(200px);
+		transform: translateX(200px);
+		-webkit-filter: blur(4px);
+		filter: blur(4px);
+	}
+
+	#read {
+		color: #000;
+		background: #fff;
+	}
+}
+
+#read {
+	position: absolute;
+	right: -160px;
+	background: #fff;
+	width: 160px;
+	padding: 10px;
+	top: 15px;
+	border: 1px solid #e0b618;
+	cursor: pointer;
+	border-left: 0;
+	background: #e0b618;
+	color: #fff;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+	// border-radius: 0 8px 8px 0;
+}
+
+@-webkit-keyframes show {
+	0% {
+		opacity: 0;
+	} 100% {
+		opacity: 1;
+	}
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	} 100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes ants {
+	0% {
+		background-position: 0 0;
+	} 100% {
+		background-position: 0 40px;
+	}
+}
+
+@keyframes ants {
+	0% {
+		background-position: 0 0;
+	} 100% {
+		background-position: 0 40px;
+	}
+}
+
+@keyframes border-up-move {
+	0% {
+		background-position: left 0;
+	} 100% {
+		background-position: left 40px;
+	}
+}
+
+@keyframes border-down-move {
+	0% {
+		background-position: left 0;
+	} 100% {
+		background-position: left -40px;
+	}
+}
+
+
+
+
+// desktop 1600px
+@media only screen and (min-width: 1930px){
+	.bss-map {
+		background: url(../images/map.jpg) center top no-repeat;
+	}
+}
+
+// desktop 1360px
+@media only screen and (max-width: 1360px){}
+
+// desktop and tablet 1280px 
+@media only screen and (max-width: 1280px){}
+
+// desktop and tablet 1024px 
+@media only screen and (max-width: 1200px){
+	.point-layer {
+		-webkit-transform: translate(-99px,-81px);
+		transform: translate(-99px,-81px);
+	}
+	nav {
+		padding: 5px 50px;
+	}
+	.bss-ctn {
+		width: 80%;
+	}
+
+	#read {
+		top: 74px;
+	}
+}
+
+// tablet 992px 
+@media only screen and (max-width: 992px){
+	.point-layer {
+		-webkit-transform: translate(-210px,-81px);
+		transform: translate(-210px,-81px);
+	}
+
+
+}
+
+// tablet 768px 
+@media only screen and (max-width: 768px){
+	.bss-desktop, .bss-text, .overlay {display: none;}
+	.bss-mobile {display: block;}
+
+	#proprogressio-logo {
+		display: none;
+	}
+
+	.bss-ctn {
+		position: static;
+		width: 100%;
+		transform: none;
+		margin: 85px 0 0;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		display: block;
+	}
+
+	nav {
+		padding: 5px 0;
+	}
+
+	#bsstour {
+		img {
+			width: 230px;
+		}
+	}
+
+	#lang {
+		padding-top: 14px;
+		a {
+			font-size: 12px;
+			width: 26px;
+			height: 26px;
+			line-height: 24px;
+		}
+	}
+
+	.bss-ctn {
+		h1 {
+			font-size: 26px;
+		}
+
+		h2 {
+			font-size: 12px;
+		}
+	}
+	
+	.city-item {
+		padding: 0 15px;
+		position: relative;
+		text-align: left;
+		line-height: 1.1;
+		img {
+			width: 100%;
+		}
+
+		a {
+			color: #fff;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		span {
+			position: absolute;
+			left: 40px;
+			bottom: 25px;
+			font-size: 20px;
+		}
+
+		strong {
+			font-size: 25px;
+			text-transform: uppercase;
+		}
+	}
+
+	footer {
+		position: static;
+		margin-top: 0;
+		font-size: 13px;
+		display: block;
+
+		img {
+			display: block;
+			margin: 10px auto;
+			width: 80px;
+		}
+
+		.copy {
+			text-align: center;
+		}
+
+		.col-sm-6 {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+// tablet 480px 
+@media only screen and (max-width: 480px){
+	#bsstour {
+		img {
+			width: 150px;
+		}
+	}
+}
+

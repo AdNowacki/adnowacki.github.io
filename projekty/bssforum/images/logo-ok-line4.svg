@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="130px" height="100px" viewBox="0 0 130 100" enable-background="new 0 0 130 100" xml:space="preserve">
+<g>
+	<defs>
+		<path id="SVGID_1_" d="M10.016,98.568c0.153,0.052,0.304,0.104,0.455,0.157l35.574-64.704c-0.152-0.054-0.303-0.107-0.454-0.158
+			L10.016,98.568z"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-220.3232" y1="382.3564" x2="-220.1038" y2="382.3564" gradientTransform="matrix(163.5348 0 0 -163.5348 36040.5781 62594.8984)">
+		<stop  offset="0" style="stop-color:#A7519E"/>
+		<stop  offset="0.0758" style="stop-color:#9660A0"/>
+		<stop  offset="0.2593" style="stop-color:#7281A3"/>
+		<stop  offset="0.4444" style="stop-color:#569AA6"/>
+		<stop  offset="0.6296" style="stop-color:#42ADA8"/>
+		<stop  offset="0.8147" style="stop-color:#36B7AA"/>
+		<stop  offset="1" style="stop-color:#32BBAA"/>
+	</linearGradient>
+	<rect x="10.016" y="33.864" clip-path="url(#SVGID_2_)" fill="url(#SVGID_3_)" width="36.029" height="64.862"/>
+</g>
+<g>
+	<defs>
+		<path id="SVGID_4_" d="M10.016,98.568c0.153,0.052,0.304,0.104,0.455,0.157l35.574-64.704c-0.152-0.054-0.303-0.107-0.454-0.158
+			L10.016,98.568z"/>
+	</defs>
+	<clipPath id="SVGID_5_">
+		<use xlink:href="#SVGID_4_"  overflow="visible"/>
+	</clipPath>
+	
+		<linearGradient id="SVGID_6_" gradientUnits="userSpaceOnUse" x1="-220.3784" y1="382.0488" x2="-220.1584" y2="382.0488" gradientTransform="matrix(167.446 -290.1509 168.6518 183.634 -27522.0566 -134001.8125)">
+		<stop  offset="0" style="stop-color:#A7519E"/>
+		<stop  offset="0.0758" style="stop-color:#9660A0"/>
+		<stop  offset="0.2593" style="stop-color:#7281A3"/>
+		<stop  offset="0.4444" style="stop-color:#569AA6"/>
+		<stop  offset="0.6296" style="stop-color:#42ADA8"/>
+		<stop  offset="0.8147" style="stop-color:#36B7AA"/>
+		<stop  offset="1" style="stop-color:#32BBAA"/>
+	</linearGradient>
+	<polygon clip-path="url(#SVGID_5_)" fill="url(#SVGID_6_)" points="32.142,122.816 69.033,58.893 23.919,9.773 -12.971,73.696 	"/>
+</g>
+</svg>

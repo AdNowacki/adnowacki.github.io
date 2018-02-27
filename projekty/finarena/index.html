@@ -1,0 +1,430 @@
+<!doctype html>
+    <!--[if lt IE 7]><html class='no-js lt-ie9 lt-ie8 lt-ie7' lang='pl'> <![endif]-->
+    <!--[if IE 7]><html class='no-js lt-ie9 lt-ie8' lang='pl'> <![endif]-->
+    <!--[if IE 8]><html class='no-js lt-ie9' lang='pl'> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class='no-js' lang='pl'> <!--<![endif]-->
+
+    <head>
+        <title></title>
+        <meta name='description' content='' />
+        <meta name='keywords' content='' />
+		<meta name='author' content='' />
+        <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    	<meta name='robots' content='index, follow, all' />
+
+        <link rel='stylesheet' href='css/reset.css' type='text/css' media='all' />
+        <link rel='stylesheet' href='css/bootstrap.min.css' type='text/css' media='all' />
+        <link rel='stylesheet' href='plugins/slick/slick.css' type='text/css' media='all' />
+        <link rel='stylesheet' href='plugins/slick/slick-theme.css' type='text/css' media='all' />
+        <link rel='stylesheet' href='plugins/datepicker/jquery.datetimepicker.css'/>
+        <link rel='stylesheet' href='css/style.css' type='text/css' media='all' />
+
+
+        <!--[if (lt IE 10) & (!IEMobile)]>
+          <script src='js/html5shiv.js'></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        
+        <section class='page'>
+
+            <!-- # top -->
+            <nav class='top'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='logo col-md-4 col-sm-3'><a href='#'><img src='images/finarea-logo.svg' alt=''></a></div>
+                        <div class='nav col-md-8 col-sm-9 col-padding-r-20'>
+                            <a href='#' class='act'>Jak to działa</a>
+                            <a href='#'>Regulamin</a>
+                            <a href='#'>Kontakt</a>
+                            <a href='#'>Zaloguj się</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- # END top -->
+
+            <!-- # slider top -->
+            <section class='slider-container'>
+                <div class='slider'>
+                    <div class='slider-content'>
+                        <div class='slider-item row'>
+                            <figure class='slider-item-image col-md-2 col-xs-2'><img src='images/slider-img.png' alt=''></figure>
+                            <header class='slider-item-text col-md-10 col-xs-10'>
+                                <div>
+                                    <h2>Pierwsza porównywarka <br><span style='color: #ffed00;'>PRAWDZIWYCH cen kredytów.</span></h2>
+                                    <p>Porównaj koszt swojego zobowiązania na tle innych udzielonych w Polsce kredytów. <br>Sprawdź czy nie przepłacasz i dowiedz się co zrobić, żeby płacić mniej. Szybko, za darmo i na rzeczywistych danych.</p>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                    <div class='slider-content'>
+                        <div class='slider-item row'>
+                            <figure class='slider-item-image col-md-2 col-xs-2'><img src='images/slider-img.png' alt=''></figure>
+                            <header class='slider-item-text col-md-10 col-xs-10'>
+                                <div>
+                                    <h2>Druga porównywarka <br><span style='color: #ffed00;'>PRAWDZIWYCH cen kredytów.</span></h2>
+                                    <p>Porównaj koszt swojego zobowiązania na tle innych udzielonych w Polsce kredytów. <br>Sprawdź czy nie przepłacasz i dowiedz się co zrobić, żeby płacić mniej. Szybko, za darmo i na rzeczywistych danych.</p>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                    <div class='slider-content'>
+                        <div class='slider-item row'>
+                            <figure class='slider-item-image col-md-2 col-xs-2'><img src='images/slider-img.png' alt=''></figure>
+                            <header class='slider-item-text col-md-10 col-xs-10'>
+                                <div>
+                                    <h2>Trzecia porównywarka <br><span style='color: #ffed00;'>PRAWDZIWYCH cen kredytów.</span></h2>
+                                    <p>Porównaj koszt swojego zobowiązania na tle innych udzielonych w Polsce kredytów. <br>Sprawdź czy nie przepłacasz i dowiedz się co zrobić, żeby płacić mniej. Szybko, za darmo i na rzeczywistych danych.</p>
+                                </div>
+                            </header>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- # END slider top -->
+            
+            <!-- # page content -->
+            <section class='page-content'>
+                <div class='container'>
+                    <div class='row'>
+                        <!-- #left content -->
+                        <div class='col-md-8'>
+                            <!-- # kroki wprowadzania danych -->
+                            <section class='input-step'>
+                                <div class='input-step-item'>
+                                    <div class='input-step-label'>1. Informacje o kredycie</div>
+                                    <div class='input-step-graph act'></div>
+                                </div>
+                                <div class='input-step-item'>
+                                    <div class='input-step-label'>2. Informacje o ratach</div>
+                                    <div class='input-step-graph'></div>
+                                </div>
+                                <div class='input-step-item'>
+                                    <div class='input-step-label'>3. Wynik</div>
+                                    <div class='input-step-graph'></div>
+                                </div>
+                            </section>
+                            <!-- # END kroki wprowadzania danych -->
+
+                            <!-- # form -->
+                            <form action='' method='post' class='form-input'>
+                                <!-- # krok 1 -->
+                                <div data-step='1' class='row'>
+
+                                    <fieldset class='col-md-6 col-sm-6'>
+                                        <div class='form-input-label'>Jaka jest Twoja sytuacja?</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-radio'>
+                                                <input type='radio' name='situation' id='situation1' value='1'><label for='situation1'>MAM KREDYT</label>
+                                                <input type='radio' name='situation' id='situation2' value='2'><label for='situation2'>CHCĘ WZIĄĆ KREDYT</label>
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>Rodzaj kredytu</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-select'>
+                                                <select name='type'>
+                                                    <option value=''>Wybierz kredyt</option>
+                                                    <option value='1'>Kredyt 1</option>
+                                                    <option value='2'>Kredyt 2</option>
+                                                    <option value='3'>Kredyt 3</option>
+                                                    <option value='4'>Kredyt 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>Data ostatniej raty</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-date'>
+                                                <input type='text' name='part_last' placeholder='DD/MM/YYYY' />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    
+                                    <fieldset class='col-md-6 col-sm-6'>
+                                        <div class='form-input-label'>Kwota kredytu</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-int'>
+                                                <input type='text' name='credit_value' placeholder='np. 300 000 PLN' />
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>Data umowy</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-date'>
+                                                <input type='text' name='date' placeholder='DD/MM/YYYY' />
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>&nbsp;</div>
+                                        <div class='form-input-border form-input-conrol form-input-control-next'>
+                                            <div class='form-input-btn'>
+                                                <button name='next' data-next='2'>DALEJ</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+                                <!-- # END krok 1 -->
+                                
+                                <!-- # krok 2 -->
+                                <div data-step='2' class='row'>
+                                    <fieldset class='col-md-6 col-sm-6'>
+                                        <div class='form-input-label'>Raty</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-select'>
+                                                <select name='part'>
+                                                    <option value='1'>Raty równe</option>
+                                                    <option value='2'>Raty malejące</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>Nazwa banku</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-select'>
+                                                <select name='bank'>
+                                                    <option value=''>Wybierz BANK</option>
+                                                    <option value='1'>BANK 1</option>
+                                                    <option value='2'>BANK 2</option>
+                                                    <option value='3'>BANK 3</option>
+                                                    <option value='4'>BANK 4</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>Kwota prowizji</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-int'>
+                                                <input type='text' name='provision' placeholder='np. 1000 PLN' />
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                    
+                                    <fieldset class='col-md-6 col-sm-6'>
+                                        <div class='form-input-label'>Wysokość raty miesięcznej</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-int'>
+                                                <input type='text' name='part_value' placeholder='np. 2000 PLN' />
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>Score BIK</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-text'>
+                                                <input type='text' name='score_bik' placeholder='' />
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-label'>&nbsp;</div>
+                                        <div class='form-input-border form-input-conrol form-input-control-next'>
+                                            <div class='form-input-btn'>
+                                                <button name='next' data-next='3'>DALEJ</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <!-- # END krok 2 -->
+                                
+                                <!-- # krok 3 -->
+                                <div data-step='3' class='row'>
+                                    <fieldset class='col-md-12'>
+                                        <header class='step-end-title'><h3>Do dziś obsłużyliśmy już ponad <strong>10 000 OSÓB!</strong></h3></header>
+                                        <div class='form-input-label'>Twój adres email</div>
+                                        <div class='form-input-border form-input-conrol'>
+                                            <div class='form-input-text'>
+                                                <input type='text' name='email' placeholder='Wyślemy Ci cenne wskazówki' />
+                                            </div>
+                                        </div>
+
+                                        <div class='form-input-options row'>
+                                            <div class='col-md-3 col-sm-3'>
+                                                <a href='#'><img src='images/fb.png' alt=''></a>
+                                            </div>
+                                            <div class='col-md-9 col-sm-9 agreed'>
+                                                <input type='checkbox' name='agreed' id='agreed'>
+                                                <label for='agreed'>
+                                                    <span></span>
+                                                    Zgadzam się na przetwarzanie moich danych osobowych oraz akceptuję Regulamin i Politykę Prywatności
+                                                </label>
+                                            </div>
+                                            <div class='clearfix'></div>
+                                            <figure class='logos'>
+                                                <img src='images/logos1.png' alt=''>
+                                                <img src='images/logos2.png' alt=''>
+                                                <img src='images/logos3.png' alt=''>
+                                            </figure>
+                                        </div>
+
+                                        <div class='form-input-label'>&nbsp;</div>
+                                        <div class='form-input-border form-input-conrol form-input-control-next'>
+                                            <div class='form-input-btn'>
+                                                <button name='next-result'>GENERUJ WYNIK</button>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                    
+                                </div>
+                                <!-- # END krok 3 -->
+
+                                <!-- # wynik -->
+                                <div data-step='4' class='row result'>
+                                    <fieldset class='col-md-12'>
+
+                                        <div class='col-md-4'>
+                                            <h4>Twój KREDYT</h4>
+                                            <canvas id='rank-circle' width='161' height='169'></canvas>
+                                        </div>
+                                        <div class='col-md-8'>
+                                            <div class='row'>
+                                                <div class='col-md-6'>
+                                                    <div class='form-input-label'>RRSO:</div>
+                                                    <div class='form-input-border form-input-conrol'>
+                                                        <canvas id='rank-rrso' width='180' height='40'></canvas>
+                                                    </div>
+                                                </div>
+                                                <div class='col-md-6'>
+                                                    <div class='form-input-label'>Całkowity koszt:</div>
+                                                    <div class='form-input-border form-input-conrol'>
+                                                        <canvas id='rank-cost' width='180' height='40'></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='finarena-rank'>
+                                                    <div class='form-input-label'>Twój RANKING na FinArenie:</div>
+                                                    <div class='finarena-range'>
+                                                        <div class='finarena-start'></div>
+                                                        <div class='range-bar-container'>
+                                                            <span class='range-value'>
+                                                                <span class='range-position'></span>
+                                                            </span>
+                                                            <span class='range-other'></span>
+                                                        </div>
+                                                        <div class='finarena-end'></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class='row'>
+                                                <div class='col-md-6'>
+                                                    <h5>Płacisz za kredyt<br><strong>WIĘCEJ niż 68% ludzi,</strong> <br>których mamy w bazie!</h5>
+                                                </div>
+                                                <div class='col-md-6 col-center-text'>
+                                                    <div class='form-input-label center-label'>MOŻESZ PŁACIĆ MNIEJ</div>
+                                                    <div class='form-input-border form-input-conrol form-input-control-next no-float'>
+                                                        <div class='form-input-btn'>
+                                                            <button name='send' value='1'>SPRAWDŹ</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                    
+                                </div>
+                                <!-- # END wynik -->
+                            </form>
+                            <!-- # END form -->
+                        </div>
+                        <!-- # END left content -->
+                            
+                        <!-- # right content -->
+                        <aside class='col-md-4'>
+                            <!-- # slider -->
+                            <div class='aside-slider col-md-12 col-sm-8'>
+                                <div class='aside-slider-items'>
+                                    <div class='aside-slider-item'>
+                                        <h3>Lorem ipsum dolor sit amet lorem ipsum dolor.</h3> <!-- maks 2 wiersze -->
+                                        <figure>
+                                            <img src='images/aside-slide-1.png' alt=''>
+                                            <figcaption> <!-- maks 4 wiersze -->
+                                                Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym...
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class='aside-slider-item'>
+                                        <h3>Początek traktatu czasu być na takim</h3> <!-- maks 2 wiersze -->
+                                        <figure>
+                                            <img src='images/aside-slide-1.png' alt=''>
+                                            <figcaption> <!-- maks 4 wiersze -->
+                                                Istności: Z takich łudzi, którzy tylko poznanie Dobra jako najwyższej idei przyjaźni najdoskonalszej. Takie pojęcie można przypuścić za jego pozorne szczęście znał, tedyby to byle właśnie jak Kopczyński i czemuż Dobro jest kolejne następowanie. Dobro pragnie uszczęśliwienia wszystkich ludzi, dla łudzi, którzy go pobudzać, lecz nie są takie nagrody, gdzie np. w żadnej ludzkiej upatrujemy ideę najwyższej przyjaźni, aby podług niej oddala. Można komu dowody przyjaźni ku idei wymagają się to kiedyś; wynagrodzono, albowiem nikt niemoże się w Polsce, raczy łaskawy czytelnik wybaczyć mniejszym uchybieniom w czasie, bo moralna wiara w równej proporcyi? Kiedy Dobru jest przyzwoita.
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class='aside-slider-item'>
+                                        <h3>Lorem ipsum dolor sit amet lorem ipsum dolor.</h3> <!-- maks 2 wiersze -->
+                                        <figure>
+                                            <img src='images/aside-slide-1.png' alt=''>
+                                            <figcaption> <!-- maks 4 wiersze -->
+                                                Został po raz pierwszy użyty w XV w. przez nieznanego drukarza do wypełnienia tekstem próbnej książki. Pięć wieków później zaczął być używany przemyśle elektronicznym, pozostając praktycznie niezmienionym...
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- # END slider -->
+                        </aside>
+                        <!-- # END right content -->
+                    </div>
+
+                </div>
+            </section>
+            <!-- # END page content -->
+            <!-- # footer -->
+            <footer class='footer'>
+                <div class='container'>
+                    <div class='row'>
+                        <div class='col-md-3 col-sm-3'>
+                            <h4>EKSPLORUJ NASZ SERWIS</h4>
+                            <nav>
+                                <a href='#'>- Polityka prywatności</a>
+                                <a href='#'>- FAQ</a>
+                                <a href='#' class='link-off'>- Kontakt</a>
+                                <a href='#' class='link-off'>- Wiedza</a>
+                                <a href='#' class='link-off'>- Konsultacje i kredyty</a>
+                            </nav>
+                        </div>
+                        <div class='col-md-3 col-sm-3'>
+                            <h4>SKONTAKTUJ SIĘ Z NAMI</h4>
+                            <nav>
+                                <p class='link-off'>Z chęcią odpowiemy na wszelkie Twoje pytania!</p>
+                                <p class='link-off'>Skorzystaj z naszego <br><a href='#' class='link-off'><u>formularza kontaktowego</u></a>.</p>
+                            </nav>
+                        </div>
+                        <div class='col-md-3 col-sm-3'>
+                            <h4>EKSPLORUJ NASZ SERWIS</h4>
+                            <nav>
+                                <a href='#'>- Polityka prywatności</a>
+                                <a href='#'>- FAQ</a>
+                                <a href='#' class='link-off'>- Kontakt</a>
+                                <a href='#' class='link-off'>- Wiedza</a>
+                                <a href='#' class='link-off'>- Konsultacje i kredyty</a>
+                            </nav>
+                        </div>
+                        <div class='col-md-3 col-sm-3'>
+                            <h4>SKONTAKTUJ SIĘ Z NAMI</h4>
+                            <nav>
+                                <p class='link-off'>Z chęcią odpowiemy na wszelkie Twoje pytania!</p>
+                                <p class='link-off'>Skorzystaj z naszego <br><a href='#' class='link-off'><u>formularza kontaktowego</u></a>.</p>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- # END footer -->
+
+        </section>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+        <script src='js/bootstrap.min.js'></script>
+        <script src='plugins/slick/slick.min.js'></script>
+        <script src='plugins/datepicker/jquery.datetimepicker.min.js'></script>
+        <script src='js/main.js'></script>
+
+    </body>
+</html>

@@ -1,0 +1,915 @@
+<!doctype html>
+    <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="pl"> <![endif]-->
+    <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="pl"> <![endif]-->
+    <!--[if IE 8]><html class="no-js lt-ie9" lang="pl"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js" lang="pl"> <!--<![endif]-->
+
+    <head>
+        <title></title>
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+		<meta name='author' content='' />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="pl" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta name='robots' content='index, follow, all' />
+
+        <link rel="stylesheet" href="css/reset.css" type="text/css" media="all" />
+        <link rel="stylesheet" href="scss/style.css" type="text/css" media="all" title="Default" />
+
+
+    </head>
+    <body>
+        <nav id="np-nav">
+            <div class="ctn">
+                <a href="#" id="np-logo"><img src="images/nespresso.jpg" alt=""></a>
+                <ul>
+                    <li><a href="#" data-target='recipes'>przepisy śniadaniowe</a></li>
+                    <li><a href="#" data-target='contest'>konkurs</a></li>
+                    <li><a href="#" data-target='shops'>butiki <i>nespresso</i></a></li>
+                    <li><a href="#" data-target='envivo'>Envivo</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class='top'>
+            <div class="ctn">
+                <h1><strong>Rozbudź</strong> swój poranek</h1>
+                <h2>Odkryj naturalną kawę <i>Nespresso</i>, idealną o poranku, <br>wyśmienitą w połączeniu z mlekiem.</h2>
+                <div class="screen-anim">
+                    <img src="images/warszawa.jpg" data-i='1' alt="">
+                    <img src="images/krakow.jpg" data-i='2' alt="">
+                    <img src="images/wroclaw.jpg" data-i='3' alt="">
+                    <img src="images/katowice.jpg" data-i='4' alt="">
+                    <img src="images/fl.png" alt="" id='fl'>
+                    <img src="images/ca.png" alt="" id='ca'>
+                    <img src="images/ci.png" alt="" id='ci'>
+                    <button id="down">PRZEWIŃ<br>NA DÓŁ</button>
+                    <button id="toggle-down" data-o='1'><strong>Dowiedz się więcej</strong> o alchemii kawy i mleka <img src="images/arr2.png" alt=""></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="option" data-option='1'>
+            <div class="ctn">
+                <button class="close-option">ZAMKNIJ <img src="images/x.png" alt=""></button>
+                <h2 class="double-title">alchemia<br>kawy i mleka</h2>
+                <p>
+                    Badania <i>Nespresso</i> pokazują, że smak każdej mieszanki <br>Grand Cru zmienia się w połączeniu z mlekiem. <br>
+                    Wszystkie kawy <i>Nespresso</i> Grand Cru doskonale łączą się <br>z mlekiem. Po dodaniu mleka, pianki lub śmietanki nawet <br>te o bardziej delikatnym i stonowanym charakterze tworzą <br>zaskakujący, nowy wymiar smaku. 
+                </p>
+                <p>
+                    Oznacza to, że jedna mieszanka Grand Cru pozwala <br>rozkoszować się niemal nieskończoną gamą <br>odsłon smakowych.
+                </p>
+                <br><br><br><br><br>
+                <p><small><strong>Zmień swój ulubiony styl przyrządzania kawy, wybierając <br>jeden z trzech sposobów dodawania mleka: </strong><br>dolej odrobinę, przykryj kawę pianką lub wymieszaj z dużą ilością gorącego mleka.</small></p>
+                <div class="graph">
+                    <div class="graph-item">
+                        <img src="images/graph-1.jpg" alt="">
+                        <p>
+                            Dodaj odrobinę mlecznej pianki, <br>aby uzyskać <strong>macchiato</strong>.
+                        </p>
+                    </div>
+                    <div class="graph-item">
+                        <img src="images/graph-2.jpg" alt="">
+                        <p>
+                            Dodaj gorącego mleka i przykryj kawę kremową <br>pianką, aby stworzyć <strong>cappuccino</strong>.
+                        </p>
+                    </div>
+                    <div class="graph-item">
+                        <img src="images/graph-3.jpg" alt="">
+                        <p>
+                             Dodaj dużą ilość gorącego mleka, <br>a na górę warstwę kremowej pianki, <br>aby stworzyć <strong>latte</strong>.
+                        </p>
+                    </div>
+                </div>
+                <img src="images/ca-bg.png" id='opbg' alt="">
+            </div>
+            <button class="cta"><img src="images/clo.jpg" alt=""> ZAMKNIJ <i></i></button>
+        </section>
+
+        <section class="recipes" data-target='recipes'>
+            <div class="ctn">
+                <h2 class="double-title">Kawa <i>Nespresso</i> to idealny <br>początek każdego <br>poranka.</h2>
+                <p>Poznaj nasze inspiracje śniadaniowe na każdą okazję.</p>
+                <div class="recipe-tabs">
+                    <div class="recipe-tab active" data-tab='1'>
+                        <figure class="recipe-img">
+                            <img src="images/recipe_09.jpg" alt="">
+                            <span></span>
+                        </figure>
+                        <div class="recipe-desc">
+                            Pobudka <br>z <i>Dulsão</i> <br>i kawowym <br>muesli
+                            <img src="images/recipe-arr.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="recipe-tab" data-tab='2'>
+                        <figure class="recipe-img">
+                            <img src="images/recipe_11.jpg" alt="">
+                            <span></span>
+                        </figure>
+                        <div class="recipe-desc">
+                            <i>Arpeggio</i> Latte <br>Macchiato <br>z kanapkami
+                            <img src="images/recipe-arr.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="recipe-tab" data-tab='3'>
+                        <figure class="recipe-img">
+                            <img src="images/recipe_13.jpg" alt="">
+                            <span></span>
+                        </figure>
+                        <div class="recipe-desc">
+                            Bruschetta <br>z pesto <br>i grillowanymi <br>warzywami <br>do kawy <br><i>Fortissio <br>Lungo</i>
+                            <img src="images/recipe-arr.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="recipe-tab" data-tab='4'>
+                        <figure class="recipe-img">
+                            <img src="images/recipe_15.jpg" alt="">
+                            <span></span>
+                        </figure>
+                        <div class="recipe-desc">
+                            Focaccia alla <br>romana z kawą <br><i>Lizinio Lungo</i>
+                            <img src="images/recipe-arr.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="recipe-tab" data-tab='5'>
+                        <figure class="recipe-img">
+                            <img src="images/recipe_17.jpg" alt="">
+                            <span></span>
+                        </figure>
+                        <div class="recipe-desc">
+                            Kanapka <br>Strummer <br>Max z kawą <br><i>Decaffeinato <br>Intenso</i>
+                            <img src="images/recipe-arr.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recipe-contents">
+                    <div class="ctn">
+                        <div class="recipe-content active" data-tab='1'>
+                            <div class="col-6">
+                                <figure class="recipe-images">
+                                    <img src="images/recipe-1.jpg" alt="">
+                                </figure>
+                                <h3 class='recipe-content-sub'>OPIS</h3>
+                                <div class="recipe-icons clear">
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_16.jpg" alt="">
+                                            <figcaption>Stopień trudności:</figcaption>
+                                        </figure>
+                                        <h4>łatwy</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_18.jpg" alt="">
+                                            <figcaption>Czas przygotowania:</figcaption>
+                                        </figure>
+                                        <h4>15 min</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_23.jpg" alt="">
+                                            <figcaption>Przybory:</figcaption>
+                                        </figure>
+                                        <h4>miseczka</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_26.jpg" alt="">
+                                            <figcaption>Porcje:</figcaption>
+                                        </figure>
+                                        <h4>6</h4>
+                                    </div>
+                                </div>
+                                <figure class="rec-c-image">
+                                    <img src="images/recipe-caffe-image.jpg" alt="">
+                                </figure>
+                            </div>
+                            <div class="col-6 recipe-desc">
+                                <h2 class="recipe-title">Pobudka z <i>Dulsão</i> <br>i kawowym muesli</h2>
+                                <h3 class='recipe-short'>Chrupiące, kremowe, słodkie i kawowe <br>– to prawdziwe śniadaniowe dzieło <br>sztuki, które rozbudzi nowy dzień <br>i pobudzi do działania <br>w wyjątkowym stylu.</h3>
+                                <h3 class='recipe-content-sub'>SKŁADNIKI</h3>
+                                <p class='recipe-elem'><strong>Kawa:</strong></p>
+                                <p>1 kapsułka kawy <i>Grand Cru Dulsão</i></p>
+                                <p class='recipe-elem'><strong>Muesli:</strong></p>
+                                <p>150 g jogurtu naturalnego<br>2 łyżeczki płynnego miodu<br>Kruche muesli (wg uznania)</p>
+                                <p class='recipe-elem'><strong>PRZYGOTOWANIE</strong></p>
+                                <p>
+                                    Przygotuj kawę <i>Dulsão de Brasil</i><br>
+                                    w miseczce, dodaj jogurt i miód, <br>
+                                    a następnie wymieszaj wszystko do <br>
+                                    momentu, gdy mieszanka nabierze <br>
+                                    gładkiej i kremowej konsystencji. 
+                                </p>
+                                <p>Włóż na 10 minut do lodówki.</p>
+                                <p>Po wyjęciu z lodówki, dodaj muesli.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="recipe-content" data-tab='2'>
+                            <div class="col-6">
+                                <figure class="recipe-images">
+                                    <img src="images/recipe-2.jpg" alt="">
+                                </figure>
+                                <h3 class='recipe-content-sub'>OPIS</h3>
+                                <div class="recipe-icons clear">
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_16.jpg" alt="">
+                                            <figcaption>Stopień trudności:</figcaption>
+                                        </figure>
+                                        <h4>łatwy</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_18.jpg" alt="">
+                                            <figcaption>Czas przygotowania:</figcaption>
+                                        </figure>
+                                        <h4>20 min</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_23.jpg" alt="">
+                                            <figcaption>Przybory:</figcaption>
+                                        </figure>
+                                        <h4>
+                                            1 wysoka szklanka <br>Recipe (350 ml)<br>
+                                            Spieniacz do mleka <br>Aeroccino lub dysza <br>do pary Twojego <br>urządzenia <br><i>Nespresso</i><br>
+                                            Piekarnik lub <br>opiekacz
+                                        </h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_26.jpg" alt="">
+                                            <figcaption>Porcje:</figcaption>
+                                        </figure>
+                                        <h4>6</h4>
+                                    </div>
+                                </div>
+                                <figure class="rec-c-image">
+                                    <img src="images/recipe-caffe-image.jpg" alt="">
+                                </figure>
+                            </div>
+                            <div class="col-6 recipe-desc">
+                                <h2 class="recipe-title"><i>Arpeggio</i> Latte <br>Macchiato <br>z kanapkami</h2>
+                                <h3 class='recipe-short'>Ta prosta w przygotowaniu kanapka <br>w połączeniu z mleczną kawą na bazie <br><i>Arpeggio</i> pozwoli Ci łagodnie rozpocząć <br>nowy dzień.</h3>
+                                <h3 class='recipe-content-sub'>SKŁADNIKI</h3>
+                                <p class='recipe-elem'><strong>Kawa:</strong></p>
+                                <p>6 kapsułek kawy <i>Arpeggio</i><br>(6 x 40 ml)</p>
+                                <p class='recipe-elem'><strong>Kanapki:</strong></p>
+                                <p>
+                                    1 bagietka<br>
+                                    1 ogórek<br>
+                                    1 słoik pasty Vegemite<br>
+                                    (lub Marmite)<br>
+                                    200 g serka śmietankowego<br>
+                                    1 bochenek krojonego <br>
+                                    pełnoziarnistego chleba<br>
+                                    2 awokado<br>
+                                    sól morska
+                                </p>
+                                <p class='recipe-elem'><strong>PRZYGOTOWANIE</strong></p>
+                                <p>
+                                    Przekrój bagietki wzdłuż na dwie części. <br>
+                                    Posmaruj warstwą pasty Vegemite, <br>
+                                    a następnie serkiem śmietankowym. <br>
+                                    Na górę ułóż plasterki ogórka. Pokrój <br>
+                                    na kanapki. Lekko opiecz kromki chleba <br>
+                                    pełnoziarnistego. <br>
+                                    Za pomocą widelca rozsmaruj na nich <br>
+                                    rozgniecione awokado. Posyp solą. <br>
+                                    Podawaj z kawą Arpeggio Grand Cru <br>
+                                    Latte Macchiato. 
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="recipe-content" data-tab='3'>
+                            <div class="col-6">
+                                <figure class="recipe-images">
+                                    <img src="images/recipe-3.jpg" alt="">
+                                </figure>
+                                <h3 class='recipe-content-sub'>OPIS</h3>
+                                <div class="recipe-icons clear">
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_16.jpg" alt="">
+                                            <figcaption>Stopień trudności:</figcaption>
+                                        </figure>
+                                        <h4>średni</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_18.jpg" alt="">
+                                            <figcaption>Czas przygotowania:</figcaption>
+                                        </figure>
+                                        <h4>30 min</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_23.jpg" alt="">
+                                            <figcaption>Przybory:</figcaption>
+                                        </figure>
+                                        <h4>
+                                            Piekarnik<br>
+                                            Papier do pieczenia<br>
+                                            Krajalnica lub <br>
+                                            obieraczka do <br>warzyw<br>
+                                            Robot kuchenny
+                                        </h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_26.jpg" alt="">
+                                            <figcaption>Porcje:</figcaption>
+                                        </figure>
+                                        <h4>6</h4>
+                                    </div>
+                                </div>
+                                <figure class="rec-c-image">
+                                    <img src="images/recipe-caffe-image.jpg" alt="">
+                                </figure>
+                            </div>
+                            <div class="col-6 recipe-desc">
+                                <h2 class="recipe-title">Bruschetta z pesto <br>i grillowanymi <br>warzywami do <br>kawy <i>Fortissio <br>Lungo</i></h2>
+                                <h3 class='recipe-short'>Zacznij dzień od wyrazistego <i>Fortissio <br>Lungo</i> ze świeżym śródziemnomorskim <br>akcentem. </h3>
+                                <h3 class='recipe-content-sub'>SKŁADNIKI</h3>
+                                <p class='recipe-elem'><strong>Kawa:</strong></p>
+                                <p>6 kapsułek kawy <i>Fortissio Lungo</i> <br>(6 x 110 ml)</p>
+                                <p class='recipe-elem'><strong>Kanapki:</strong></p>
+                                <p>
+                                    6 kromek pieczywa bruschetta<br>
+                                    5 kromek chleba na zakwasie<br>
+                                    1 cukinia<br>
+                                    3 papryki (zielona, czerwona <br>i żółta)<br>
+                                    1 gałązka pomidorów cherry<br>
+                                    2 gałązki tymianku<br>
+                                    Oliwa z oliwek<br>
+                                    Sól<br>
+                                    Zmielony pieprz<br>
+                                    Kilka listków młodego szpinaku<br>
+                                    8 listków bazylii<br>
+                                    12 małych kulek sera mozzarella
+                                </p>
+                                <p class='recipe-elem'><strong>Pesto:</strong></p>
+                                <p>
+                                    50 gram orzeszków piniowych<br>
+                                    50 g parmezanu<br>
+                                    20 listków bazylii<br>
+                                    Ząbek czosnku<br>
+                                    Sól<br>
+                                    Oliwa z oliwek
+                                </p>
+                                
+                            </div>
+                            <div class="col-12 recipe-desc">
+                                <p class='recipe-elem'><strong>PRZYGOTOWANIE</strong></p>
+                                <p>
+                                    Podgrzej piekarnik na funkcji grill. Piecz papryki, regularnie je odwracając, <br>
+                                    do momentu gdy skórka pokryje się pęcherzykami. Usuń skórkę i nasiona, <br>
+                                    a następnie pokrój miąższ w paski. Ustaw piekarnik na 140°C i przykryj tackę <br>
+                                    z piekarnika papierem do pieczenia. Umyj cukinię i pomidory, a następnie pokrój <br>
+                                    cukinię na cienkie paski na krajalnicy do warzyw lub za pomocą obieraczki. Wyłóż <br>
+                                    paski cukinii na papier do pieczenia, obok ułóż gałązkę pomidorów, przypraw solą <br>
+                                    i pieprzem i skrop kilkoma kroplami oliwy z oliwek. Następnie posyp tymiankiem <br>
+                                    i piecz przez 10 do 15 minut.
+                                </p>
+                                <p>
+                                    Aby przygotować pesto, do robota kuchennego włóż orzeszki piniowe, parmezan, <br>
+                                    bazylię, sól, pieprz i czosnek. Całość zmiksuj i dodawaj oliwę z oliwek aż do uzyskania <br>
+                                    kremowej konsystencji. Opiecz kromki chleba i posmaruj warstwą pesto. Na każdej <br>
+                                    kromce połóż trochę cukinii, papryki i sera mozzarella. Przypraw solą i pieprzem <br>
+                                    przed udekorowaniem szpinakiem i bazylią. <br>
+                                    Skrop kilkoma kroplami oliwy z oliwek. Podawaj z kawą <i>Fortissio Lungo</i>.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="recipe-content" data-tab='4'>
+                            <div class="col-6">
+                                <figure class="recipe-images">
+                                    <img src="images/recipe-4.jpg" alt="">
+                                </figure>
+                                <h3 class='recipe-content-sub'>OPIS</h3>
+                                <div class="recipe-icons clear">
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_16.jpg" alt="">
+                                            <figcaption>Stopień trudności:</figcaption>
+                                        </figure>
+                                        <h4>średni</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_18.jpg" alt="">
+                                            <figcaption>Czas przygotowania:</figcaption>
+                                        </figure>
+                                        <h4>
+                                            <small>20 min /przygotowanie/</small><br>
+                                            <small>30 min /gotowanie/</small>
+                                        </h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_23.jpg" alt="">
+                                            <figcaption>Przybory:</figcaption>
+                                        </figure>
+                                        <h4>
+                                            Piekarnik<br>
+                                            Papier do pieczenia<br>
+                                            Krajalnica lub <br>obieraczka do <br>warzyw<br>
+                                            Robot kuchenny
+                                        </h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_26.jpg" alt="">
+                                            <figcaption>Porcje:</figcaption>
+                                        </figure>
+                                        <h4>6</h4>
+                                    </div>
+                                </div>
+                                <figure class="rec-c-image">
+                                    <img src="images/recipe-caffe-image.jpg" alt="">
+                                </figure>
+                            </div>
+                            <div class="col-6 recipe-desc">
+                                <h2 class="recipe-title">Focaccia alla <br>romana z kawą <br><i>Lizinio Lungo</i></h2>
+                                <h3 class='recipe-short'>Pozwól, by ta chrupiąca włoska <br>focaccia w połaczeniu z wyborną <br>kawą Linizio Lungo wzbogaciła Twoją <br>poranną przerwę.</h3>
+                                <h3 class='recipe-content-sub'>SKŁADNIKI</h3>
+                                <p class='recipe-elem'><strong>Kawa:</strong></p>
+                                <p>6 kapsułek kawy<br><i>Linizio Lungo</i> (6 x 110 ml)</p>
+                                <p class='recipe-elem'><strong>Focaccia /12 kawałków/:</strong></p>
+                                <p>
+                                    Gotowe ciasto do pizzy (250 g)<br>
+                                    4 małe karczochy<br>
+                                    ½ cytryny<br>
+                                    150 g cienkich plasterków szynki <br>Prosciutto<br>
+                                    Kilka listków młodego szpinaku<br>
+                                    1 kawałek sera parmezan (40 g)<br>
+                                    Oliwa z oliwek<br>
+                                    Sól, zmielony pieprz<br>
+                                    1 gałązka rozmarynu
+                                </p>
+                                <p class='recipe-elem'><strong>PRZYGOTOWANIE</strong></p>
+                                <p>
+                                    Usuń zewnętrzne listki karczochów. Odetnij <br>
+                                    dolną część i górę liści. Potnij wzdłuż na paski. <br>
+                                    Włóż je do rondla z zimną wodą z sokiem <br>
+                                    z cytryny. Doprowadź do wrzenia i dopraw solą. <br>
+                                    Przed osuszeniem, gotuj jeszcze przez 5 minut. <br>
+                                    Podgrzej piekarnik do temperatury 210°C. <br>
+                                    Na papierze do pieczenia rozwiń ciasto na pizzę <br>
+                                    i uformuj je w kształcie kwadratu. Potnij na <br>
+                                    12 prostokątów. Nakłuj ciasto kilkakrotnie <br>
+                                    widelcem i posmaruj oliwą z oliwek. Posyp <br>
+                                    odrobiną posiekanego rozmarynu. Piecz przez <br>
+                                    10 minut. Na cieście połóż karczochy i dopraw <br>
+                                    solą i pieprzem. Dodaj małe kawałki szynki, <br>
+                                    szpinak, starty parmezan i skrop odrobiną <br>
+                                    oliwy z oliwek.
+                                </p>
+                                <p>Podawaj z kawą <i>Linizio Lungo</i>.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="recipe-content" data-tab='5'>
+                            <div class="col-6">
+                                <figure class="recipe-images">
+                                    <img src="images/recipe-5.jpg" alt="">
+                                </figure>
+                                <h3 class='recipe-content-sub'>OPIS</h3>
+                                <div class="recipe-icons clear">
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_16.jpg" alt="">
+                                            <figcaption>Stopień trudności:</figcaption>
+                                        </figure>
+                                        <h4>średni</h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_18.jpg" alt="">
+                                            <figcaption>Czas przygotowania:</figcaption>
+                                        </figure>
+                                        <h4>20 min <small>/przygotowanie/</small><br>5 min <small>/gotowanie/</small></h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_23.jpg" alt="">
+                                            <figcaption>Przybory:</figcaption>
+                                        </figure>
+                                        <h4>
+                                            Spieniacz do mleka Aeroccino <br>lub dysza do pary<br>
+                                            Twojego urządzenia Nespresso<br>
+                                            1 wysoka szklanka Recipe (350 ml)
+                                        </h4>
+                                    </div>
+                                    <div class="col-6">
+                                        <figure>
+                                            <img src="images/recipe-ico_26.jpg" alt="">
+                                            <figcaption>Porcje:</figcaption>
+                                        </figure>
+                                        <h4>6</h4>
+                                    </div>
+                                </div>
+                                <figure class="rec-c-image">
+                                    <img src="images/recipe-caffe-image.jpg" alt="">
+                                </figure>
+                            </div>
+                            <div class="col-6 recipe-desc">
+                                <h2 class="recipe-title">Kanapka Strammer <br>Max z kawą <br><i>Decaffeinato <br>Intenso</i></h2>
+                                <h3 class='recipe-short'>To pożywne śniadanie w niemieckim <br>stylu podane z <i>Decaffeinato Intenso</i> doda <br>Ci energii na dobry początek dnia.</h3>
+                                <h3 class='recipe-content-sub'>SKŁADNIKI</h3>
+                                <p class='recipe-elem'><strong>Kawa:</strong></p>
+                                <p>6 kapsułek kawy <i>Decaffeinato <br>Intenso</i> (6 x 40 ml)</p>
+                                <p class='recipe-elem'><strong>Kanapki:</strong></p>
+                                <p>
+                                    6 kromek chleba żytniego <br>razowego<br>
+                                    3 duże ogórki konserwowe<br>
+                                    12 cienkich plastrów suszonej, <br>wędzonej szynki<br>
+                                    Masło<br>
+                                    6 jaj<br>
+                                    Sól<br>
+                                    Pieprz
+                                </p>
+                                <p class='recipe-elem'><strong>PRZYGOTOWANIE</strong></p>
+                                <p>
+                                    Kromki chleba posmaruj masłem i podsmaż na <br>
+                                    rondlu przez 2 minuty, do momentu uzyskania <br>
+                                    brązowego koloru. <br>
+                                    Usmaż jaja na niewielkiej ilości masła, <br>
+                                    a następnie dopraw solą i pieprzem. <br>
+                                    Na chlebie ułóż pokrojone w kółka ogórki <br>
+                                    konserwowe i szynkę. <br>
+                                    Na wierzchu połóż usmażone jajko <br>
+                                    i natychmiast podawaj do zjedzenia. <br>
+                                    Podawaj z kawą <i>Decaffeinato Intenso</i>.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="insta" data-target='insta'>
+            <div class="ctn">
+                
+            </div>
+        </section>
+
+        <section class="contest" data-target='contest'>
+            <h3 class="contest-title">KONKURS</h3>
+            <h2 class="double-title">Jak budzi się Twoje miasto?</h2>
+            <br><br>
+            <img src="images/konkurs.png" alt="">
+            <p>
+                Każdy z nas budzi się inaczej. Niektóre poranki są leniwe, inne energiczne i szybkie, w pojedynkę <br>
+                lub w parze albo w gronie rodziny. Z widokiem na uliczkę Starego Miasta w Warszawie, czasem <br>
+                w drodze do pracy pomiędzy Rynkiem Głównym a Placem Szczepańskim w Krakowie, podczas <br>
+                śniadania na wrocławskim rynku…  Mało kto wyobraża sobie poranek bez aromatycznej kawy. <br>
+                Poranek każdego z nas w różnych miastach jest różny  - tak jak każda z 24 kaw od <i>Nespresso</i>, <br>
+                która czyni Twój poranek wyjątkowym.
+            </p>
+            <p>Weź udział w konkursie i pokaż nam jak budzi się Twoje miasto.</p>
+            <a href="http://www.wysokieobcasy.pl/obudzswojemiasto" class="cta-link">WEŹ UDZIAŁ</a>
+            <div class="ctn">
+            </div>
+        </section>
+
+        <section class="shop" data-target="shops">
+            <div class="ctn">
+                <div class="col-6">
+                    <h2 class="double-title">Przyjdź do butiku <br><i>nespresso</i></h2>
+                    <p>
+                        <strong>W dniach 18 i 19 czerwca 2016 r. przyjdź do <br>
+                        butiku <i>Nespresso</i></strong> i  zobacz, jak wygląda Twoje <br>
+                        miasto w oczach jego zwykłego mieszkańca! <br>
+                        Wyłonione w konkursie Agory fotografie znanych <br>
+                        na co dzień miejsc pokażą Ci miasto z perspektywy, <br>
+                        jakiej nie znasz! 
+                    </p>
+
+                    <p>
+                        <strong>Wspaniałe ujęcia będziesz mieć okazję <br>
+                        podziwiać, degustując nową kawę z oferty <br>
+                        <i>Nespresso</i> – Envivo Lungo</strong>. Daj zabrać się na <br>
+                        fotograficzny spacer po Twoim mieście z filiżanką <br>
+                        kawy o wyrazistym charakterze, nutach <br>
+                        karmelizowanych ziaren oraz zapachu pierników! <br>
+                        Do kawy każdy otrzyma słodką niespodziankę.
+                    </p>
+
+                    <p>
+                        Czekamy na Ciebie już w najbliższy weekend <br>
+                        w butikach Nespresso <strong>w Warszawie, Krakowie, <br>
+                        Wrocławiu i Katowicach.</strong>
+                    </p>
+                </div>
+                <div class="col-6">
+                </div>
+            </div>
+        </section>
+
+        <section class="search">
+            <div class="ctn">
+                <h2 class="double-title">Znajdź swój butik <br><i>nespresso</i></h2>
+                <div class="shop-tabs">
+                    <div class="shop-tab active" data-tab='1'>
+                        <div class="shop-desc">
+                            <strong>Warszawa</strong>
+                            <br>
+                            Nowy Świat 42
+                            <img src="images/tab-arr-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="shop-tab" data-tab='2'>
+                        <div class="shop-desc">
+                            <strong>Warszawa</strong>
+                            <br>
+                            C.H. Arkadia
+                            <img src="images/tab-arr-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="shop-tab" data-tab='3'>
+                        <div class="shop-desc">
+                            <strong>Wrocław</strong>
+                            <br>
+                            H. Modrzejewskiej 2
+                            <img src="images/tab-arr-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="shop-tab" data-tab='4'>
+                        <div class="shop-desc">
+                            <strong>Kraków</strong>
+                            <br>
+                            Rynek Główny 12
+                            <img src="images/tab-arr-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="shop-tab" data-tab='5'>
+                        <div class="shop-desc">
+                            <strong>Katowice</strong>
+                            <br>
+                            C.H. Silesia
+                            <img src="images/tab-arr-2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="shop-contents">
+
+                    <div class="ctn">
+                        <div class="shop-content active clear" data-tab='1'>
+                            <div class="col-6">
+                                <h3>Warszawa</h3>
+                                <h4>
+                                    <strong>ul. Nowy Świat 42</strong><br><br><br>
+                                    
+                                    <strong>Godziny otwarcia:</strong><br>
+                                    pon. - pt.: 10:00-19:00<br>
+                                    sob. 10:00-17:00<br>
+                                    niedz.: 11:00-17:00
+                                </h4>
+                                <button class='show-map' data-map='1'><img src="images/show-map.jpg" alt=""> <strong>Zobacz</strong> na mapie</button>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/shop-1.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="shop-content clear" data-tab='2'>
+                            <div class="col-6">
+                                <h3>Warszawa C.H. Arkadia</h3>
+                                <h4>
+                                    <strong>Al. Jana Pawła II 82</strong><br><br><br>
+                                    
+                                    <strong>Godziny otwarcia:</strong><br>
+                                    pon. - sob.: 10:00-22:00<br>
+                                    niedz.: 10:00-21:00
+                                </h4>
+                                <button class='show-map' data-map='2'><img src="images/show-map.jpg" alt=""> <strong>Zobacz</strong> na mapie</button>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/shop-2.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="shop-content clear" data-tab='3'>
+                            <div class="col-6">
+                                <h3>Wrocław</h3>
+                                <h4>
+                                    <strong>ul. Heleny Modrzejewskiej 2</strong><br><br><br>
+                                    
+                                    <strong>Godziny otwarcia:</strong><br>
+                                    pon. - sob.: 10:00-20:00<br>
+                                    niedz.: 10:00-18:00
+                                </h4>
+                                <button class='show-map' data-map='3'><img src="images/show-map.jpg" alt=""> <strong>Zobacz</strong> na mapie</button>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/shop-3.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="shop-content clear" data-tab='4'>
+                            <div class="col-6">
+                                <h3>Kraków</h3>
+                                <h4>
+                                    <strong>Rynek Główny 12</strong><br><br><br>
+                                    
+                                    <strong>Godziny otwarcia:</strong><br>
+                                    pon. - sob.: 10:00-20:00<br>
+                                    niedz.: 10:00-18:00
+                                </h4>
+                                <button class='show-map' data-map='4'><img src="images/show-map.jpg" alt=""> <strong>Zobacz</strong> na mapie</button>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/shop-4.jpg" alt="">
+                            </div>
+                        </div>
+
+                        <div class="shop-content clear" data-tab='5'>
+                            <div class="col-6">
+                                <h3>Katowice, C.H. Silesia</h3>
+                                <h4>
+                                    <strong>ul. Chorzowska 107</strong><br><br><br>
+                                    
+                                    <strong>Godziny otwarcia:</strong><br>
+                                    pon. - niedz.: 10:00-21:00
+                                </h4>
+                                <button class='show-map' data-map='5'><img src="images/show-map.jpg" alt=""> <strong>Zobacz</strong> na mapie</button>
+                            </div>
+                            <div class="col-6">
+                                <img src="images/shop-5.jpg" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="option maps" data-option='2'>
+            <div class="ctn">
+                <button class="close-option2">ZAMKNIJ <img src="images/x.png" alt=""></button>
+                <div class='map active' data-map='1'><img src="images/map-1.jpg" alt=""></div>
+                <div class='map' data-map='2'><img src="images/map-2.jpg" alt=""></div>
+                <div class='map' data-map='3'><img src="images/map-3.jpg" alt=""></div>
+                <div class='map' data-map='4'><img src="images/map-4.jpg" alt=""></div>
+                <div class='map' data-map='5'><img src="images/map-5.jpg" alt=""></div>
+            </div>
+            <button class="cta2"><img src="images/clo.jpg" alt=""> ZAMKNIJ <i></i></button>
+        </section>
+
+        <section class="end" data-target='envivo'>
+            <div class="ctn">
+                <div class="col-6">&nbsp;</div>
+                <div class="col-6">
+                    <h2 class="double-title"><strong>rozbudź</strong><br>swój poranek</h2>
+                    <p>Nowa kawa Envivo Lungo</p>
+                    <a href="https://www.nespresso.com/pl/pl/pages/envivo-lungo?icid=BAI_B2C_PLpl_INT_June16_ENVIVO.LUNGO_Home_Main_1280x585" class='white-link'>dowiedz się więcej</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class='clear'>
+            <a href="#" id="np-logo-footer"><img src="images/nespresso-f.jpg" alt=""></a>
+            <div class="ctn">
+                <ul>
+                    <li><a href="#" data-target='recipes'>przepisy śniadaniowe</a></li>
+                    <li><a href="#" data-target='contest'>konkurs</a></li>
+                    <li><a href="#" data-target='shops'>butiki <i>nespresso</i></a></li>
+                    <li><a href="#" data-target='envivo'>Envivo</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        
+        <script src='js/jquery-1.11.1.min.js'></script>
+        <script src='js/_main.js'></script>
+        <script>
+            var navi = $('#np-nav a');
+            var footerNav = $('footer li a');
+            var option1 = $('.option[data-option="1"]');
+            var option2 = $('.option[data-option="2"]');
+            var recipes = $('.recipe-content');
+            var tabs = $('.recipe-tab');
+
+            var shopTab = $('.shop-tab');
+            var shopContent = $('.shop-content');
+            var maps = $('.map');
+
+            var showMap = $('.show-map');
+
+            var timer = 3500;
+            var start = 1;
+            var end = 4;
+            var images_ = $('.screen-anim img[data-i]');
+            var anim = setInterval( function() {
+
+                start++;
+                if( start > end )
+                    start = 1;
+                images_.css('opacity', 0);
+                $('.screen-anim img[data-i="' + start + '"]').css('opacity', 1);
+
+            }, timer );
+
+
+
+            $('.cta, .close-option').on('click', function() {
+                option1.slideUp(400);
+            });
+
+            $('.cta2, .close-option2').on('click', function() {
+                option2.slideUp(400);
+            });
+
+
+            $('#toggle-down').on('click', function() {
+                option1.slideDown(400);
+                var move = setTimeout(function(){
+                    var mTop = option1.offset().top;
+                    $('html, body').animate({scrollTop : mTop - 50 + 'px'}, 400);
+                    clearInterval( move );
+                },250);
+            });
+
+            showMap.on('click', function() {
+                option2.slideDown(400);
+                var move = setTimeout(function(){
+                    var mTop = option2.offset().top;
+                    $('html, body').animate({scrollTop : mTop - 50 + 'px'}, 400);
+                    clearInterval( move );
+                },250);
+            });
+
+            tabs.on('click', function(){
+                tabs.removeClass('active');
+                $(this).addClass('active');
+                var dtab = $(this).attr('data-tab');
+                recipes.removeClass('active');
+                $('.recipe-content[data-tab="'+dtab+'"]').addClass('active');
+            });
+
+            shopTab.on('click',function(){
+                shopTab.removeClass('active');
+                shopContent.removeClass('active');
+                maps.removeClass('active');
+                $(this).addClass('active');
+                var td = $(this).attr('data-tab');
+                $('.shop-content[data-tab="'+ td +'"]').addClass('active');
+                $('.map[data-map="'+ td +'"]').addClass('active');
+            });
+
+            $(window).on('scroll',function(){
+                var top_ =  $('html, body').scrollTop();
+                var recipesTop = $('.recipes').offset().top - 50;
+                var contestTop = $('.contest').offset().top - 50;
+                var shopTop = $('.shop').offset().top - 50;
+                var envivoTop = $('.end').offset().top - 50;
+                var bodyHeight = $('body').height();
+
+                if( top_ >= envivoTop ) {
+                    var act = 'envivo';
+                } else if( top_ >= shopTop ) {
+                    var act = 'shops';
+                } else if( top_ >= contestTop ) {
+                    var act = 'contest';
+                } else if( top_ >= recipesTop ) {
+                    var act = 'recipes';
+                }
+
+                navi.removeClass('active');
+                footerNav.removeClass('active');
+                $('#np-nav a[data-target="'+act+'"], footer a[data-target="'+act+'"]').addClass('active');
+            });
+
+            navi.on('click', function(e){
+                e.preventDefault();
+                var t = $(this).attr('data-target');
+                var pos = $('section[data-target="'+t+'"]').offset().top;
+                $('html, body').animate({scrollTop : pos+'px'},350);
+            });
+            footerNav.on('click', function(e){
+                e.preventDefault();
+                var t = $(this).attr('data-target');
+                var pos = $('section[data-target="'+t+'"]').offset().top;
+                $('html, body').animate({scrollTop : pos+'px'},350);
+            });
+
+        </script>
+    </body>
+</html>

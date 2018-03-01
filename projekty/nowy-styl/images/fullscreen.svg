@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<circle fill="#FFFFFF" cx="15" cy="15" r="14.985"/>
+<g>
+	<defs>
+		<rect id="SVGID_1_" x="8.108" y="8.107" width="13.786" height="13.785"/>
+	</defs>
+	<clipPath id="SVGID_2_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	
+		<line clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.436" y1="21.564" x2="12.703" y2="17.299"/>
+	
+		<polyline clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		8.436,18.939 8.436,21.564 11.062,21.564 	"/>
+	
+		<line clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="21.565" y1="8.436" x2="17.626" y2="12.374"/>
+	
+		<polyline clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		18.938,8.436 21.565,8.436 21.565,11.062 	"/>
+	
+		<line clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="21.565" y1="21.564" x2="17.298" y2="17.299"/>
+	
+		<polyline clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		18.938,21.564 21.565,21.564 21.565,18.939 	"/>
+	
+		<line clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="8.436" y1="8.436" x2="12.375" y2="12.374"/>
+	
+		<polyline clip-path="url(#SVGID_2_)" fill="none" stroke="#202020" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		8.436,11.062 8.436,8.436 11.062,8.436 	"/>
+</g>
+</svg>

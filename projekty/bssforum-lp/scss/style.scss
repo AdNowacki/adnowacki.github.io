@@ -1,0 +1,196 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin-ext);
+$font: normal 16px/1.3 "Lato", "Arial", sans-serif;
+$fontSize: 16px;
+$fontColor: #009612;
+$lineHeight: 1.4;
+$width: 1170px;
+$maxWidth: 1170px;
+$background: #0e151a;
+$formBg: #4abd96;
+$btnBg: #a6559f;
+
+html, body {
+	font: $font;
+	background: $background url( ../images/background-1920.jpg ) no-repeat center top / cover;
+	min-height: 100vh;
+	// background-image: url( ../images/background-1920.jpg ) no-repeat center top / contain, url( ../images/bg.png ) no-repeat left top;
+}
+
+.page {
+	width: 6*8.333333%;
+	position: absolute;
+	right: 2*8.333333%;
+	margin: 0 auto;
+	min-height: 100vh;
+}
+
+.page_logo {
+	position: absolute;
+	right: 15%;
+	top: 50%;
+	transform: translateY(-60%);
+	z-index: 2;
+
+	img {
+		width: 100%;
+	}
+}
+
+.forms {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 2;
+}
+
+.forms_wrap {
+	color: #fff;
+}
+
+.forms_inputs {
+	background: $formBg;
+	padding: 10px;
+	font-size: 14px;
+
+	input {
+		display: inline-block;
+		margin: 0 15px;
+		border: 0;
+		padding: 6px 8px;
+		width: 180px;
+		color: #000;
+		font-size: 15px;
+	}
+
+	button {
+		display: inline-block;
+		background: $btnBg;
+		color: #fff;
+		border: 0;
+		border-radius: 13px;
+		font-weight: 700;
+		line-height: 1;
+		padding: 5px 15px 7px;
+	}
+}
+
+.forms_partners {
+	font-size: 9px;
+	overflow: hidden;
+	margin: 15px 2*8.3333333% 15px 4*8.33333%;
+	max-width: $maxWidth;
+}
+
+.forms-logoitem {
+	float: left;
+
+	img {
+		width: 80px;
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 10px;
+	}
+}
+
+.forms-logoitem--right {
+	float: right;
+	text-align: right;
+
+	img {
+		width: 50px;
+	}
+}
+
+// desktop 1600px
+@media only screen and (max-width: 1600px){}
+
+// desktop 1360px
+@media only screen and (max-width: 1360px){
+	.page_logo {
+		right: -10%;
+
+		img {
+			width: 80%;
+		}
+	}
+}
+
+// desktop and tablet 1280px 
+
+// desktop and tablet 1024px 
+@media only screen and (max-width: 1024px){}
+
+// tablet 992px 
+@media only screen and (max-width: 992px){}
+
+// tablet 768px 
+@media only screen and (max-width: 768px){
+	html, body {
+		background-image: url( ../images/background-800.jpg );
+	}
+
+	.page {
+		position: static;
+		width: 100%;
+	}
+
+	.page_logo {
+		width: 60%;
+		right: 50%;
+		transform: translate(50%, -100%);
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.forms_partners {
+		margin-left: 15px;
+		margin-right: 15px;
+		font-size: 8px;
+
+		img {
+			// display: block;
+			// margin: 10px auto 25px;
+			width: 50px;
+		}
+	}
+
+	.forms-logoitem {
+		// float: none;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	.forms-logoitem--right {
+		img {
+			width: 30px;
+		}
+	}
+
+	.forms_inputs {
+		font-size: 10px;
+		input {
+			display: block;
+			margin: 9px auto;
+			width: 75%;
+		}
+	}
+	
+}
+
+@media only screen and (max-height: 768px) and (orientation: landscape){
+	.page_logo {
+		img {
+			width: 62%;
+		}
+	}
+}
+// tablet 480px 
+@media only screen and (max-width: 480px){
+	
+}
+
+// tablet 320px 
+@media only screen and (max-width: 320px){}

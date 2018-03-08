@@ -1,0 +1,282 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&subset=cyrillic,cyrillic-ext,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,700i&subset=cyrillic,cyrillic-ext,latin-ext);
+
+$font: normal 10px/1.3 "Open Sans Condensed", "Arial", sans-serif;
+$fontSize: 10px;
+$fontColor: #009612;
+$lineHeight: 1.4;
+$width: 792px;
+$maxWidth: 792px;
+$col: 8.33333333%;
+$decorColor: #e74783;
+
+
+html, body {
+	font: $font;
+}
+
+.ctn {
+	max-width: $maxWidth;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+.main-header {
+	min-height: 500px;
+	background: url(../images/header-img.jpg) no-repeat center top;
+	position: relative;
+}
+
+.section-title {
+	text-transform: uppercase;
+	color: $decorColor;
+	font-size: 6.3rem;
+	line-height: 1.1;
+	text-align: center;
+	width: 50%;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-70%);
+
+
+	h1 {
+		font-family: "Open Sans";
+		letter-spacing: 10px;
+		
+		span {
+			font-family: "Open Sans Condensed";
+			color: #000;
+			font-size: 4.2rem;
+			font-weight: 300;
+			letter-spacing: 8px;
+			transform: translateY(-15px);
+			position: relative;
+			display: inline-block;
+
+		}
+	}
+
+	h2 {
+		font-size: 1rem;
+		color: #000;
+		padding: 10px;
+		text-align: center;
+		border-top: 2px solid #aaacaf;
+		border-bottom: 2px solid #aaacaf;
+		display: inline-block;
+		transform: translateY(-45px);
+	}
+}
+
+.section {
+	padding: 55px 0;
+	color: #484848;
+	text-align: center;
+	font-size: 1.4rem;
+	font-family: "Open Sans";
+	font-weight: 300;
+}
+
+.box {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 35px 0;
+}
+
+.box-item {
+	box-sizing: border-box;
+	// width: 33.333333%;
+	flex: 0 0 33.33333%;
+	padding: 30px;
+}
+
+.ico {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	margin: 20px auto;
+	background: $decorColor;
+	color: #fff;
+	font-size: 2.5rem;
+	line-height: 40px;
+}
+
+.colorstrong {
+	color: $decorColor;
+	font-weight: 700;
+}
+
+.section-2, .section-3 {
+	background: #23262b;
+	color: #fff;
+
+	h2 {
+		font-size: 4.5rem;
+		font-family: "Open Sans Condensed";
+		font-weight: 300;
+		margin-bottom: 15px;
+	}
+
+	p {
+		font-weight: 600;
+	}
+
+}
+
+.cols-2 {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin: 20px 0;
+
+	.col {
+		box-sizing: border-box;
+		flex: 0 0 40%;
+		padding: 30px;
+
+		&:last-child {
+			flex-grow: 2;
+			text-align: left;
+		}
+	}
+
+	.ico {
+		text-align: center;
+		font-size: 1.8rem;
+		font-weight: 700;
+		margin: 30px 0 10px;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&~p {
+			font-weight: 300;
+			font-size: 1.4rem;
+
+			strong {
+				font-weight: 700;
+			}
+		}
+
+	}
+
+	a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	img {
+		max-width: 100%;
+	}
+}
+
+.section-3 {
+	background: $decorColor;
+
+	.cols-3 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-bottom: 20px;
+
+		.col {
+			flex: 0 0 30%;
+			padding: 20px;
+			box-sizing: border-box;
+
+			&-large {
+				flex-basis: 60%;
+				text-align: left;
+			}
+
+			&:first-child {
+				text-align: right;
+				flex-basis: 26%;
+			}
+		}
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+	a {
+		color: inherit;
+		text-decoration: inherit;
+		font-weight: 300;
+	}
+}
+
+.noflex {
+	.section-2 {
+		.cols-2 {
+			overflow: hidden;
+			display: block;
+
+			.col {
+				display: inline-block;
+				vertical-align: top;
+				width: 48%;
+
+			}
+		}
+	}
+
+	.section-3 {
+		.cols-3 {
+			overflow: hidden;
+			display: block;
+
+			.col {
+				display: inline-block;
+				vertical-align: top;
+				width: 30%;
+
+				&-large {
+					width: 50%;
+				}
+			}
+		}
+	}
+
+	.box {
+		display: block;
+		overflow: hidden;
+	}
+
+	.box-item {
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		width: 30%;
+	}
+}
+
+// desktop 1600px
+@media only screen and (max-width: 1600px){}
+
+// desktop 1360px
+@media only screen and (max-width: 1360px){}
+
+// desktop and tablet 1280px 
+@media only screen and (max-width: 1280px){}
+
+// desktop and tablet 1024px 
+@media only screen and (max-width: 1024px){}
+
+// tablet 992px 
+@media only screen and (max-width: 992px){}
+
+// tablet 768px 
+@media only screen and (max-width: 768px){}
+
+// tablet 480px 
+@media only screen and (max-width: 480px){}
+
+// tablet 320px 
+@media only screen and (max-width: 320px){}

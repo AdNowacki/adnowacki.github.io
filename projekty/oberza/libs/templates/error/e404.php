@@ -1,0 +1,1 @@
+<?= $this->data['dictionary'][6]['pl']; ?>

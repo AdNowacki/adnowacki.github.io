@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+</head> 
+<body> 
+	<div id="myp_layer">
+		<link rel="stylesheet" href="myp-css.css">
+		<button id='show'><img src="action1.png" alt=""></button>
+		<button id='hide'><img src="action2.png" alt=""></button>
+		<a href="#" id="creativelink" target="_blank"> 
+			<div id="action1" class='cr'>
+				<img src="step1.jpg" alt="">
+			</div>
+			<div id="action2" class='cr'>
+				<img src="step2.jpg" alt="">
+				<div id="video">
+					<video muted id='vid'>
+						<source src="nutella.mp4" type="video/mp4">
+					</video>
+				</div>
+			</div>
+		</a> 
+	</div>
+	<script type="text/javascript">
+		var btn1 = document.getElementById( 'show' ),
+			btn2 = document.getElementById( 'hide' ),
+			ctn1 = document.getElementById( 'action1' ),
+			ctn2 = document.getElementById( 'action2' ),
+			vid = document.getElementById( 'vid' );
+
+
+		btn1.addEventListener('click', function() {
+			ctn1.style.display = 'none';
+			ctn2.style.display = 'block';
+			btn1.style.display = 'none';
+			btn2.style.display = 'block';
+			vid.play();
+			return false;
+		});
+
+		btn2.addEventListener('click', function() {
+			ctn1.style.display = 'block';
+			ctn2.style.display = 'none';
+			btn1.style.display = 'block';
+			btn2.style.display = 'none';
+			vid.pause();
+			return false;
+		});
+
+		var params = {};
+		window.location.href.replace(/[?#&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+			params[key] = decodeURIComponent(value);
+		});
+		var clickTag = (params['click'] === undefined) ? 'http://onet.pl' : params['click'];
+		document.getElementById('creativelink').href = (params['click'] === undefined) ? 'http://onet.pl' : params['click'];
+	</script> 
+</body> 
+</html> 

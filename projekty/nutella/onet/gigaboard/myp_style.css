@@ -1,0 +1,66 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+#myp_gigaboard {
+	max-width: 1260px;
+	max-height: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+#myp_video {
+	width: 100%;
+	display: block;
+	position: relative;
+	top: -109px;
+}
+
+#myp_gigaboard_ctn {
+	position: relative;
+}
+
+#myp_gigaboard_ctn a {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+}
+
+#myp_poster {
+	display: none;
+	position: relative;
+	top: -109px;
+}
+
+#myp_btn {
+	position: absolute;
+	left: 60px;
+	bottom: 60px;
+	-webkit-animation: mypbtn .7s ease 0s infinite alternate;
+	animation: mypbtn .7s ease 0s infinite alternate;
+}
+
+@keyframes mypbtn {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	100% {
+		-webkit-transform: scale(1.07);
+		transform: scale(1.07);	
+	}
+}
+
+@-webkit-keyframes mypbtn {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	100% {
+		-webkit-transform: scale(1.07);
+		transform: scale(1.07);	
+	}
+}

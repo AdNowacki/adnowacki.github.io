@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+</head> 
+<body> 
+	<div id="myp_layer">
+		<link rel="stylesheet" href="myp-css.css">
+		<a href="#" id="creativelink" target="_blank"> 
+			<img src="myp-bg.jpg" alt="" id='imgh'>
+			<div id="mypbg">
+				<img src="myp-bg.jpg" alt="">
+			</div>
+			<img src="myp-txt.png" class='portrait_' id='myptxt' alt="">
+			<img src="myp-new.png" class='portrait_' id='mypnew' alt="">
+			<img src="myp-btn.png" class='portrait_' id='mypbtn' alt="">
+			<img src="myp-logo.png" class='portrait_' id='myplogo' alt="">
+
+			<img src="myp-txt.png" class='landscape_' id='myptxt' alt="">
+			<img src="myp-new-2.png" class='landscape_' id='mypnew' alt="">
+			<img src="myp-btn-2.png" class='landscape_' id='mypbtn' alt="">
+			<img src="myp-logo.png" class='landscape_' id='myplogo' alt="">
+		</a> 
+		<button id='close-btn-action'></button>
+	</div>
+
+	<script>
+		var cBtn = document.getElementById('close-btn-action');
+		var actionLayer = document.getElementById('myp_layer');
+		cBtn.addEventListener('click', function() {
+			actionLayer.parentNode.removeChild(actionLayer);
+		})
+	</script>
+</body> 
+</html> 

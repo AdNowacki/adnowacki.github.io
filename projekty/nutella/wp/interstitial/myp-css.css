@@ -1,0 +1,162 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+.landscape_ {
+	display: none;
+}
+#myp_layer {
+	max-width: 300px;
+	max-height: 535px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+#imgh {
+	opacity: 0;
+}
+
+#mypbg {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+
+#mypbg img {
+	position: absolute;
+	left: 0;
+	bottom: 0;	
+}
+
+#mypnew {
+	position: absolute;
+	left: 0;
+	top: 0;
+	max-width: 100%;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-animation: show .6s cubic-bezier(0.895, 0.075, 0.055, 1.650) .6s 1 forwards;
+	animation: show .6s cubic-bezier(0.895, 0.075, 0.055, 1.650) .6s 1 forwards;
+}
+
+#mypbtn {
+	position: absolute;
+	right: 0;
+	top: 230px;
+	max-width: 100%;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-animation: show .6s cubic-bezier(0.895, 0.075, 0.055, 1.650) 1.5s 1 forwards, pulse 1s linear 2.1s infinite alternate forwards;
+	animation: show .6s cubic-bezier(0.895, 0.075, 0.055, 1.650) 1.5s 1 forwards, pulse 1s linear 2.1s infinite alternate forwards;
+	z-index: 3;
+}
+
+#myptxt {
+	position: absolute;
+	left: -78px;
+	top: 128px;
+	z-index: 1;
+	max-width: 114%;
+}
+#myplogo {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+#close-btn-action {
+	position: absolute;
+	right: 8px;
+	top: 8px;
+	width: 17px;
+	height: 15px;
+	border: 0;
+	padding: 0;
+	background: url(x-btn-1.png) no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+
+
+@keyframes show {
+	0% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes show {
+	0% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@keyframes pulse {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	100% {
+		-webkit-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+}
+
+@-webkit-keyframes pulse {
+	0% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	100% {
+		-webkit-transform: scale(1.04);
+		transform: scale(1.04);
+	}
+}
+
+@media (orientation: landscape) {
+	.landscape_ {display: block;}
+	.portrait_ {display: none;}
+
+	#myp_layer {
+		max-width: 535px;
+		max-height: 300px;
+	}
+
+	#mypnew {
+		top: 15px;
+		-webkit-transform-origin: 50% 7%;
+		transform-origin: 50% 7%;
+	}
+
+	#myptxt {
+		bottom: 0;
+		left: 0;
+		top: auto;
+		max-width: 100%;
+	}
+
+	#mypbtn {
+		top: auto;
+		bottom: 0;
+		-webkit-transform-origin: 64% 35%;
+		transform-origin: 64% 35%;
+	}
+	
+	#close-btn-action {
+		background: url(x-btn-2.png) no-repeat;
+	}
+
+}

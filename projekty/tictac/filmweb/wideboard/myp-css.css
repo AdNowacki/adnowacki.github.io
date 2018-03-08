@@ -1,0 +1,193 @@
+#myp_layer {
+	max-width: 940px;
+	max-height: 200px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+#mypm {
+	position: absolute;
+	z-index: 3;
+	left: 0;
+	bottom: 0;
+	opacity: 0;
+	-webkit-animation: showM 1.2s linear .5s 1 forwards, hideM .4s linear 2.7s 1 forwards;
+	animation: showM 1.2s linear .5s 1 forwards, hideM .4s linear 2.7s 1 forwards;
+	max-width: 100%;
+}
+
+#mypt {
+	position: absolute;
+	z-index: 2;
+	left: 0;
+	bottom: -167px;
+	opacity: 0;
+	-webkit-animation: showM 1.2s linear 1s 1 both, moveT 1s linear 3s 1 both, hidet 0s linear 4.4s both;
+	animation: showM 1.2s linear 1s 1 both, moveT 1s linear 3s 1 both, hidet 0s linear 4.4s both;
+	max-width: 100%;
+}
+
+#mypt2 {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 3;
+	opacity: 0;
+	-webkit-animation: show2 .1s linear 4.4s 1 both;
+	animation: show2 .1s linear 4.4s 1 both;
+	max-width: 100%;
+}
+#myptt {
+	position: absolute;
+	right: -420px;
+	top: 0px;
+	max-width: 50%;
+	-webkit-animation: showtt .6s linear .6s 1 both;
+	animation: showtt .6s linear .6s 1 both;
+	z-index: 10;
+}
+#mypbtn {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	animation: showBtn .6s linear 3.6s 1 both;
+	max-width: 40%;
+}
+
+@keyframes showM {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes showM {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes showtt {
+	0% {
+		right: -420px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@-webkit-keyframes showtt {
+	0% {
+		right: -420px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@keyframes moveT {
+	0% {
+		bottom: -167px;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+@-webkit-keyframes moveT {
+	0% {
+		bottom: -167px;
+	}
+	100% {
+		bottom: 0;
+	}
+}
+
+@keyframes hideM {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes hideM {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes showBtn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes showBtn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes show2 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes show2 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes hidet {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes hidet {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@media only screen and ( max-width: 670px ) {
+	#myptt {
+		max-width: 40%;
+	}
+}
+
+@media only screen and ( max-width: 500px ) {
+	#myptt {
+		max-width: 45%;
+	}
+}

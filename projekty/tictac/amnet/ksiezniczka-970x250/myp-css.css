@@ -1,0 +1,241 @@
+#myp_layer {
+	max-width: 970px;
+	height: 250px;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+
+#myp_layer img {
+	position: absolute;
+}
+
+img#mypstep2 {
+	z-index: 2;
+	right: -970px;
+	top: 0;
+	-webkit-animation: moveimg .7s ease 3s 1 forwards;
+	animation: moveimg .7s ease 3s 1 forwards;
+}
+img#mypstep1 {
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+img#myptt1, img#myptt3 {
+	right: 0;
+	top: 0;
+	z-index: 6;
+}
+img#myptt1 {
+	opacity: 1;
+	-webkit-animation: tictac2hide 0s linear 3s 1 forwards;
+	animation: tictac2hide 0s linear 3s 1 forwards;
+}
+img#myptt3 {
+	right: auto;
+	left: -5px;
+	opacity: 0;
+	-webkit-animation: tictac2show 0s linear 3.7s 1 forwards;
+	animation: tictac2show 0s linear 3.7s 1 forwards;
+}
+img#myparr, img#myparr1, img#myparr2 {
+	right: 0;
+	bottom: 40px;
+	z-index: 3;
+	-webkit-animation: movearrow .7s ease 3s 1 forwards;
+	animation: movearrow .7s ease 3s 1 forwards;
+}
+
+img#myparr {
+	-webkit-animation: movearrow .7s ease 3s 1 forwards;
+	animation: movearrow .7s ease 3s 1 forwards;
+}
+
+img#myparr1, img#myparr2 {
+	right: -9px;
+}
+
+img#myparr1 {
+	-webkit-animation: moveArrow1 .7s linear 0s infinite forwards, movearrow .7s ease 3s 1 forwards;
+	animation: moveArrow1 .7s linear 0s infinite forwards, movearrow .7s ease 3s 1 forwards;
+}
+
+img#myparr2 {
+	right: -17px;
+	-webkit-animation: moveArrow2 .7s linear 0s infinite forwards, movearrow .7s ease 3s 1 forwards;
+	animation: moveArrow2 .7s linear 0s infinite forwards, movearrow .7s ease 3s 1 forwards;
+}
+
+img#myptt2 {
+	opacity: 0;
+	right: 0;
+	top: 0;
+	z-index: 7;
+	-webkit-animation: moveTictac .73s ease 3s 1 forwards, tictac2show 0s linear 3s 1 forwards, tictac2hide 0s linear 3.7s 1 forwards;
+	animation: moveTictac .73s ease 3s 1 forwards, tictac2show 0s linear 3s 1 forwards, tictac2hide 0s linear 3.7s 1 forwards;
+}
+
+img#mypbtn {
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+	-webkit-animation: showbtn .3s ease 3.9s forwards;
+	animation: showbtn .3s ease 3.9s forwards;
+}
+
+
+
+@keyframes moveArrow1 {
+	0%{
+		right: -9px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@-webkit-keyframes moveArrow1 {
+	0%{
+		right: -9px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@keyframes moveArrow2 {
+	0%{
+		right: -17px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@-webkit-keyframes moveArrow2 {
+	0%{
+		right: -17px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@keyframes moveTictac {
+	0%{
+		right: 0;
+	}
+	100% {
+		right: 800px;
+	}
+}
+
+@-webkit-keyframes moveTictac {
+	0%{
+		right: 0;
+	}
+	100% {
+		right: 800px;
+	}
+}
+
+@keyframes tictac2show {
+	0%{
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes tictac2show {
+	0%{
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes tictac2hide {
+	0%{
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes tictac2hide {
+	0%{
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+
+@keyframes movearrow {
+	0%{
+		right: 0;
+	}
+	100% {
+		right: 780px;
+	}
+}
+
+@-webkit-keyframes movearrow {
+	0%{
+		right: 0;
+	}
+	100% {
+		right: 780px;
+	}
+}
+
+@keyframes moveimg {
+	0%{
+		right: -970px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@-webkit-keyframes moveimg {
+	0%{
+		right: -970px;
+	}
+	100% {
+		right: 0;
+	}
+}
+
+@keyframes showbtn {
+	0%{
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-webkit-keyframes showbtn {
+	0%{
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+
+

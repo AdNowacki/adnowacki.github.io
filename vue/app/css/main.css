@@ -1,0 +1,7 @@
+#app, #add {
+  padding: 60px;
+}
+
+[v-cloak] {
+  display: none;
+}

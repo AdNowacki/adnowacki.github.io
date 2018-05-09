@@ -88,7 +88,7 @@
                 },
                 get : function() {
                     let http = new XMLHttpRequest();
-                    http.open("GET", "ogloszenia.json");
+                    http.open("GET", "ogloszenia.json?v2");
                     http.addEventListener("load",() => {
                         if( http.status == 200 ) {
                             this.offers = http.response;

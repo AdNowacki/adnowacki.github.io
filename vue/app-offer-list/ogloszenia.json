@@ -52,5 +52,32 @@
         "contact": "606525583",
         "category": "Fotografia",
         "city": "Olsztyn"
+    },
+    {
+        "id": "1002664802509",
+        "title": "2005 Honda super skuter",
+        "description": "witam wszystkich zainteresowanych.nie będę się rozpisywał.skuter jest w stanie bardzo dobrym kraj pochodzenia szwajcaria,opłaty do września .przegląd do września książka serwisowa dwa klczyki.gratis dwa pokrowce. mogę również odsprzedać nowiutki kask LS2 oraz nowe rękawiczki model skutera honda pantheon cena do małej negociacji.serdecznie zapraszam ,naprawde warto",
+        "price": "3700",
+        "contact": "516785221",
+        "category": "Motoryzacja",
+        "city": "Kraków"
+    },
+    {
+        "id": "265829430957658309",
+        "title": "DVD Ferguson D-880 HX HDMI USB",
+        "description": "DVD Ferguson D-880 HX HDMI USB. <br>Filmy i zdjęia muzyka z pendriwe czy dysku. Sprawne czyta wszystkie płyty. Odbiór osobisty ze sprawdzeniem. Możliwe wysłanie za dopłatą. Proszę dzwonić",
+        "price": "50",
+        "contact": "226169882",
+        "category": "RTV",
+        "city": "Augustów"
+    },
+    {
+        "id": "12676671122674474",
+        "title": "Stary rower stacjonarny PRL Oldschool Vintage Super stan ROMET ",
+        "description": "Rowerek stacjonarny bardzo oldschoolowy ;) W pełni oryginalne części. Romet Klasyk. Ciekawa dekoracja do mieszkania. W pełni sprawny. Wymaga wyczyszczenia i dopieszczenia. Więcej info pod nr tel 731823839",
+        "price": "130",
+        "contact": "652214414",
+        "category": "Sport",
+        "city": "Warszawa"
     }
 ]

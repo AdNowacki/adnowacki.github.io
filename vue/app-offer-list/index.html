@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+
+        .modal {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,.8);
+            left: 0;
+            top: 0;
+            z-index: 9;
+            pointer-events: none;
+            transition: opacity 1s;
+            opacity: 0;
+        }
+
+        .modal.show {
+            pointer-events: auto;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <section id="app" v-cloak>
+        <h1>{{ title }}</h1>
+
+        <div class="modal" :class="showModal ? 'show' : null" @click="closeModal()">
+            <div class="modal__ctn"></div>
+        </div>
+
+        <button @click="modalBtnAction">Pokaż modal</button>
+        <button @click="get">Pobierz ogłoszenia</button>
+
+        <div id='offers' v-if="offersExist">
+            <div class="offer" v-for="(offer,ind) in offers">
+                <h3 class="offer__title">{{ offer.title }}</h3>
+                <p class="offer__description">{{ offer.description }}</p>
+            </div>
+        </div>
+        <div v-else>
+            Brak danych do wyświetlenia
+        </div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const v = new Vue({
+            el: "#app",
+            data : {
+                title: "Vue Start",
+                showModal: false,
+                offers:[],
+                offersExist: false,
+            },
+            methods: {
+                modalBtnAction: function(event) {
+                    this.showModal = true;
+                    this.title = "Modal otwarty";
+                },
+                closeModal: function() {
+                    this.showModal = false;
+                    this.title = "Vue start";
+                },
+                get : function() {
+                    let http = new XMLHttpRequest();
+                    http.open("GET", "http://leguralnie.pl/json/ogloszenia-json.json");
+                    http.addEventListener("load",() => {
+                        if( http.status == 200 ) {
+                            this.offers = http.response;
+                            this.offers = JSON.parse(this.offers);
+                            this.$nextTick(function () {
+                                this.offersExist = true;
+                            });
+                        }
+
+                    });
+
+                    http.send();
+                }
+            },
+            
+        });
+    </script>
+</body>
+</html>

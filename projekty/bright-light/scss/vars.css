@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&subset=latin-ext");
+@font-face {
+  font-family: 'Gotham Ultra';
+  src: url("../webfonts/subset-Gotham-Ultra.woff2") format("woff2"), url("../webfonts/subset-Gotham-Ultra.woff") format("woff"), url("../webfonts/subset-Gotham-Ultra.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Book';
+  src: url("../webfonts/subset-Gotham-Book.woff2") format("woff2"), url("../webfonts/subset-Gotham-Book.woff") format("woff"), url("../webfonts/subset-Gotham-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url("../webfonts/subset-Gotham-Bold.woff2") format("woff2"), url("../webfonts/subset-Gotham-Bold.woff") format("woff"), url("../webfonts/subset-Gotham-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+/*# sourceMappingURL=vars.css.map */

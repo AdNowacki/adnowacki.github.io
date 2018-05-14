@@ -1,0 +1,47 @@
+@mixin clear() {
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin centerXY() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+@mixin centerX() {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+@mixin radius( $rad: 50% ) {
+    border-radius: $rad;
+}
+
+@mixin decorLineColor() {
+    background: $decorationColor;
+    background: -moz-linear-gradient(left, #ff563f 0%, #fb5875 100%); 
+    background: -webkit-linear-gradient(left, #ff563f 0%,#fb5875 100%);
+    background: linear-gradient(to right, #ff563f 0%,#fb5875 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff563f', endColorstr='#fb5875',GradientType=1 );
+}
+
+@mixin gothamBold() {
+    font-family: 'Gotham Bold';
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin gothamBook() {
+    font-family: 'Gotham Book';
+    font-weight: normal;
+    font-style: normal;
+}
+

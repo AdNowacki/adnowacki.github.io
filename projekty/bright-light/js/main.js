@@ -85,11 +85,51 @@ var br = {
         document.body.classList.toggle('opennav');
     });
 
+    $('.nav__linksbox a').on('click', function(e){
+        e.preventDefault();
+        let h = this.hash;
+        let pos = $(h).offset().top;
+        $('html,body').animate({scrollTop: pos},400);
+        $('.nav__linksbox a').removeClass('active');
+        $(this).addClass('active');
+        $('body').removeClass('opennav');
+    });
 
 
+// viewportchecker
+// $('.show-elem').viewportChecker({
+//     callbackFunction: function(elem, action){
+//         setTimeout(function(){
+//             console.log(elem);
+//             elem.addClass('show-elem-end');
+//         },100);
+//     },
+//     scrollBox: "body"
+// });
+
+$('.show-elem').viewportChecker({
+    classToAdd: 'show-elem-end',
+});
+
+// slider
 $('.slider-container').slick({
     dots: true,
 });
+
+$(window).on('scroll',function(){
+    if( $(window).width() < 800 )
+        return;
+    let wt = $(this).scrollTop();
+    if( wt >= 200 ) {
+        $('body').addClass('nav-stick');
+    } else {
+        $('body').removeClass('nav-stick');
+    }
+});
+
+
+
+
 
 
 

@@ -38,8 +38,8 @@
     <body>
 
         <button id="nav-btn">
-                <svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 40 40" width="40" heighy="40" style="enable-background:new 0 0 40 40;" xml:space="preserve">
+                <svg version="1.1" id="nbtn" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 40 40" width="30" height="30" style="enable-background:new 0 0 40 40;" xml:space="preserve">
            <style type="text/css">
                .st0{fill:#D8D8D8;}
            </style>
@@ -99,10 +99,10 @@
             </div>
             <div class="w--70">
                 <div class="nav__linksbox">
-                    <a href="#">Oferta</a>
-                    <a href="#">O nas</a>
-                    <a href="#">Zespół</a>
-                    <a href="#">Kontakt</a>
+                    <a href="#oferta">Oferta</a>
+                    <a href="#o-nas">O nas</a>
+                    <a href="#zespol">Zespół</a>
+                    <a href="#kontakt">Kontakt</a>
                     <div class="nav__langbox">
                         <a href="#" lang="en" class="nav__langactive">
                             EN
@@ -117,10 +117,10 @@
         <!-- header -->
         <header class='header'>
             <div class="header__title">
-                <h1 title="BRIGHT LIGHTS">BRIGHT LIGHTS</h1>
-                <h2 title="SZTUKA  ŚWIATŁO  TECHNOLOGIA">SZTUKA  ŚWIATŁO  TECHNOLOGIA</h2>
-                <h3 title="Światło i multimedia w architekturze Systemy widowiskowe">Światło i multimedia w architekturze <br>Systemy widowiskowe</h3>
-                <span class='decor-line animation animation__expand-line animationstart'></span>
+                <h1 title="BRIGHT LIGHTS" class="show-elem">BRIGHT LIGHTS</h1>
+                <h2 title="SZTUKA  ŚWIATŁO  TECHNOLOGIA" class="show-elem">SZTUKA  ŚWIATŁO  TECHNOLOGIA</h2>
+                <h3 title="Światło i multimedia w architekturze Systemy widowiskowe" class="show-elem">Światło i multimedia w architekturze <br>Systemy widowiskowe</h3>
+                <span class='decor-line animation animation__expand-line animationstart show-elem'></span>
             </div>
             <div class="scrollto">
                 <img src="images/arr-down.svg" alt="">
@@ -128,15 +128,15 @@
         </header>
 
         <!-- oferta -->
-        <section class="offer">
+        <section class="offer" id="oferta">
             <div class="offer__bg"></div>
 
             <div class="container content">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="section-title" title='Oferujemy'>
+                        <h2 class="section-title show-elem" title='Oferujemy'>
                             Oferujemy
-                            <span class='decor-line animation animation__expand-line animationstart'></span>                        
+                            <span class='decor-line animation animation__expand-line animationstart show-elem'></span>                        
                         </h2>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
             <div class="container content text-left">
                 <div class="row">
                     <div class="col-sm-4 offset-sm-2">
-                        <ul class="list">
+                        <ul class="list show-elem">
                             <li>Systemy fasad medialnych,</li>
                             <li>Iluminacje architektoniczne,</li>
                             <li>Systemy multimedialne dla <br>przestrzeni publicznych i komercyjnych,</li>
@@ -155,7 +155,7 @@
                     </div>
                     <div class="col-sm-1"></div>
                     <div class="col-sm-4">
-                        <ul class="list">
+                        <ul class="list show-elem">
                             <li>Oprawy oświetleniowe,</li>
                             <li>Ekrany LED,</li>
                             <li>Projektory logo,</li>
@@ -166,47 +166,47 @@
 
                 <div class="row mtop160 text-center">
                     <div class="col-12">
-                        <h2 class="section-title animation__left--300" title='Zapewniamy kompleksowe usługi '>
+                        <h2 class="section-title show-elem" title='Zapewniamy kompleksowe usługi'>
                             Zapewniamy kompleksowe usługi<br>
                             <small>na każdym etapie realizacji inwestycji</small>
-                            <span class='decor-line animation__expand-line animation animationstart'></span>                        
+                            <span class='decor-line animation__expand-line animation animationstart show-elem'></span>                        
                         </h2>
                     </div>
                 </div>
             </div>
 
             <div class="offer__icons content">
-                <figure class="offer__ico offer__ico--link">
+                <figure class="offer__ico offer__ico--link show-elem">
                     <img src="images/ico-1.svg" alt="">
                     <figcaption>
                         Koncept
                     </figcaption>
                     <a href="#"></a>
                 </figure>
-                <figure class="offer__ico">
+                <figure class="offer__ico show-elem">
                     <img src="images/ico-arr.svg" alt="">
                 </figure>
-                <figure class="offer__ico offer__ico--link">
+                <figure class="offer__ico offer__ico--link show-elem">
                     <img src="images/ico-2.svg" alt="">
                     <figcaption>
                         Projekt
                     </figcaption>
                     <a href="#"></a>
                 </figure>
-                <figure class="offer__ico">
+                <figure class="offer__ico show-elem">
                     <img src="images/ico-arr.svg" alt="">
                 </figure>
-                <figure class="offer__ico offer__ico--link">
+                <figure class="offer__ico offer__ico--link show-elem">
                     <img src="images/ico-3.svg" alt="">
                     <figcaption>
                         Realizacje
                     </figcaption>
                     <a href="#"></a>
                 </figure>
-                <figure class="offer__ico">
+                <figure class="offer__ico show-elem">
                     <img src="images/ico-arr.svg" alt="">
                 </figure>
-                <figure class="offer__ico offer__ico--link">
+                <figure class="offer__ico offer__ico--link show-elem">
                     <img src="images/ico-4.svg" alt="">
                     <figcaption>
                         Wsparcie
@@ -216,7 +216,7 @@
             </div>
 
             <div class="content">
-                <a href="#" class="decor-link" title="Zobacz ofertę">Zobacz ofertę</a>
+                <a href="#" class="decor-link show-elem" title="Zobacz ofertę">Zobacz ofertę</a>
             </div>
 
 
@@ -233,21 +233,21 @@
 
 
         <!-- slider -->
-        <section class="slider container">
+        <section class="slider container" id="o-nas">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="section-title">
+                    <h2 class="section-title show-elem">
                         ŁĄCZYMY wysokiej klasy <br>
                         inżynierię ze sztuką.
                         <span class="decor-line decor-line--left animation animation__expand-line animationstart"></span>
                     </h2>
-                    <p>
+                    <p class="show-elem">
                         Mamy wyjątkowe pomysły, pasję i odwagę. Wykorzystujemy najnowsze rozwiązania i dostępne technologie. Ale przede wszystkim dbamy o to, aby nasz projekt dawał radość, urzekał i zadowalał naszych klientów i osoby, które będą go oglądać.
                     </p>
-                    <a href="#" class="decor-link decor-link--left" title="Dowiedz się więcej">Dowiedz się więcej</a>                    
+                    <a href="#" class="decor-link decor-link--left show-elem" title="Dowiedz się więcej">Dowiedz się więcej</a>                    
                 </div>
                 <div class="col-lg-6">
-                    <div class="slider-container">
+                    <div class="slider-container show-elem">
                         <div class="slider-item"><img src="images/slide1.jpg" alt=""></div>
                         <div class="slider-item"><img src="images/slide2.jpg" alt=""></div>
                         <div class="slider-item"><img src="images/slide3.jpg" alt=""></div>
@@ -257,10 +257,10 @@
         </section>
 
         <!-- team -->
-        <section class="team container">
+        <section class="team container" id="zespol">
             <div class="row team__title">
                 <div class="col-12">
-                    <h2 class="section-title">
+                    <h2 class="section-title show-elem">
                         Nad jakością naszych rozwiązań <br><span class='small'>czuwa multidyscyplinarny zespół specjalistów.</span><br>
                         <small>Możesz być pewny, że bezproblemowo zrealizujemy Twoje marzenia.</small>
                         <span class="decor-line animation animation__expand-line animationstart"></span>
@@ -269,7 +269,7 @@
             </div>
             <div class="row team-info">
                 <div class="col-md-3">
-                    <figure>
+                    <figure class="show-elem">
                         <img src="images/team1.jpg" alt="">
                     </figure>
                     <div class="team-info__description">
@@ -278,7 +278,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <figure>
+                    <figure class="show-elem">
                         <img src="images/team2.jpg" alt="">
                         <figcaption></figcaption>
                     </figure>
@@ -288,7 +288,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <figure>
+                    <figure class="show-elem">
                         <img src="images/team3.jpg" alt="">
                         <figcaption></figcaption>
                     </figure>
@@ -298,7 +298,7 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <figure>
+                    <figure class="show-elem">
                         <img src="images/team4.jpg" alt="">
                         <figcaption></figcaption>
                     </figure>
@@ -309,22 +309,22 @@
                 </div>
 
                 <div class="col-12">
-                    <a href="#" class="decor-link decor-link--long" title="Poznaj nasz zespół">Poznaj nasz zespół</a>                                        
+                    <a href="#" class="decor-link decor-link--long show-elem" title="Poznaj nasz zespół">Poznaj nasz zespół</a>                                        
                 </div>
             </div>
         </section>
 
         <!-- kontakt -->
-        <section class="contact">
+        <section class="contact" id="kontakt">
             <div class="container">
 
                 <div class="row">
                     <div class="col-md-6">
-                        <h2 class="section-title">
+                        <h2 class="section-title show-elem">
                             Kontakt
                             <span class="decor-line decor-line--left animation animation__expand-line animationstart"></span>
                         </h2>
-                        <form action="">
+                        <form action="" class="show-elem">
                             <input name="" type="text" placeholder="IMIĘ I NAZWISKO">
                             <input name="" type="email" placeholder="E-MAIL">
                             <div class="contact__select">
@@ -346,13 +346,13 @@
                         </form>
                     </div>
                     <div class="col-md-3">
-                        <address class="contact__text">
+                        <address class="contact__text show-elem">
                             Bright Lights Sp. z o.o.<br>
                             Grzybowska 5A,<br>
                             00-132 Warszawa
                         </address>
 
-                        <div class="contact__text">
+                        <div class="contact__text show-elem">
                                 NIP: 5252738475<br>
                                 REGON: 369441793<br>
                                 KRS: 0000717785<br><br>
@@ -362,11 +362,11 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="contact__text">
+                        <div class="contact__text show-elem">
                             <a href="tel:+48794370005">+48 794 370 005</a><br>
                             <a href="mailto:info@brightlights.pl">info@brightlights.pl</a>
                         </div>
-                        <div class="contact__social">
+                        <div class="contact__social show-elem">
                             <a href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28px" height="19px">
                                     <path fill-rule="evenodd"  opacity="0.2" fill="rgb(255, 255, 255)" d="M26.729,1.595 C26.248,0.979 25.427,0.502 24.552,0.344 C21.986,-0.129 5.968,-0.129 3.399,0.344 C2.700,0.471 2.076,0.778 1.541,1.255 C-0.718,3.285 -0.009,14.169 0.534,15.932 C0.764,16.696 1.059,17.246 1.432,17.607 C1.912,18.085 2.568,18.414 3.323,18.562 C5.438,18.984 16.329,19.222 24.508,18.625 C25.263,18.498 25.930,18.159 26.455,17.661 C28.543,15.639 28.400,4.143 26.729,1.595 ZM11.175,12.995 C11.175,10.460 11.175,7.915 11.175,5.380 C13.966,6.652 16.126,7.881 18.683,9.206 C16.576,10.339 13.966,11.609 11.175,12.995 Z"/>
@@ -412,7 +412,7 @@
 
         <script src="js/jquery.js"></script>
         <script src="plugins/slick/slick.js"></script>
-        <script src="js/jquery.scrollme.min.js"></script>
+        <script src="js/viewportchecker.js"></script>
         <script src="js/main.js"></script>
 
 

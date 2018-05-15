@@ -45,28 +45,6 @@ html, body {
     width: 260px;
 }
 
-.animation {
-    position: relative;
-    transition: all .4s ease;
-    opacity: 0;
-
-    &__left--300 {
-        transform: translate( 0, 40px );
-    }
-    
-    &__right--100 {
-        transform: translate( 0, 40px );
-    }
-    
-    &__left--150 {
-        transform: translate( 0, 40px );
-    }
-}
-
-.animationstart {
-    transform: translate( 0, 0 );
-    opacity: 1;
-}
 
 .animshow {
     -webkit-transform: translateX(0);
@@ -84,8 +62,7 @@ html, body {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 10;
-    display: flex;
+    z-index: 990;
     width: 100%;
     
 
@@ -103,6 +80,7 @@ html, body {
     font-size: 1.4rem;
     padding: 4.5rem 7rem 0 2rem;
     text-align: right;
+    z-index: 990;
     a {
         color: #fff;
         display: inline-block;
@@ -129,13 +107,21 @@ html, body {
             transition: all .2s;
         }
 
-        &:hover {
+        &:hover, &.active {
 
             &::after {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
+    }
+}
+
+.nav-stick {
+    .menu {
+        position: fixed;
+        background: rgba(0,0,0,.75);
+        padding-bottom: 12px;
     }
 }
 
@@ -227,6 +213,7 @@ html, body {
 
 .decor-line {
     @include decorLineColor();
+    position: absolute;
     content: "";
     display: block;
     width: 60px;
@@ -237,15 +224,23 @@ html, body {
     margin: auto;
     transform: scaleX(0);
 
-    &.animationstart {
-        transform: scale(1);
-    }
 }
 
 .decor-line--left {
     transform: none;
     right: auto;
     margin: 0;
+}
+
+.show-elem {
+    transition: all .2s;
+    opacity: 0;
+    transform: translateY(30px);
+    
+    &-end {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .scrollto {
@@ -730,9 +725,9 @@ html, body {
 
 #nav-btn {
     position: fixed;
-    right: 20px;
-    top: 20px;
-    z-index: 100;
+    right: 13px;
+    top: 14px;
+    z-index: 1000;
     background: none;
     border: 0;
     padding: 0;
@@ -758,6 +753,8 @@ html, body {
 
     .menu {
         display: block;
+        height: 100%;
+        position: fixed;
     }
 
     .nav__linksbox {
@@ -766,8 +763,8 @@ html, body {
         top: 0;
         background: rgba(0,0,0,.85);
         width: 100%;
-        height: 100%;
-        z-index: 99;
+        height: 100vh;
+        z-index: 990;
         text-align: center;
         font-size: 2.3rem;
         box-sizing: border-box;
@@ -809,6 +806,9 @@ html, body {
 
 // tablet 768px 
 @media only screen and (max-width: 768px){
+    .header {
+        background-attachment: scroll;
+    }
     html {
         font-size: 6px;
     }
@@ -819,6 +819,7 @@ html, body {
 
     .decor-line--left {
         margin: auto;
+        right: 0;
     }
 
     .decor-link--left {
@@ -879,6 +880,7 @@ html, body {
     .mtop160 {
         margin-top: 60px;
     }
+
 }
 
 // tablet 480px 
@@ -889,6 +891,7 @@ html, body {
 
     .offer__bg {
         background-image: url(../images/offer-bg@600.jpg);
+        background: none;
     }
 
     .offer__icons {
@@ -896,15 +899,37 @@ html, body {
     }
 
     .offer__ico {
-        width: 38%;
+        width: 60%;
         margin: 20px auto;
     }
 
     .slider-container {
-        width: 370px;
-        height: 217px;
+        width: 260px;
+        height: 153px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .contact {
+        padding-top: 60px;
+        &::before {
+            display: none;
+        }
+
+        input, select, textarea {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .contact__select {
+        svg {
+            right: 30px;
+        }
+    }
+
+    .w--30 {
+        width: 120%;
     }
     
 }

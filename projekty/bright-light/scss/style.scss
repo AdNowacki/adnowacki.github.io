@@ -64,6 +64,7 @@ html, body {
     top: 0;
     z-index: 990;
     width: 100%;
+    transition: transform .3s ease;
     
 
     path {
@@ -755,6 +756,7 @@ html, body {
         display: block;
         height: 100%;
         position: fixed;
+        pointer-events: none;
     }
 
     .nav__linksbox {
@@ -795,6 +797,9 @@ html, body {
     }
 
     .opennav {
+        .menu {
+            pointer-events: auto;
+        }
         overflow: hidden;
         .nav__linksbox {
             transform: translateX(0);

@@ -767,6 +767,17 @@ html, body {
   display: none;
 }
 
+.contact__decor {
+  position: relative;
+}
+
+.contact__decor img {
+  position: absolute;
+  right: 20%;
+  top: 100px;
+  transform: rotate(13deg);
+}
+
 @media only screen and (max-width: 960px) {
   #nav-btn {
     display: block;

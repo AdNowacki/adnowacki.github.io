@@ -14,10 +14,15 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+
+    &:nth-of-type(2n+1) {
+        background: #0d0d0d;
+    }
 }
 
 .team-list__category {
     flex: 0 0 35%;
+    padding: 0 60px;
 }
 
 
@@ -41,7 +46,8 @@
     box-sizing: border-box;
     padding: 25px;
     position: relative;
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
+    flex: 0 1 50%;
     transition: background-color .3s ease;
 
     a {
@@ -85,7 +91,178 @@
     }
 }
 
+.team__slider-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    background: rgba(0, 0, 0, .8);
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s ease;
+}
 
+.slideropen {
+    .team__slider-overlay {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .team__slider {
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        transition: all .7s ease .3s;
+    }
+}
+
+.team__slider {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%,-280%);
+    transform: translate(-50%,-280%);
+    width: 60%;
+    background: $decorationColorLink;
+    transition: all .6s ease 0s;
+    padding: 90px 50px;
+    
+
+    button {
+        position: absolute;
+        transition: all .2s;
+        opacity: 1;
+        border: 0;
+        background: none;
+        cursor: pointer;
+    }
+
+    .close {
+        top: 28px;
+        right: 28px;
+    }
+
+    .prev, .next {
+        top: 50%;
+        left: -65px;
+
+        // &.off {
+        //     opacity: .3;
+        //     pointer-events: none;
+        // }
+    }
+
+    .next {
+        left: auto;
+        right: -65px;
+    }
+
+}
+
+.team__slider-ctn {
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.team__slider-item {
+    @include gothamBook();
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    width: 100%;
+    flex: 0 0 100%;
+    transition: margin .5s ease;
+
+
+    p {
+        margin-bottom: 22px;
+    }
+}
+
+.team__slider-image {
+    flex: 0 0 30%;
+    padding-top: 10px;
+
+    figure {
+        @include radius();
+        overflow: hidden;
+        width: 160px;
+        height: 160px;
+        text-align: center;
+        margin: 0 auto;
+    }
+    
+    img {
+        max-width: 100%;
+        object-fit: contain;
+    }
+}
+
+.team__slider__description {
+    @include gothamBold();
+    text-align: center;
+    margin: 20px auto;
+    text-transform: uppercase;
+}
+
+.team__slider__decor {
+    @include gothamBook();
+}
+
+.contact-items {
+    p {
+        font-size: 1.8rem;
+    }
+}
+
+.contact-item {
+    display: inline-block;
+    margin-right: 30px;
+
+    a {
+        display: inline-block;
+        margin-left: 9px;
+        vertical-align: middle;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    svg {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+
+@media only screen and (max-width: 1280px){
+    .team__slider {
+        padding: 70px 30px;
+    }
+    .team__slider-item {
+        font-size: 1.2rem;  
+        line-height: 1.2;      
+    }
+
+    .team__slider-image {
+        figure {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .contact-items {
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+    }
+
+}
 
 @media only screen and (max-width: 768px){
     .team-ctn {
@@ -93,8 +270,9 @@
 
     }
 
-    .team-list__item {
+    .team__slider-item {
         flex-direction: column;
+        
     }
 }
 

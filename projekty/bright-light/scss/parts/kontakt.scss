@@ -1,0 +1,88 @@
+@import "../vars.scss";
+@import "../mixin.scss";
+
+.map-ctn {
+    padding-top: 100px;
+    background: #000;
+}
+
+.map-text {
+    background: #0d0d0d;
+    padding: 78px 0;
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1.6;
+
+    a {
+        color: inherit;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    address, p {
+        margin-bottom: 30px; 
+    }
+}
+
+#map {
+    height: 490px;
+}
+
+.map-text__title {
+    @include gothamBold();
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+    position: relative;
+
+    &--ico {
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: -31px;
+            top: 0px;
+            width: 15px;
+            height: 21px;
+            background: url(../../images/marker-1.png) no-repeat;
+            background-size: contain;
+        }
+        &2 {
+
+            &::before {
+                background-image: url(../../images/marker-2.png);
+            }
+        }
+    }
+}
+
+.contact--line {
+    &::before {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .map-text {
+        font-size: 2.2rem;
+    }
+    .map-text__title {
+        font-size: 2.6rem;
+    }
+}
+
+@media only screen and (max-width: 568px){
+    .map-text {
+        text-align: center;
+    }
+
+    .map-text__title {
+        display: inline-block;
+    }
+
+    .contact--line {
+        padding-top: 80px;
+    }
+}
+

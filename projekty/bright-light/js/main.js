@@ -118,22 +118,22 @@ $(window).on('scroll',function(){
 });
 
 // paralax
-// let elems = document.querySelectorAll('.triangle img');
-// let move = [0.5, 0.3, 0.6, 0.5, 0.8, 0.3];
-// let oldPosition = 0;
-// window.onscroll = function(){
-//     let dir = (oldPosition < document.documentElement.scrollTop)
-//     [...elems].forEach(function(el, ind){
-//         let speed = ( ind % 2 == 0 ) ? 1 : 3;
-//         if( oldPosition < document.documentElement.scrollTop )
-//             move[ind] += speed;
-//         else
-//             move[ind] -= speed;
-//         console.log(move[ind]);
-//         el.style.transform = "translateY("+ parseInt(move[ind]) +"px)";
-//     });
-//     oldPosition = document.documentElement.scrollTop;
-// }
+let elems = document.querySelectorAll('.triangle img');
+let move = [0.5, 0.3, 0.6, 0.5, 0.8, 0.3];
+let oldPosition = 0;
+window.onscroll = function(){
+    let dir = (oldPosition < document.documentElement.scrollTop);
+    [...elems].forEach(function(el, ind){
+        let speed = ( ind % 2 == 0 ) ? 1 : 3;
+        if( oldPosition < document.documentElement.scrollTop )
+            move[ind] += speed;
+        else
+            move[ind] -= speed;
+        console.log(move[ind]);
+        el.style.transform = "translateY("+ parseInt(move[ind]) +"px)";
+    });
+    oldPosition = document.documentElement.scrollTop;
+}
 
 
 

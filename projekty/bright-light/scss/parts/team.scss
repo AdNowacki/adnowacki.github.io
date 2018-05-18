@@ -1,0 +1,104 @@
+@import "../vars.scss";
+@import "../mixin.scss";
+
+.team-ctn {
+    background: #000;
+    padding-top: 100px;
+    color: #fff;
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+.team-list__item {
+    margin: 30px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.team-list__category {
+    flex: 0 0 35%;
+}
+
+
+.team-info--flex {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 0 0 65%;
+    figure {
+        border: 0;
+    }
+
+    .team-info__decor {
+        color: #fff;
+        @include gothamBook();
+    }
+}
+
+.team-info__image {
+    box-sizing: border-box;
+    padding: 25px;
+    position: relative;
+    flex: 1 1 auto;
+    transition: background-color .3s ease;
+
+    a {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+    }
+
+    &:hover {
+        background-color: $decorationTeamHover;
+
+        .team-info__link {
+            color: #fff;
+        }
+
+        path {
+            fill: #fff;
+        }
+    }
+}
+
+.team-info__link {
+    @include gothamBook();    
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 17px;
+    text-transform: none;
+    color: $decorationTeamHover;
+    transition: color .3s ease;   
+    
+    svg {
+        display: inline-block;
+        margin-left: 3px;
+    }
+
+    path {
+        transition: all .3s ease;
+    }
+}
+
+
+
+@media only screen and (max-width: 768px){
+    .team-ctn {
+        text-align: center;
+
+    }
+
+    .team-list__item {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 568px){
+
+}
+

@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&subset=latin-ext");
+@font-face {
+  font-family: 'Gotham Ultra';
+  src: url("../webfonts/subset-Gotham-Ultra.woff2") format("woff2"), url("../webfonts/subset-Gotham-Ultra.woff") format("woff"), url("../webfonts/subset-Gotham-Ultra.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Book';
+  src: url("../webfonts/subset-Gotham-Book.woff2") format("woff2"), url("../webfonts/subset-Gotham-Book.woff") format("woff"), url("../webfonts/subset-Gotham-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url("../webfonts/subset-Gotham-Bold.woff2") format("woff2"), url("../webfonts/subset-Gotham-Bold.woff") format("woff"), url("../webfonts/subset-Gotham-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.map-ctn {
+  padding-top: 100px;
+  background: #000;
+}
+
+.map-text {
+  background: #0d0d0d;
+  padding: 78px 0;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+.map-text a {
+  color: inherit;
+}
+
+.map-text a:hover {
+  text-decoration: none;
+}
+
+.map-text address, .map-text p {
+  margin-bottom: 30px;
+}
+
+#map {
+  height: 490px;
+}
+
+.map-text__title {
+  font-family: 'Gotham Bold';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.7rem;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.map-text__title--ico::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -31px;
+  top: 0px;
+  width: 15px;
+  height: 21px;
+  background: url(../../images/marker-1.png) no-repeat;
+  background-size: contain;
+}
+
+.map-text__title--ico2::before {
+  background-image: url(../../images/marker-2.png);
+}
+
+.contact--line::before {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .map-text {
+    font-size: 2.2rem;
+  }
+  .map-text__title {
+    font-size: 2.6rem;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .map-text {
+    text-align: center;
+  }
+  .map-text__title {
+    display: inline-block;
+  }
+  .contact--line {
+    padding-top: 80px;
+  }
+}
+/*# sourceMappingURL=kontakt.css.map */

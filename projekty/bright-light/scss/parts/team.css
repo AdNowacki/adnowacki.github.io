@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i&subset=latin-ext");
+@font-face {
+  font-family: 'Gotham Ultra';
+  src: url("../webfonts/subset-Gotham-Ultra.woff2") format("woff2"), url("../webfonts/subset-Gotham-Ultra.woff") format("woff"), url("../webfonts/subset-Gotham-Ultra.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Book';
+  src: url("../webfonts/subset-Gotham-Book.woff2") format("woff2"), url("../webfonts/subset-Gotham-Book.woff") format("woff"), url("../webfonts/subset-Gotham-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Bold';
+  src: url("../webfonts/subset-Gotham-Bold.woff2") format("woff2"), url("../webfonts/subset-Gotham-Bold.woff") format("woff"), url("../webfonts/subset-Gotham-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.team-ctn {
+  background: #000;
+  padding-top: 100px;
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.team-list__item {
+  margin: 30px 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.team-list__category {
+  flex: 0 0 35%;
+}
+
+.team-info--flex {
+  display: flex;
+  align-content: stretch;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 0 0 65%;
+}
+
+.team-info--flex figure {
+  border: 0;
+}
+
+.team-info--flex .team-info__decor {
+  color: #fff;
+  font-family: 'Gotham Book';
+  font-weight: normal;
+  font-style: normal;
+}
+
+.team-info__image {
+  box-sizing: border-box;
+  padding: 25px;
+  position: relative;
+  flex: 1 1 auto;
+  transition: background-color .3s ease;
+}
+
+.team-info__image a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+.team-info__image:hover {
+  background-color: #e34f5f;
+}
+
+.team-info__image:hover .team-info__link {
+  color: #fff;
+}
+
+.team-info__image:hover path {
+  fill: #fff;
+}
+
+.team-info__link {
+  font-family: 'Gotham Book';
+  font-weight: normal;
+  font-style: normal;
+  display: block;
+  font-size: 1.4rem;
+  margin-top: 17px;
+  text-transform: none;
+  color: #e34f5f;
+  transition: color .3s ease;
+}
+
+.team-info__link svg {
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.team-info__link path {
+  transition: all .3s ease;
+}
+
+@media only screen and (max-width: 768px) {
+  .team-ctn {
+    text-align: center;
+  }
+  .team-list__item {
+    flex-direction: column;
+  }
+}
+/*# sourceMappingURL=team.css.map */

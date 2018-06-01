@@ -61,7 +61,6 @@ function Slider() {
         let s = this;
         var mc = new Hammer(s.track);
         mc.on("swipeleft swiperight", function (ev) {
-            console.log(s.slideItemInit);
             if (ev.type == 'swipeleft' ) {
                 s.slideItemInit++;
                 if (s.slideItemInit >= s.sliderItems) {
@@ -82,7 +81,11 @@ function Slider() {
 
             s.sliderOffset(margin);
             s.swipeActive();
-            s.changeSource(s.slideItemInit);
+            // s.changeSource(s.slideItemInit);
+            // s.player.pause();
+            // s.player.currentTime();
+
+            // !
             
         });
     }

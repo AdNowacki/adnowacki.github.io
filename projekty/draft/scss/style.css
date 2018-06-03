@@ -44,6 +44,14 @@
   width: 100%;
 }
 
+button,
+img,
+a,
+input {
+  border: 0;
+  outline: 0;
+}
+
 html {
   font: 400 10px/1.2 'Source Sans Pro', arial;
 }
@@ -78,7 +86,8 @@ body {
 .app {
   max-width: 1024px;
   margin: 0 auto;
-  height: 100vh;
+  box-sizing: border-box;
+  min-height: 100vh;
   overflow: hidden;
   position: relative;
 }
@@ -110,10 +119,60 @@ body {
   z-index: 2;
 }
 
+.nav-top {
+  overflow: hidden;
+}
+
+.nav-col {
+  height: 131px;
+  position: relative;
+  z-index: 10000;
+  float: left;
+  text-align: center;
+  color: #fff;
+  font-size: 2.3rem;
+}
+
+.nav-col button {
+  position: absolute;
+  cursor: pointer;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nav-col button:hover path, .nav-col button:active path {
+  fill: #fff;
+}
+
+.nav-col path {
+  fill: #0fd65a;
+  transition: all .3s;
+}
+
+.nav-col--right {
+  float: right;
+}
+
+.album-name {
+  font-size: 2.3rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.album-name span {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  color: #9a9b9b;
+}
+
 .slider {
   opacity: 0;
   transition: all 3s ease;
-  margin-top: 156px;
 }
 
 .slider__track {
@@ -130,9 +189,32 @@ body {
 }
 
 .slider img {
-  max-width: 100%;
+  max-width: 90%;
   transition: all .4s ease;
-  transform: scale(0.9);
+  transform: scale(0.6);
+}
+
+.slider .draft {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(2.2);
+  z-index: 3;
+  width: 72px;
+  height: 72px;
+  background: #1B1B1B;
+  border: 5px solid #0fd65a;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all .3s ease;
+  pointer-events: none;
+}
+
+.slider [alt="Draft"] {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .slider a {
@@ -145,15 +227,184 @@ body {
 }
 
 .slide-active img {
-  transform: scale(1.5);
+  transform: scale(1);
+}
+
+.slide-active .draft {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.play_start .slide-active img:not([alt="Draft"]) {
+  animation: play 7s linear 0s infinite;
 }
 
 .init-slider {
   opacity: 1;
 }
 
-.play-btn {
+.slider-title {
+  color: #0fd65a;
+  text-align: center;
+  margin: 35px 0;
+}
+
+.slider-title h2,
+.slider-title h3 {
+  font-weight: 400;
+  font-size: 3.4rem;
+}
+
+.slider-title h3 {
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  color: #9a9b9b;
+  margin-top: 11px;
+}
+
+#mplayer {
+  opacity: 0;
+  pointer-events: none;
   position: absolute;
+}
+
+.slider-title span {
+  opacity: 0;
+  transform: translateY(18px);
+  position: relative;
+  display: block;
+  transition: all .6s ease .7s;
+}
+
+.slider-title .add {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider-title .remove {
+  opacity: 0;
+  transform: translateY(-18px);
+  pointer-events: none;
+  transition: all .6s ease .1s;
+}
+
+.slider-title .add-artist {
+  transition-delay: 1s;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider-title .remove-artist {
+  opacity: 0;
+  transform: translateY(-18px);
+  pointer-events: none;
+  transition: all .6s ease .4s;
+}
+
+.light {
+  fill: #9a9b9b;
+  transition: all .2s;
+}
+
+.panel {
+  text-align: center;
+}
+
+.panel button {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding: 0 25px;
+}
+
+.panel button:hover path, .panel button.on path {
+  fill: #fff;
+}
+
+.panel button:hover svg, .panel button.on svg {
+  -webkit-filter: drop-shadow(0 0 10px #fff);
+  filter: drop-shadow(0 0 10px #fff);
+}
+
+#play {
+  width: 145px;
+  height: 145px;
+}
+
+#play img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .3s ease;
+  pointer-events: none;
+}
+
+#play:hover #act {
+  opacity: 1;
+}
+
+#play #act {
+  transform: translate(-48%, -51%);
+}
+
+#act {
+  opacity: 0;
+  z-index: 3;
+}
+
+.time-bar {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: 50px auto;
+  color: #9a9b9b;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.time-bar > div {
+  flex: 1 1 10%;
+  box-sizing: border-box;
+  padding: 0 16px;
+}
+
+.time-bar .time-bar__graph {
+  flex: 1 1 80%;
+  position: relative;
+}
+
+.time-bar__line {
+  width: 100%;
+  height: 1px;
+  background: #000000;
+  position: relative;
+}
+
+.time-bar__line::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.time-bar__progress {
+  width: 0%;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  height: 5px;
+  background: #2a2a2a;
+  border-radius: 0 9px 9px 0;
+}
+
+.play-btn {
+  position: fixed;
   top: 2px;
   right: 35px;
   width: 127px;
@@ -255,6 +506,19 @@ body {
   padding-right: 27px;
 }
 
+.audio-graph {
+  position: fixed;
+  left: 0;
+  bottom: 75px;
+  width: 100%;
+  height: 60px;
+  pointer-events: none;
+  z-index: 4;
+  background: url(../images/waveform.png) repeat-x;
+  transition: 3s linear;
+  transform: translateX(-100%);
+}
+
 .playlist {
   height: calc(100% - 131px);
   bottom: auto;
@@ -322,10 +586,25 @@ div.playlist__scroll {
   transition: all .3s ease .3s;
 }
 
-.show-playlist .play_start .play-btn {
+.play_start.show-playlist .play-btn {
   transform: scale(1);
   opacity: 1;
   pointer-events: auto;
+}
+
+.play_start #act {
+  opacity: 1;
+}
+
+.play_start .audio-graph {
+  transform: translateX(0%);
+  animation: audiograph 2s linear 3s infinite both;
+}
+
+.play_stop .audio-graph {
+  animation-delay: 0s;
+  transform: translate(0%);
+  transition: none;
 }
 
 #playlist__btn,
@@ -348,6 +627,33 @@ div.playlist__scroll {
 @media screen and (min-width: 730px) {
   .app__bg {
     background-size: cover;
+  }
+}
+
+@-webkit-keyframes play {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes play {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes audiograph {
+  0% {
+    background-position: 0 top;
+  }
+  100% {
+    background-position: 343px top;
   }
 }
 /*# sourceMappingURL=style.css.map */

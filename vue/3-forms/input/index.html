@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <title>1 Hello World</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .form-horizontal {
+            margin-top: 60px;
+        }
+
+        .form-error {
+            font-size: .7rem;
+            color: red;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container grid-lg" id="vue-app">
+        <form action="" class="form-horizontal" @submit.prevent="send">
+
+            <div class="form-group">
+                <div class="col-2">
+                    <label for="i1">Imię</label>
+                </div>
+                <div class="col-3">
+                    <input 
+                        type="text" 
+                        name="i1" 
+                        id="i1" 
+                        class="form-input" 
+                        v-model.trim.lazy="firstName" 
+                        @blur="firstNameValidate"
+                    >
+                    <div 
+                        class="form-error" 
+                        v-show="error.i1"
+                    >
+                        Niepoprawna wartość pola Imię
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-2">
+                    <label for="i2">Nazwisko</label>
+                </div>
+                <div class="col-3">
+                    <input 
+                        type="text" 
+                        name="i2" 
+                        id="i2" 
+                        class="form-input" 
+                        v-model.trim.lazy="lastName" 
+                        @blur="lastNameValidate"
+                    >
+                    <div 
+                        class="form-error" 
+                        v-show="error.i2"
+                    >
+                        Niepoprawna wartość pola Nazwisko
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-2">
+                    <label for="i3">Wiek</label>
+                </div>
+                <div class="col-3">
+                    <input 
+                        type="number" 
+                        min="1" 
+                        max="105" 
+                        name="i3" 
+                        id="i3" 
+                        class="form-input" 
+                        v-model.trim.number.lazy="age" 
+                        @blur="ageValidate"
+                    >
+                    <div 
+                        class="form-error" 
+                        v-show="error.i3"
+                    >
+                        Niepoprawna wartość pola wiek
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-5">
+                    <button class="btn btn-primary float-right">Wyślij</button>
+                </div>
+            </div>
+
+            <output>{{getFullName}}</output>
+        </form>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+        const el = '#vue-app';
+        const V = new Vue({
+            el,
+            data() {
+                return {
+                    firstName: "",
+                    lastName: "",
+                    age: "",
+                    error: {
+                        i1: false,
+                        i2: false,
+                        i3: false,
+                    }
+                }
+            },
+            computed: {
+                getFullName() {
+                    return `${this.firstName} ${this.lastName} ${this.age}`;
+                },
+            },
+            methods: {
+                send() {
+                    this.firstNameValidate();
+                    this.lastNameValidate();
+                    this.ageValidate();
+                },
+                firstNameValidate() {
+                    this.error.i1 = ( this.firstName.length < 3 ) ? true : false;
+                },
+                lastNameValidate() {
+                    this.error.i2 = ( this.lastName.length < 3 ) ? true : false;
+                },
+                ageValidate() {
+                    this.error.i3 = ( this.age <= 18 ) ? true : false;
+                },
+            }
+        })
+    </script>
+</body>
+</html>

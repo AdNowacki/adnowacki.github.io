@@ -1,0 +1,217 @@
+// font
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,600,600i,700,700i&subset=latin-ext');
+
+@font-face {
+    font-family: 'DIN Pro Cond Black Italic';
+    src: url('../fonts/DINPro-CondensedBlackItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedBlackItalic.woff') format('woff'),
+        url('../fonts/DINPro-CondensedBlackItalic.svg#DINPro-CondensedBlackItalic') format('svg');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Light Italic';
+    src: url('../fonts/DINPro-CondensedLightItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedLightItalic.woff') format('woff'),
+        url('../fonts/DINPro-CondensedLightItalic.svg#DINPro-CondensedLightItalic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Black';
+    src: url('../fonts/DINPro-CondensedBlack.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedBlack.woff') format('woff'),
+        url('../fonts/DINPro-CondensedBlack.svg#DINPro-CondensedBlack') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Black Italic';
+    src: url('../fonts/DINPro-BlackItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-BlackItalic.woff') format('woff'),
+        url('../fonts/DINPro-BlackItalic.svg#DINPro-BlackItalic') format('svg');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Bold';
+    src: url('../fonts/DINPro-Bold.woff2') format('woff2'),
+        url('../fonts/DINPro-Bold.woff') format('woff'),
+        url('../fonts/DINPro-Bold.svg#DINPro-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Medium';
+    src: url('../fonts/DINPro-Medium.woff2') format('woff2'),
+        url('../fonts/DINPro-Medium.woff') format('woff'),
+        url('../fonts/DINPro-Medium.svg#DINPro-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro';
+    src: url('../fonts/DINPro.woff2') format('woff2'),
+        url('../fonts/DINPro.woff') format('woff'),
+        url('../fonts/DINPro.svg#DINPro') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Bold Italic';
+    src: url('../fonts/DINPro-BoldItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-BoldItalic.woff') format('woff'),
+        url('../fonts/DINPro-BoldItalic.svg#DINPro-BoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Light';
+    src: url('../fonts/DINPro-Light.woff2') format('woff2'),
+        url('../fonts/DINPro-Light.woff') format('woff'),
+        url('../fonts/DINPro-Light.svg#DINPro-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Medium Italic';
+    src: url('../fonts/DINPro-CondensedMediumItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedMediumItalic.woff') format('woff'),
+        url('../fonts/DINPro-CondensedMediumItalic.svg#DINPro-CondensedMediumItalic') format('svg');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Italic';
+    src: url('../fonts/DINPro-CondensedItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedItalic.woff') format('woff'),
+        url('../fonts/DINPro-CondensedItalic.svg#DINPro-CondensedItalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Light Italic';
+    src: url('../fonts/DINPro-LightItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-LightItalic.woff') format('woff'),
+        url('../fonts/DINPro-LightItalic.svg#DINPro-LightItalic') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Medium Italic';
+    src: url('../fonts/DINPro-MediumItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-MediumItalic.woff') format('woff'),
+        url('../fonts/DINPro-MediumItalic.svg#DINPro-MediumItalic') format('svg');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Bold';
+    src: url('../fonts/DINPro-CondensedBold.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedBold.woff') format('woff'),
+        url('../fonts/DINPro-CondensedBold.svg#DINPro-CondensedBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Bold Italic';
+    src: url('../fonts/DINPro-CondensedBoldItalic.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedBoldItalic.woff') format('woff'),
+        url('../fonts/DINPro-CondensedBoldItalic.svg#DINPro-CondensedBoldItalic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Italic';
+    src: url('../fonts/DINPro-Italic.woff2') format('woff2'),
+        url('../fonts/DINPro-Italic.woff') format('woff'),
+        url('../fonts/DINPro-Italic.svg#DINPro-Italic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Medium';
+    src: url('../fonts/DINPro-CondensedMedium.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedMedium.woff') format('woff'),
+        url('../fonts/DINPro-CondensedMedium.svg#DINPro-CondensedMedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Light';
+    src: url('../fonts/DINPro-CondensedLight.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedLight.woff') format('woff'),
+        url('../fonts/DINPro-CondensedLight.svg#DINPro-CondensedLight') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Black';
+    src: url('../fonts/DINPro-Black.woff2') format('woff2'),
+        url('../fonts/DINPro-Black.woff') format('woff'),
+        url('../fonts/DINPro-Black.svg#DINPro-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DIN Pro Cond Regular';
+    src: url('../fonts/DINPro-CondensedRegular.woff2') format('woff2'),
+        url('../fonts/DINPro-CondensedRegular.woff') format('woff'),
+        url('../fonts/DINPro-CondensedRegular.svg#DINPro-CondensedRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+$baseFF: 'DIN Pro Cond Medium', 'Open Sans';
+$condMedium: 'DIN Pro Cond Medium';
+$condRegular: 'DIN Pro Cond Regular';
+$condBold: 'DIN Pro Cond Bold';
+$baseFS: 1.4rem;
+$baseLH: 1.3;
+$baseFontColor: #fff;
+$fontColorLight: #fff;
+$fontColorDark: #231f20;
+$fontColorDecor: #e2af46;
+
+// layout
+$baseWidth: 1176px;
+
+// colors
+$baseColor: #131113;
+$lightColor: #231f20;
+$darkColor: #131113;
+$decorLightColor: #ebaf2e;
+$lightTitle: #fff;
+$darkTitle: #333;
+
+$dateColor: #484548;
+
+// $decorDarkColor: #453951;
+$navLinkLightColor: #fff;
+$navLinkLightColorActive: #fff;
+// $navLinkDarkColor: #666;
+// $navLinkDarkColorActive: #666;
+// $lightGrayColor: #f5f5f5;
+// $darkGrayColor: #f5f5f5;

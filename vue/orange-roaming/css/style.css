@@ -1,0 +1,162 @@
+#x-app {
+  font-family: Helvetica, arial;
+  color: #000;
+}
+
+#x-app #x-map {
+  height: calc( 100vh - 80px);
+  width: 130%;
+}
+
+#x-app .x-main-page {
+  overflow: hidden;
+}
+
+#x-app .opl-x-map-container {
+  position: relative;
+}
+
+#x-app .x-select {
+  margin: 27px 0;
+}
+
+#x-app .x-map-ctn {
+  width: 1259px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: left;
+  color: #fff;
+}
+
+#x-app .multiselect__tags {
+  border-radius: 0;
+  border-bottom: 4px solid #ccc;
+  padding: 15px 10px 6px;
+}
+
+#x-app .multiselect__option--highlight {
+  background: #e8e8e8;
+  color: #000;
+}
+
+#x-app .multiselect__option > span:after {
+  display: none !important;
+}
+
+#x-app .multiselect__select::before {
+  border: 0;
+  background: url(../images/mic.png) no-repeat;
+  display: block;
+  width: 14px;
+  height: 21px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+#x-app .multiselect__input, #x-app .multiselect__single {
+  width: 89%;
+}
+
+#x-app .multiselect__select {
+  height: 50px;
+}
+
+#x-app .multiselect--active .multiselect__select {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+
+#x-app .x-info {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  max-width: 1259px;
+  opacity: 0.28;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+
+#x-app .x-guide__item {
+  background: #fff;
+  display: inline-block;
+  width: 299px;
+  height: 139px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+  margin-right: 20px;
+  vertical-align: top;
+  padding: 25px 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+#x-app .x-guide__item:last-of-type {
+  margin-right: 0;
+}
+
+#x-app .x-guide__link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+#x-app .x-title {
+  position: relative;
+  font-weight: 700;
+}
+
+#x-app .x-title--h2 {
+  font-size: 20px;
+  margin-bottom: 26px;
+}
+
+#x-app .x-title--h2::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #ff6602;
+  position: absolute;
+  left: 0;
+  bottom: -13px;
+}
+
+#x-app .x-text {
+  color: #000;
+  font-weight: 300;
+}
+
+#x-app .x-text--90 {
+  width: 90%;
+}
+
+#x-app .x-arrow {
+  position: absolute;
+  right: 13px;
+  bottom: 30px;
+}
+
+#x-app .x-pe--none {
+  pointer-events: none;
+}
+
+#x-app .x-pe--auto {
+  pointer-events: auto;
+}
+/*# sourceMappingURL=style.css.map */

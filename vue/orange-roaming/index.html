@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html lang="pl" class="ltr ie ie8 no-script"><![endif]-->
+<!--[if IE 9]><html lang="pl" class="ltr ie ie9 no-script"><![endif]-->
+<!-- [if gt IE 9] <!-->
+<html lang="pl" class="ltr no-script">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Roaming</title>
+  <link href="https://orange.binaries.pl/ui/css/opl-online.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/x-multiselect.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- mapa -->
+  <div id="x-app">
+    <section class="x-main-page">
+      <div class="l-full-row opl-x-map-container">
+          <!-- map -->
+          <div id="x-map">
+            
+          </div>
+          <!-- map end -->
+
+          <!-- map content -->
+          <div class="x-map-ctn x-pe--none">
+            <div class="l-page-row">
+              <div class="l-row">
+                <div class="l-col l-col-5 l-col-medium-12 x-pe--none">
+                  <h1 class="h3 g-white1-c x-pe--auto">Przygotuj się do podróży</h1>
+                  <p class="x-pe--auto">Dowiesz się m.in. na jakie przepisy prawa trzeba uważać lub jakie ograniczenia obowiązują kierowców.</p>
+                </div>
+              </div>
+              <div class="l-row">
+                <div class="l-col l-col-5 l-col-medium-12">
+                  <div class="x-select x-pe--auto">
+                    <multiselect v-model="selected" select-label="" deselect-label="" selected-label="" track-by="name" @input="rerender" label="name" placeholder="Wyszukaj kraj" :options="options" :searchable="true" :allow-empty="false">
+                      <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.name }}</strong></template>
+                    </multiselect>
+                  </div>
+                </div>
+              </div>
+              <div class="l-row">
+                  <div class="l-col l-col-8 l-col-medium-12">
+                      <div class="x-guide x-pe--none">
+                          <div class="x-guide__item x-pe--auto">
+                            <h2 class="x-title x-title--h2">Ubezpieczenia</h2>
+                            <p class="x-text x-text--90">Opieka konsularna nieobejmuje kosztów pomocy lekarskiej</p>
+                            <img src="images/x-arrow.svg" class="x-arrow" alt="">
+                            <a href="" class="x-guide__link" data-target="page1"></a>
+                          </div>
+                          <div class="x-guide__item x-pe--auto">
+                            <h2 class="x-title x-title--h2">Choroba</h2>
+                            <p class="x-text x-text--90">Opieka konsularna nieobejmuje kosztów pomocy lekarskiej</p>
+                            <img src="images/x-arrow.svg" class="x-arrow" alt="">
+                            <a href="" class="x-guide__link" data-target="page2"></a>
+                          </div>
+                        </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- map content end -->
+
+          <!-- info -->
+          <p class="x-info">
+              Informacje przedstawiane na stronie www.orange.pl/zagranica bazują na informacjach udostępnianych na portalu MSZ (www.msz.gov.pl). Jednocześnie MSZ dokłada wszelkich starań, aby ostrzeżenia dla podróżujących publikowane na portalu MSZ (www.msz.gov.pl) były rzetelne, wyczerpujące i aktualne. Jednocześnie podkreślamy, że publikowane na portalu MSZ ostrzeżenia należy traktować wyłącznie jako rekomendację: mają one charakter informacyjny i nie mogą stanowić podstawy do jakichkolwiek roszczeń. Należy pamiętać, że MSZ nie ma prawnych możliwości zakazania wyjazdu do jakiegokolwiek państwa. Treść ostrzeżenia na portalu MSZ pozostaje aktualna do czasu publikacji nowego komunikatu.
+          </p>
+        </div>
+    </section>
+  </div>
+
+  <script src="https://orange.binaries.pl/ui/js/common/lib/requirejs/require.js" data-main="https://orange.binaries.pl/ui/js/core/main.js" defer="defer" data-opl-main="true"></script>
+  <script src="js/x-vue.js"></script>
+  <script src="js/x-multiselect.js"></script>
+  <script src="js/x-styled.js"></script>
+  <script src="js/x-main.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&callback=initMap"></script>
+
+  
+</body>
+</html>

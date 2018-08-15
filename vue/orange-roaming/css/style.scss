@@ -1,0 +1,160 @@
+$orange: #ff6602;
+$baseColor: #000;
+
+#x-app {
+  font-family: Helvetica, arial;
+  color: $baseColor;
+  
+  #x-map {
+    height: calc( 100vh - 80px );
+    width: 130%;
+  }
+
+  .x-main-page {
+    overflow: hidden;
+  }
+  
+  .opl-x-map-container {
+    position: relative;
+  }
+
+  .x-select {
+    margin: 27px 0;
+  }
+  
+  .x-map-ctn {
+    width: 1259px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: #fff;
+  }
+
+  .multiselect__tags {
+    border-radius: 0;
+    border-bottom: 4px solid #ccc;
+    padding: 15px 10px 6px;
+  }
+
+  .multiselect__option--highlight {
+    background: #e8e8e8;
+    color: $baseColor;
+  }
+
+  .multiselect__option {
+    > span {
+      &:after {
+        display: none !important;
+      }
+    }
+  }
+
+  .multiselect__select {
+    &::before {
+      border: 0;
+      background: url(../images/mic.png) no-repeat;
+      display: block;
+      width: 14px;
+      height: 21px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      margin: 0;
+    }
+  }
+
+  .multiselect__input, .multiselect__single {
+    width: 89%;
+  }
+
+  .multiselect__select {
+    height: 50px;
+  }
+
+  .multiselect--active .multiselect__select {
+    transform: rotate(0deg);
+  }
+
+  .x-info {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%);
+    max-width: 1259px;
+    opacity: 0.28;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    color: #ffffff;
+  }
+
+  .x-guide {
+    &__item {
+      background: #fff;
+      display: inline-block;
+      width: 299px;
+      height: 139px;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.05);
+      margin-right: 20px;
+      vertical-align: top;
+      padding: 25px 30px;
+      box-sizing: border-box;
+      overflow: hidden;
+      position: relative;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    &__link {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+    }
+  }
+
+  .x-title {
+    position: relative;
+    font-weight: 700;
+    &--h2 {
+      font-size: 20px;
+      margin-bottom: 26px;
+
+      &::before {
+        content: "";
+        display: block;
+        width: 24px;
+        height: 3px;
+        background: $orange;
+        position: absolute;
+        left: 0;
+        bottom: -13px;
+      }
+    }
+  }
+
+  .x-text {
+    color: $baseColor;
+    font-weight: 300;
+
+    &--90 {
+      width: 90%;
+    }
+  }
+
+  .x-arrow {
+    position: absolute;
+    right: 13px;
+    bottom: 30px;
+  }
+
+  .x-pe--none {pointer-events: none;}
+  .x-pe--auto {pointer-events: auto;}
+}

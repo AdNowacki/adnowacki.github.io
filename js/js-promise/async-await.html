@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function getData(data) {
+      return new Promise(function(resolve, reject){
+        setTimeout(function(){
+          resolve(data);
+          // reject("Error");
+        },2000);
+      });
+    }
+
+    async function call() {
+      let result = await getData("Adam Nowacki");
+      console.log(result);
+    }
+
+
+    call();
+  </script>
+</body>
+</html>

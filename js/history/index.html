@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    [data-target] {
+      display: none;
+      padding: 20px;
+      text-align: center;
+      border: 2px solid #ccc;
+      margin: 40px;
+    }
+
+    [data-target].h-active {
+      display: block;
+    }
+
+    [data-action] {
+      color: red;
+      text-decoration: none;
+    }
+
+    [data-action].h-active {
+      color: blueviolet;
+      text-decoration: underline;
+      text-decoration-color: blueviolet;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="history" data-history data-active-class='h-active'>
+    <a href="" data-action='1' data-label='link-1'>Link 1</a>
+    <a href="" data-action='2' data-label='link-2'>Link 2</a>
+    <a href="" data-action='3' data-label='link-3'>Link 3</a>
+    <a href="" data-action='4' data-label='link-4'>Link 4</a>
+  </nav>
+
+  <div data-target="1">A</div>
+  <div data-target="2">B</div>
+  <div data-target="3">C</div>
+  <div data-target="4">D</div>
+
+
+  <script>
+    const config = {
+      nav: document.querySelectorAll('[data-action]'),
+    }
+
+    function myHistory( config ) {
+
+      this.init = () => {
+        try {
+          if( !config )
+            throw "config object is empty";
+        } catch( err ) {
+          console.error( err );
+        }
+        
+        this.config = config;
+
+        try {
+          if( !this.config.nav.length )
+            throw "navigation elements is null";
+        } catch( err ) {
+          console.error( err );
+        }
+
+        this.showFirstEl();
+        this.event();
+        this.backHistory();
+        
+
+      }
+
+      this.event = () => {
+        this.config.nav.forEach( (el, ind) => {
+          el.addEventListener('click',(e)=>{
+            e.preventDefault();
+            e.stopPropagation();
+            this.target = el.dataset.action;
+            this.label = el.dataset.label;
+            this.disabledHActive();
+            el.classList.add('h-active');
+            this.showContent();
+            this.addToHistory();
+          })
+        });
+      }
+
+      this.disabledHActive = () => {
+        this.config.nav.forEach( (el, ind) => {
+          el.classList.remove('h-active');
+          let target = el.dataset.action;
+          document.querySelector('[data-target="'+target+'"]').classList.remove('h-active');
+        });
+      }
+
+      this.showContent = () => {
+        document.querySelector('[data-target="'+this.target+'"]').classList.add('h-active');
+      }
+
+      this.showFirstEl = () => {
+        document.querySelector('[data-target]:first-of-type').classList.add('h-active');
+        document.querySelector('[data-action]:first-of-type').classList.add('h-active');
+      }
+
+      this.addToHistory = () => {
+        history.pushState({page: this.target, label: '#' + this.label}, `Page ${this.target}`, location.pathname + '#' + this.label); 
+      }
+
+      this.backHistory = () => {
+        let self = this;
+        window.addEventListener('popstate', function(e) {
+          let h = ( history.state && history.state.label ) ? `${history.state.label}` : '';
+          self.target = ( location.hash != '#undefined' ) ? location.hash.substr( location.hash.indexOf('-') + 1, location.hash.length ) : 1;
+          if( !self.target || !h )
+            self.target = 1;
+          history.replaceState({page: self.target, label: h}, `Page ${self.target}`, location.pathname + h); 
+          self.disabledHActive();
+          self.showContent();
+          document.querySelector("[data-action='"+ self.target +"']").classList.add('h-active');
+        });
+      }
+    }
+
+    var hist = new myHistory( config );
+    hist.init();
+  </script>
+
+</body>
+</html>

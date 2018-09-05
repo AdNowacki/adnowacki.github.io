@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    
+    function get() {
+      return new Promise( (resolve, reject) => {
+        var a = setTimeout( () => {
+          resolve("Success");
+        },1500 )
+      } );
+    }
+
+    function display( txt ) {
+      return new Promise( (resolve, reject) => {
+        var b = setTimeout( () => {
+          resolve(txt);
+        },10000 );
+      } )
+    }
+
+
+    get()
+      .then((data) => {
+        // tutaj musi być return aby dalej zwrócić kolejnego Promise. Bez return nie zadziała
+        return display("Function display");
+      })
+      .then((d) => {
+        console.log(d);
+      })
+    
+  </script>
+
+</body>
+</html>

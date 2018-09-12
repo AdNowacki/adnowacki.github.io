@@ -1,0 +1,113 @@
+@import 'utils';
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+a, button, input, img {
+  outline: 0;
+
+  &:hover, &:active {
+    outline: 0;
+  }
+}
+
+.x-home {
+  height: 100vh;
+  overflow: hidden;
+
+  @include media-max-m() {
+    height: 40vh;
+  }
+}
+
+.x-slider {
+  height: 100vh;
+  overflow: hidden;
+
+  @include media-max-m() {
+    height: 40vh;
+  }
+  
+  
+  &__item {
+    height: 100vh;
+    position: relative;
+
+    @include media-max-m() {
+      height: 40vh;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.8);
+    z-index: 3;
+  }
+
+  &__grid {
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    overflow: hidden;
+  }
+
+  &__col {
+    flex: 1 1 8.3333333%;
+    height: 100vh;
+    border-right: 1px solid rgba(255,255,255,.2);
+    background: rgba(0,0,0,.8);
+    transition: all .5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    position: relative;
+
+    @include media-max-m() {
+      height: 40vh;
+      flex: 0 0 16.666666%;
+    }
+    
+    &:hover, &:active {
+      background: rgba(0,0,0,.3);
+    }
+  }
+
+  &__rect {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: #fff;
+    right: 0;
+    // top: 30%;
+    top: 120%;
+    opacity: 1;
+    transition: all 0s ease 0s;
+  }
+}
+
+.x-move {
+  .x-slider {
+    &__rect {
+      transition: all .6s ease .3s;
+      top: -30%;
+    }
+  }
+}
+
+
+
+

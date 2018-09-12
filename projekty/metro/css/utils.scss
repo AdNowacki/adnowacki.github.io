@@ -1,0 +1,110 @@
+@import 'bootstrap';
+
+$baseFontColor: #000;
+$lightFontColor: #000;
+$darkFontColor: #000;
+$decorFontColor: #000;
+
+$baseColor: #000;
+$lightColor: #000;
+$darkColor: #000;
+$decorColor: #000;
+
+$mediaXL: 1280px;
+$mediaL: 1140px;
+$mediaM: 968px;
+$mediaS: 768px;
+$mediaXS: 540px;
+
+@mixin media-max-xl() {
+  @media (max-width: $mediaXL) {
+    @content;
+  }
+}
+
+@mixin media-max-l() {
+  @media (max-width: $mediaL) {
+    @content;
+  }
+}
+
+@mixin media-max-m() {
+  @media (max-width: $mediaM) {
+    @content;
+  }
+}
+
+@mixin media-max-s() {
+  @media (max-width: $mediaS) {
+    @content;
+  }
+}
+
+@mixin media-max-xs() {
+  @media (max-width: $mediaXS) {
+    @content;
+  }
+}
+
+@mixin resetLink() {
+  color: $baseFontColor;
+  text-decoration: none;
+
+  &:hover, &:active {
+    color: $baseFontColor;
+    text-decoration: none;
+  }
+}
+
+@mixin resetButton() {
+  padding: 0;
+  border: 0;
+  background: none;
+
+  &:hover, &:active {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+}
+
+
+
+@for $i from 0 to 16 {
+  .x-p-#{$i*10} {
+    padding: #{$i*10}px;
+  }
+
+  .x-pt-#{$i*10} {
+    padding-top: #{$i*10}px;
+  }
+
+  .x-pb-#{$i*10} {
+    padding-bottom: #{$i*10}px;
+  }
+
+  .x-pl-#{$i*10} {
+    padding-left: #{$i*10}px;
+  }
+
+  .x-pr-#{$i*10} {
+    padding-right: #{$i*10}px;
+  }
+}
+
+.x-100 {max-width: 100%;}
+.x-75 {max-width: 75%;}
+.x-50 {max-width: 50%;}
+.x-25 {max-width: 25%;}
+.x-tcenter {text-align: center;}
+.x-tleft {text-align: left;}
+.x-tright {text-align: right;}
+.x-tjust {text-align: justify;}
+.x-prel {position: relative;}
+.x-pabs {position: absolute;}
+.x-pfix {position: fixed;}
+.x-block {display: block;}
+.x-flex {display: flex;}
+.x-iblock {display: inline-block;}
+.x-inline {display: inline;}
+

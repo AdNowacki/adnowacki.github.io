@@ -90,12 +90,14 @@ $mediaXS: 540px;
   padding: 0;
   border: 0;
   background: none;
+  cursor: pointer;
 
   &:hover, &:active {
     padding: 0;
     border: 0;
     background: none;
   }
+
 }
 
 
@@ -138,4 +140,14 @@ $mediaXS: 540px;
 .x-iblock {display: inline-block;}
 .x-inline {display: inline;}
 .x-decor-font {color: $decorFontColor;}
+
+@keyframes zoomIn {
+  0% {
+    width: 100%;
+    height: 100%;
+  } 100% {
+    width: 115%;
+    height: 115%;
+  }
+}
 

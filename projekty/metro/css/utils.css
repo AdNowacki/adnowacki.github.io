@@ -9333,4 +9333,26 @@ a.text-dark:focus, a.text-dark:hover {
 .x-decor-font {
   color: #c09b57;
 }
+
+@-webkit-keyframes zoomIn {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 115%;
+    height: 115%;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 115%;
+    height: 115%;
+  }
+}
 /*# sourceMappingURL=utils.css.map */

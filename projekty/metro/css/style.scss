@@ -3,6 +3,7 @@
 html, body {
   padding: 0;
   margin: 0;
+  font: 400 10px/1.3 $baseFont, Arial, sans-serif;
 }
 
 a, button, input, img {
@@ -16,6 +17,7 @@ a, button, input, img {
 .x-home {
   height: 100vh;
   overflow: hidden;
+  position: relative;
 
   @include media-max-m() {
     height: 40vh;
@@ -25,11 +27,11 @@ a, button, input, img {
 .x-slider {
   height: 100vh;
   overflow: hidden;
+  position: relative;
 
   @include media-max-m() {
     height: 40vh;
   }
-  
   
   &__item {
     height: 100vh;
@@ -47,16 +49,6 @@ a, button, input, img {
     object-position: top center;
   }
 
-  &__mask {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.8);
-    z-index: 3;
-  }
-
   &__grid {
     display: flex;
     position: absolute;
@@ -64,7 +56,6 @@ a, button, input, img {
     top: 0;
     width: 100%;
     height: 100%;
-    z-index: 4;
     overflow: hidden;
   }
 
@@ -73,7 +64,7 @@ a, button, input, img {
     height: 100vh;
     border-right: 1px solid rgba(255,255,255,.2);
     background: rgba(0,0,0,.8);
-    transition: all .5s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+    transition: all .8s cubic-bezier(0.455, 0.030, 0.515, 0.955);
     position: relative;
 
     @include media-max-m() {
@@ -82,7 +73,8 @@ a, button, input, img {
     }
     
     &:hover, &:active {
-      background: rgba(0,0,0,.3);
+      background: rgba(0,0,0,.7);
+      transition: all .5s cubic-bezier(0.455, 0.030, 0.515, 0.955);      
     }
   }
 
@@ -97,6 +89,70 @@ a, button, input, img {
     opacity: 1;
     transition: all 0s ease 0s;
   }
+
+  &__title {
+    position: absolute;
+    left: 8.3333%;
+    top: 50%;
+    transform: translateY(-40%);
+    z-index: 1000;
+    color: $lightFontColor;
+    opacity: 0;
+    transition: all .3s ease 0s;
+    pointer-events: none;
+    font-family: 'Gotham Bold';
+    line-height: 1.4;
+    
+    &.x-act {
+      opacity: 1;
+      transform: translateY(-50%);      
+      transition: all .5s ease .5s;
+
+      .x-link {
+        pointer-events: auto;
+      }
+    }
+
+
+    h2 {
+      font-size: 6.8rem;
+      span {
+        color: $decorFontColor;
+      }
+
+      @include media-max-m() {
+        font-size: 3.2rem;
+      }
+
+      @include media-max-s() {
+        font-size: 2.6rem;
+      }
+
+      @include media-max-xs() {
+        font-size: 2rem;
+      }
+    }
+
+    p {
+      font-family: 'Gotham Book';
+      font-size: 3.1rem;
+      margin: 30px 0;
+
+      @include media-max-m() {
+        font-size: 2.1rem;
+        margin: 20px 0;
+      }
+      
+      @include media-max-s() {
+        font-size: 1.7rem;
+        margin: 10px 0;
+      }
+
+      @include media-max-xs() {
+        font-size: 1.3rem;
+      }
+    }
+  }
 }
 
 .x-move {
@@ -105,6 +161,43 @@ a, button, input, img {
       transition: all .6s ease .3s;
       top: -30%;
     }
+  }
+}
+
+.x-link {
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: solid 3px #c09b57;
+  display: inline-block;
+  pointer-events: auto;
+  transition: all .3s;
+  padding: 18px 55px;
+  line-height: 1;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: $decorFontColor;
+  font-family: 'Gotham Book';
+  margin: 20px 0;
+
+  &--events-stop {
+    pointer-events: none;
+  }
+  
+  @include media-max-m() {
+    font-size: 1.6rem;
+    padding: 12px 35px;
+    margin: 12px 0;
+  }
+  
+  @include media-max-s() {
+    font-size: 1.4rem;
+    padding: 12px 35px;
+  }
+  
+  &:hover, &:active {
+    background-color: $decorFontColor;
+    color: $lightFontColor;
+    text-decoration: none;
   }
 }
 

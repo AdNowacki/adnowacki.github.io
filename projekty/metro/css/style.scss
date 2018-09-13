@@ -42,9 +42,13 @@ a, button, input, img {
     }
 
     @include media-max-s() {
-      flex-shrink: 0;
       width: 50px;
       height: 50px;
+    }
+
+    @include media-max-xs() {
+      width: 32px;
+      height: 32px;
     }
   }
   
@@ -236,6 +240,10 @@ a, button, input, img {
       @include media-max-xs() {
         font-size: 1.8rem;
       }
+
+      @include media-max-xs() {
+        font-size: 1.5rem;
+      }
     }
 
     p {
@@ -254,8 +262,9 @@ a, button, input, img {
       }
 
       @include media-max-xs() {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
+      
     }
   }
 
@@ -267,11 +276,19 @@ a, button, input, img {
     bottom: 4%;
     text-align: right;
 
+    @include media-max-s() {
+      bottom: 0;
+    }
+
     img {
       max-width: 100%;
 
       @include media-max-m() {
         max-width: 60%;
+      }
+
+      @include media-max-s() {
+        max-width: 40%;
       }
     }
 
@@ -327,8 +344,8 @@ a, button, input, img {
   }
   
   @include media-max-s() {
-    font-size: 1.4rem;
-    padding: 12px 35px;
+    font-size: 1.2rem;
+    padding: 9px 20px;
   }
   
   &:hover, &:active {

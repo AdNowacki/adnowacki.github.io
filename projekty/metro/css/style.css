@@ -9418,10 +9418,15 @@ a:hover, a:active, button:hover, button:active, input:hover, input:active, img:h
 
 @media (max-width: 768px) {
   .x-main-nav__btn {
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
     width: 50px;
     height: 50px;
+  }
+}
+
+@media (max-width: 540px) {
+  .x-main-nav__btn {
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -9650,6 +9655,12 @@ a:hover, a:active, button:hover, button:active, input:hover, input:active, img:h
   }
 }
 
+@media (max-width: 540px) {
+  .x-slider__title h2, .x-slider__logo h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .x-slider__title p, .x-slider__logo p {
   font-family: 'Gotham Book';
   font-size: 3.1rem;
@@ -9672,7 +9683,7 @@ a:hover, a:active, button:hover, button:active, input:hover, input:active, img:h
 
 @media (max-width: 540px) {
   .x-slider__title p, .x-slider__logo p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -9686,6 +9697,12 @@ a:hover, a:active, button:hover, button:active, input:hover, input:active, img:h
   text-align: right;
 }
 
+@media (max-width: 768px) {
+  .x-slider__logo {
+    bottom: 0;
+  }
+}
+
 .x-slider__logo img {
   max-width: 100%;
 }
@@ -9693,6 +9710,12 @@ a:hover, a:active, button:hover, button:active, input:hover, input:active, img:h
 @media (max-width: 968px) {
   .x-slider__logo img {
     max-width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .x-slider__logo img {
+    max-width: 40%;
   }
 }
 
@@ -9745,8 +9768,8 @@ a:hover, a:active, button:hover, button:active, input:hover, input:active, img:h
 
 @media (max-width: 768px) {
   .x-link {
-    font-size: 1.4rem;
-    padding: 12px 35px;
+    font-size: 1.2rem;
+    padding: 9px 20px;
   }
 }
 

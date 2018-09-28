@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": {
+      "pl": "Metropolitan Investment S.A.",
+      "en": "Metropolitan Investment S.A."
+    },
+    "address": {
+      "street": "ul. Grzybowska 5A",
+      "post": "00-132",
+      "city": "Warszawa"
+    },
+    "contact": {
+      "email": "metropolitan@metropolitan.pl",
+      "phone": "+48 22 652 23 21"
+    },
+    "geo": {
+      "lat": 52.236900,
+      "lng": 21.000680
+    }
+  },
+  {
+    "id": "2",
+    "name": {
+      "pl": "Gorilla",
+      "en": "Gorilla"
+    },
+    "address": {
+      "street": "ul. Twarda 18",
+      "post": "00-132",
+      "city": "Warszawa"
+    },
+    "contact": {
+      "email": "metropolitan@metropolitan.pl",
+      "phone": "+48 22 652 23 21"
+    },
+    "geo": {
+      "lat": 52.236900,
+      "lng": 21.000680
+    }
+  },
+  {
+    "id": "2",
+    "name": {
+      "pl": "Metropolitan Investment S.A. 3",
+      "en": "Metropolitan Investment S.A. 3"
+    },
+    "address": {
+      "street": "ul. Grzybowska 5A",
+      "post": "00-132",
+      "city": "Warszawa"
+    },
+    "contact": {
+      "email": "metropolitan@metropolitan.pl",
+      "phone": "+48 22 652 23 21"
+    },
+    "geo": {
+      "lat": 52.236900,
+      "lng": 21.000680
+    }
+  }
+]

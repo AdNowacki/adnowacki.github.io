@@ -1,0 +1,238 @@
+@import 'bootstrap';
+@import 'select';
+@import 'slick';
+@import 'slick-theme';
+@font-face {
+    font-family: 'Gotham Ultra';
+    src: url('../webfonts/subset-Gotham-Ultra.woff2') format('woff2'),
+        url('../webfonts/subset-Gotham-Ultra.woff') format('woff'),
+        url('../webfonts/subset-Gotham-Ultra.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Book';
+    src: url('../webfonts/subset-Gotham-Book.woff2') format('woff2'),
+        url('../webfonts/subset-Gotham-Book.woff') format('woff'),
+        url('../webfonts/subset-Gotham-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham Bold';
+    src: url('../webfonts/subset-Gotham-Bold.woff2') format('woff2'),
+        url('../webfonts/subset-Gotham-Bold.woff') format('woff'),
+        url('../webfonts/subset-Gotham-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Gotham Medium';
+  src: url('../webfonts/Gotham-Medium.eot?#iefix') format('embedded-opentype'),  
+       url('../webfonts/Gotham-Medium.otf')  format('opentype'),
+       url('../webfonts/Gotham-Medium.woff') format('woff'), 
+       url('../webfonts/Gotham-Medium.ttf')  format('truetype'), 
+       url('../webfonts/Gotham-Medium.svg#Gotham-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+$baseFont: 'Gotham Book';
+
+$baseFontColor: #000;
+$lightFontColor: #fff;
+$darkFontColor: #000;
+$decorFontColor: #c09b57;
+
+$baseColor: #000;
+$lightColor: #000;
+$darkColor: #000;
+$decorColor: #000;
+
+$mediaXXL: 1500px;
+$mediaXL: 1280px;
+$mediaL: 1140px;
+$mediaM: 968px;
+$mediaS: 768px;
+$mediaXS: 540px;
+
+@mixin media-max-xxl() {
+  @media (max-width: $mediaXXL) {
+    @content;
+  }
+}
+
+@mixin media-max-xl() {
+  @media (max-width: $mediaXL) {
+    @content;
+  }
+}
+
+@mixin media-max-l() {
+  @media (max-width: $mediaL) {
+    @content;
+  }
+}
+
+@mixin media-max-m() {
+  @media (max-width: $mediaM) {
+    @content;
+  }
+}
+
+@mixin media-max-s() {
+  @media (max-width: $mediaS) {
+    @content;
+  }
+}
+
+@mixin media-max-xs() {
+  @media (max-width: $mediaXS) {
+    @content;
+  }
+}
+
+@mixin media-max-height-700() {
+  @media (max-height: 700px) {
+    @content;
+  }
+}
+
+@mixin resetLink() {
+  color: $baseFontColor;
+  text-decoration: none;
+
+  &:hover, &:active {
+    color: $baseFontColor;
+    text-decoration: none;
+  }
+}
+
+@mixin resetButton() {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+
+  &:hover, &:active {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+}
+
+
+
+@for $i from 0 to 16 {
+  .x-p-#{$i*10} {
+    padding: #{$i*10}px;
+  }
+
+  .x-pt-#{$i*10} {
+    padding-top: #{$i*10}px;
+  }
+
+  .x-pb-#{$i*10} {
+    padding-bottom: #{$i*10}px;
+  }
+
+  .x-pl-#{$i*10} {
+    padding-left: #{$i*10}px;
+  }
+
+  .x-pr-#{$i*10} {
+    padding-right: #{$i*10}px;
+  }
+  @media (max-width: 1024px) {
+    .x-p-#{$i*10} {
+      padding: #{($i*10)/3}px;
+    }
+  
+    .x-pt-#{$i*10} {
+      padding-top: #{($i*10)/3}px;
+    }
+  
+    .x-pb-#{$i*10} {
+      padding-bottom: #{($i*10)/3}px;
+    }
+  
+    .x-pl-#{$i*10} {
+      padding-left: #{($i*10)/3}px;
+    }
+  
+    .x-pr-#{$i*10} {
+      padding-right: #{($i*10)/3}px;
+    }
+  }
+}
+
+
+
+.x-100 {max-width: 100%;}
+.x-75 {max-width: 75%;}
+.x-50 {max-width: 50%;}
+.x-25 {max-width: 25%;}
+.x-tcenter {text-align: center;}
+.x-tleft {text-align: left;}
+.x-tright {text-align: right;}
+.x-tjust {text-align: justify;}
+.x-prel {position: relative;}
+.x-pabs {position: absolute;}
+.x-pfix {position: fixed;}
+.x-block {display: block;}
+.x-flex {display: flex;}
+.x-iblock {display: inline-block;}
+.x-inline {display: inline;}
+.x-decor-font {color: $decorFontColor;}
+.x-hidden {overflow-x: hidden; overflow-y: visible;}
+.x-hide {opacity: 0; pointer-events: none;}
+
+@keyframes zoomIn {
+  0% {
+    width: 100%;
+    height: 100%;
+  } 100% {
+    width: 115%;
+    height: 115%;
+  }
+}
+
+@keyframes teamShow {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+  50%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dotMove {
+  20% {
+    width: 41px;
+    height: 9px;
+    top: 0;
+  } 43% {
+    top: 0;
+    left: auto;
+    right: -32px;
+    width: 9px;
+    height: 9px;
+  } 65% {
+    top: 0;
+    height: 41px;
+  } 85%, 100% {
+    height: 9px;
+    width: 9px;
+    top: 32px;
+    right: -32px;
+    left: auto;
+  }
+}
+

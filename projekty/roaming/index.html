@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html lang="pl" class="ltr ie ie8 no-script"><![endif]-->
+<!--[if IE 9]><html lang="pl" class="ltr ie ie9 no-script"><![endif]-->
+<!-- [if gt IE 9] <!-->
+<html lang="pl" class="ltr no-script">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Roaming</title>
+  <link href="https://orange.binaries.pl/ui/css/opl-online.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/x-multiselect.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- mapa -->
+  <div id="x-app">
+    <section class="x-main-page">
+      <div class="l-full-row opl-x-map-container">
+          <!-- map -->
+          <div class="x-map-wrap" :class="[countryDetail || tipsDetail ? 'x-country-show' : '']">
+            <div id="x-map">
+            </div>
+          </div>
+          <!-- map end -->
+
+          <!-- map content -->
+          <div class="x-map-ctn x-pe--none">
+            <div class="l-page-row">
+              <div class="l-row">
+                <div class="l-col l-col-5 l-col-medium-12 x-pe--none" v-show="!hideText">
+                  <h1 class="h3 x-pe--auto">Przygotuj się do podróży</h1>
+                  <p class="x-pe--auto">Dowiesz się m.in. na jakie przepisy prawa trzeba uważać lub jakie ograniczenia obowiązują kierowców.</p>
+                </div>
+              </div>
+              <div class="l-row">
+                <div class="l-col l-col-6 l-col-medium-12">
+                  <div class="x-select x-pe--auto" id="select_button">
+                    <multiselect v-model="selected" select-label="" deselect-label="" selected-label="" track-by="name" @input="rerender" label="name" placeholder="Wyszukaj kraj" :options="options" :searchable="true" :allow-empty="false">
+                      <template slot="singleLabel" slot-scope="{ option }"><strong>{{ option.name }}</strong></template>
+                    </multiselect>
+                  </div>
+                </div>
+              </div>
+              <div class="l-row x-hide-mob">
+                  <div class="l-col l-col-8 l-col-medium-12 x-hide-mob">
+                      <div class="x-guide x-pe--none">
+                          <div class="x-guide__item x-pe--auto">
+                            <h2 class="x-title x-title--h2">Ubezpieczenia</h2>
+                            <p class="x-text x-text--90">Od czego można i warto się ubezpieczyć?</p>
+                            <img src="images/x-arrow.svg" class="x-arrow" alt="">
+                            <a href="" class="x-guide__link" data-target="page1" @click.prevent="showTab(2,$event)"></a>
+                          </div>
+                          <div class="x-guide__item x-pe--auto">
+                            <h2 class="x-title x-title--h2">Choroba</h2>
+                            <p class="x-text x-text--90">Opieka konsularna nie obejmuje kosztów pomocy lekarskiej.</p>
+                            <img src="images/x-arrow.svg" class="x-arrow" alt="">
+                            <a href="" class="x-guide__link" data-target="page2" @click.prevent="showTab(7,$event)"></a>
+                          </div>
+                        </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <!-- map content end -->
+
+          <!-- info -->
+          <p class="x-info">
+            <button class="o-btn opl-btn x-mobile-btn opl-btn--primary" @click.prevent="showTips">
+              <span>Zobacz porady dla podróżujących</span>
+            </button>
+            <span>Informacje przedstawione na stronie www.orange.pl/zagranica bazują na informacjach udostępnionych na portalu MSZ (www.msz.gov.pl). MSZ dokłada wszelkich starań, aby ostrzeżenia dla podróżujących publikowane na stronie MSZ (http://www.msz.gov.pl/pl/informacje_konsularne/ostrzezenia/ostrzezenia_dla_podrozujacych) były rzetelne, wyczerpujące i aktualne. Podkreślamy, że publikowane na portalu MSZ ostrzeżenia należy traktować wyłącznie jako rekomendację: mają one charakter informacyjny i nie mogą stanowić podstawy do jakichkolwiek roszczeń. Należy pamiętać, że MSZ nie ma prawnych możliwości zakazania wyjazdu do jakiegokolwiek państwa. Treść ostrzeżenia na portalu MSZ pozostaje aktualna do czasu publikacji nowego komunikatu.</span>
+              <!-- Informacje przedstawiane na stronie www.orange.pl/zagranica bazują na informacjach udostępnianych na portalu MSZ (www.msz.gov.pl). Jednocześnie MSZ dokłada wszelkich starań, aby ostrzeżenia dla podróżujących publikowane na portalu MSZ (www.msz.gov.pl) były rzetelne, wyczerpujące i aktualne. Jednocześnie podkreślamy, że publikowane na portalu MSZ ostrzeżenia należy traktować wyłącznie jako rekomendację: mają one charakter informacyjny i nie mogą stanowić podstawy do jakichkolwiek roszczeń. Należy pamiętać, że MSZ nie ma prawnych możliwości zakazania wyjazdu do jakiegokolwiek państwa. Treść ostrzeżenia na portalu MSZ pozostaje aktualna do czasu publikacji nowego komunikatu. -->
+          </p>
+
+          <!-- country page -->
+          <section class="x-country-details" :class="{ 'x-country-show': countryDetail }" id="x-country-show">
+
+            <!-- modal -->
+            <div class="x-modal" :class="{'x-modal__show': modalContent}">
+              <button class="x-modal__close" @click="hideModal">
+                <img src="images/close.png" alt="">
+              </button>
+              <div class="x-modal__ctn" v-html="modalContent"></div>
+            </div>
+
+            <!-- modal warnings -->
+            <div class="x-modal--warning" :class="{'x-modal__show': modalWarning}">
+              <button class="x-modal__close" @click="hideModal">
+                <img src="images/close.png" alt="">
+              </button>
+              <div class="x-modal__ctn" v-html="modalWarning"></div>
+            </div>
+
+            <div class="x-current-status">
+                <div class="l-page-row">
+                    <div class="l-col l-col-8 l-col-medium-9" v-html="currentCountryStatus">
+                    </div>
+                    <div class="l-col l-col-4 l-col-medium-3 x-right" v-if="warnings">
+                      <button class="o-btn opl-btn" @click="showWarnings">
+                        <span>Dowiedz się więcej</span>
+                      </button>
+                      <button class="x-no-btn" @click="showWarnings">
+                        <img src="images/x-back.jpg" alt="">
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <header class="opl-top-background">
+              <div class="l-full-row">
+                <div class="l-page-row opl-banner">
+                    <div class="x-country-header">              
+                      <div class="l-page-row">
+                        <div class="l-col l-col-8 l-col-medium-12 opl-top-title">
+                          <div class="opl-top-title__item" v-html="countryGeneral"></div>
+                        </div>
+                        <div class="l-col l-col-4 l-col-medium-12 opl-top-title">
+                          <div class="opl-top-title__item x-right">
+                            <div class="x-space-34">
+                              <button class="o-btn opl-btn opl-btn--transparent" @click.prevent="showTips">Porady</button>
+                              <button class="o-btn opl-btn opl-btn--primary" @click.prevent="back">Zmień kraj</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </header>
+            <div class="x-banner">
+                <div class="x-banner__image">
+                  <img src="images/x-banner.png" alt="">
+                  <div class="x-banner__txt">
+                    <p>
+                      Zapomniałeś się ubezpieczyć?<br>
+                      Nic staconego 
+                    </p>
+                      <a href="https://www.orange.pl/view/ubezpieczenia-turystyczne" class="o-btn opl-btn opl-btn--primary" style="position: relative; z-index: 11;">Sprawdź</a>
+                  </div>
+                </div>
+              </div>
+              <div class="x-country-boxes">
+                <div class="l-page-row">
+                  <h3><img src="images/g18.png" alt=""> Informacje o państwie</h3>
+                  <div class="x-country-box-wrap">
+                    <div class="x-country-box" v-if="countryInfos['Wjazd i pobyt'] || countryInfos['Wjazd']">
+                      <figure>
+                        <img src="images/ico1.png" alt="">
+                        <figcaption>Wjazd i pobyt</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(1, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Bezpieczeństwo']">
+                      <figure>
+                        <img src="images/ico2.png" alt="">
+                        <figcaption>Bezpieczeństwo</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(2, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Ubezpieczenie']">
+                      <figure>
+                        <img src="images/ico3.png" alt="">
+                        <figcaption>Ubezpieczenie</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(3, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Zdrowie']">
+                      <figure>
+                        <img src="images/ico4.png" alt="">
+                        <figcaption>Zdrowie</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(4, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Podróżowanie po kraju']">
+                      <figure>
+                        <img src="images/ico5.png" alt="">
+                        <figcaption>Podróżowanie po kraju</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(11, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Obyczaje']">
+                      <figure>
+                        <img src="images/ico10.png" alt="">
+                        <figcaption>Obyczaje</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(5, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Informacje dla kierowców']">
+                      <figure>
+                        <img src="images/ico6.png" alt="">
+                        <figcaption>Informacje dla kierowców</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(6, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Informacje dla kierowców']">
+                      <figure>
+                        <img src="images/ico7.png" alt="">
+                        <figcaption>Cło</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(7, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Przepisy prawne']">
+                      <figure>
+                        <img src="images/ico8.png" alt="">
+                        <figcaption>Przepisy prawne</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(8, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Przydatne informacje']">
+                      <figure>
+                        <img src="images/ico9.png" alt="" v-if="countryInfos['Przydatne informacje']">
+                        <figcaption>Przydatne informacje</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(9, $event)"></a>
+                    </div>
+                    <div class="x-country-box" v-if="countryInfos['Święta']">
+                      <figure>
+                        <img src="images/ico11.png" alt="">
+                        <figcaption>Święta</figcaption>
+                      </figure>
+                      <a href="" @click.prevent="showInfo(10, $event)"></a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="x-places">
+              <div class="l-page-row">
+                <div class="x-places__title">
+                  <h3>
+                      Polskie placówki<br>
+                      <span v-if="countryDepartments">{{countryDepartments[0].name}}</span>
+                  </h3>
+                </div>
+                <div class="x-places__ctn" v-if="countryDepartments" v-html="countryDepartments[0].contact">
+                </div>
+              </div>
+              <div class="x-places__btns">
+                  <button class="o-btn opl-btn" @click.prevent="showTips">Porady</button>
+                  <button class="o-btn opl-btn" @click.prevent="back">Zmień kraj</button>
+              </div>
+            </div>
+
+            <!-- <div class="x-insta">
+              <div class="l-page-row">
+                <div class="l-col l-col-12 x-insta__bg">
+                  <img src="images/x-h.png" alt="">
+                  <h4><span>#</span> orangeroaming</h4>
+                </div>
+                <div class="l-col l-col-4 l-col-small-12">
+                  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#orangezbliza, a efekty tego cieszą oko! Zobacz jak wygląda kolażowy mural, który znajduje się w sercu stolicy - na warszawskiej „Patelni”.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Post udostępniony przez <a href="https://www.instagram.com/orange_polska/?utm_source=ig_embed" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Orange Polska</a> (@orange_polska) <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-08-07T14:04:05+00:00">Sie 7, 2018 o 7:04 PDT</time></p></div></blockquote>
+                  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#orangezbliza, a efekty tego cieszą oko! Zobacz jak wygląda kolażowy mural, który znajduje się w sercu stolicy - na warszawskiej „Patelni”.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Post udostępniony przez <a href="https://www.instagram.com/orange_polska/?utm_source=ig_embed" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Orange Polska</a> (@orange_polska) <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-08-07T14:04:05+00:00">Sie 7, 2018 o 7:04 PDT</time></p></div></blockquote>
+                </div>
+                <div class="l-col l-col-4 l-col-small-12">
+                  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#orangezbliza, a efekty tego cieszą oko! Zobacz jak wygląda kolażowy mural, który znajduje się w sercu stolicy - na warszawskiej „Patelni”.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Post udostępniony przez <a href="https://www.instagram.com/orange_polska/?utm_source=ig_embed" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Orange Polska</a> (@orange_polska) <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-08-07T14:04:05+00:00">Sie 7, 2018 o 7:04 PDT</time></p></div></blockquote>
+                  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#orangezbliza, a efekty tego cieszą oko! Zobacz jak wygląda kolażowy mural, który znajduje się w sercu stolicy - na warszawskiej „Patelni”.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Post udostępniony przez <a href="https://www.instagram.com/orange_polska/?utm_source=ig_embed" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Orange Polska</a> (@orange_polska) <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-08-07T14:04:05+00:00">Sie 7, 2018 o 7:04 PDT</time></p></div></blockquote>
+                </div>
+                <div class="l-col l-col-4 l-col-small-12">
+                  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#orangezbliza, a efekty tego cieszą oko! Zobacz jak wygląda kolażowy mural, który znajduje się w sercu stolicy - na warszawskiej „Patelni”.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Post udostępniony przez <a href="https://www.instagram.com/orange_polska/?utm_source=ig_embed" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Orange Polska</a> (@orange_polska) <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-08-07T14:04:05+00:00">Sie 7, 2018 o 7:04 PDT</time></p></div></blockquote>
+                  <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" data-instgrm-version="9" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BmLis3hlyQO/?utm_source=ig_embed" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#orangezbliza, a efekty tego cieszą oko! Zobacz jak wygląda kolażowy mural, który znajduje się w sercu stolicy - na warszawskiej „Patelni”.</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">Post udostępniony przez <a href="https://www.instagram.com/orange_polska/?utm_source=ig_embed" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Orange Polska</a> (@orange_polska) <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-08-07T14:04:05+00:00">Sie 7, 2018 o 7:04 PDT</time></p></div></blockquote>
+                </div>
+                <div class="l-col l-col-12">
+                  <div class="x-insta__btns">
+                    <a href="https://www.instagram.com/orange_polska/?hl=pl" class="o-btn opl-btn opl-btn--primary" target="_blank">Zobacz więcej</a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="x-banner-b">
+              <img src="images/x-banner-b.png" alt="">
+              <h4 class="x-banner-b__text">
+                  Roaming <br>i połączenia <br>międzynarodowe <br>w Orange
+              </h4>
+              <a href="https://www.orange.pl/view/roaming" class="o-btn opl-btn opl-btn--primary x-banner-b__link">Zobacz więcej</a>
+            </div>
+
+            <!-- info -->
+            <p class="x-info x-hide-mob">
+                Informacje przedstawiane na stronie www.orange.pl/zagranica bazują na informacjach udostępnianych na portalu MSZ (www.msz.gov.pl). Jednocześnie MSZ dokłada wszelkich starań, aby ostrzeżenia dla podróżujących publikowane na portalu MSZ (www.msz.gov.pl) były rzetelne, wyczerpujące i aktualne. Jednocześnie podkreślamy, że publikowane na portalu MSZ ostrzeżenia należy traktować wyłącznie jako rekomendację: mają one charakter informacyjny i nie mogą stanowić podstawy do jakichkolwiek roszczeń. Należy pamiętać, że MSZ nie ma prawnych możliwości zakazania wyjazdu do jakiegokolwiek państwa. Treść ostrzeżenia na portalu MSZ pozostaje aktualna do czasu publikacji nowego komunikatu.
+            </p>
+          </section>
+
+          <!-- tips page -->
+          <section class="x-tips-details" :class="{ 'x-tips-show': tipsDetail }" id="x-tips-show">
+
+            <header class="opl-top-background opl-top-background--tips">
+              <div class="l-full-row">
+                <div class="l-page-row opl-banner">
+                    <div class="x-country-header">              
+                      <div class="l-page-row">
+                        <div class="l-col l-col-6 l-col-medium-12 opl-top-title">
+                          <h2 class="g-white1-c">Informacje dla podróżujących</h2>
+                          <p class="g-white1-c h4 u-padding-l" style="font-weight: 400;">
+                            Przed wyjazdem zagranicznym zbierz informacje dotyczące kraju podróży, przeczytaj opis danego kraju zamieszczony w naszym
+                            serwisie i sprawdź, czy nie figuruje w aktualnych ostrzeżeniach dla podróżujących.
+                          </p>
+                          <button class="o-btn opl-btn opl-btn--primary" @click.prevent="back">Zmień kraj</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </header>
+
+            <div class="x-tips">
+              <div class="l-page-row">
+                <div class="l-col l-col-5 l-col-medium-12">
+                  <div class="x-tabs">
+                    <button class="x-tab--back" @click="backFromTips">
+                      <img src="images/x-back.jpg" alt="">
+                      Wróć
+                    </button>
+                    <button class="x-tab"  :class="[!tips1 && !tips2 ? 'act' : '']" data-c="1">Odyseusz - zarejestruj podróż</button>
+                    <button class="x-tab" :class="[tips1 ? 'act' : '']" data-c="2">Ubezpieczenie</button>
+                    <button class="x-tab" data-c="3">Przed podróżą</button>
+                    <button class="x-tab" data-c="4">W podróży</button>
+                    <button class="x-tab" data-c="5">Zagrożenia</button>
+                    <button class="x-tab" data-c="6">Utrata pieniędzy</button>
+                    <button class="x-tab" data-c="7" :class="[tips2 ? 'act' : '']">Choroba</button>
+                    <button class="x-tab" data-c="8">Utraciłem dokumenty</button>
+                    <button class="x-tab" data-c="9">Zatrzymanie/aresztowanie</button>
+                    <button class="x-tab" data-c="10">Brak polskiego przedstawicielstwa</button>
+                    <button class="x-tab" data-c="11">Dokumenty uprawniające do przekraczania granic państw UE</button>
+                    <button class="x-tab" data-c="12">Poszukiwania zaginionych</button>
+                    <button class="x-tab" data-c="13">Kiedy konsul nie może działać</button>
+                  </div>
+                </div>
+                <div class="l-col l-col-7 l-col-medium-12">
+                  <!-- ctn tab -->
+                  <div class="x-tab-ctn">
+                    <!-- ctn tab 1 -->
+                    <div class="x-tab-ctn__item" :class="[!tips1 && !tips2 ? 'act' : '']" data-t="1">
+                      <div class="l-col l-col-12 u-padding-xl">
+                        <h2>Odyseusz - zarejestruj podróż</h2>
+                        <p>Zachęcamy do zarejestrowania podróży w serwisie konsularnym „Odyseusz” i korzystania z niego przez wszystkich, którzy przebywają lub planują pobyt poza granicami Polski.</p>
+                        <a href="https://odyseusz.msz.gov.pl/" class="o-btn u-margin-xl opl-btn opl-btn--primary">Zarejestruj się</a>
+                        <h2>Dlaczego</h2>
+                        <p>
+                          W przypadku wystąpienia sytuacji nadzwyczajnych za granicą, MSZ będzie 
+                          mógł podjąć z Państwem kontakt,udzielić niezbędnych informacji oraz pomocy poprzez właściwą placówkę dyplomatyczno-konsularną, system 
+                          <strong>„Odyseusz”</strong> umożliwi również otrzymywanie regularnych powiadomień dotyczących działalności placówki, informacji konsularnych, a także - 
+                          jeśli wyrażą Państwo taką wolę - <strong>może być wykorzystany w celu rejestracji do udziału 
+                          w wyborach za granicą.</strong>
+                        </p>
+                      </div>
+                      <div class="l-col l-col-6">
+                          <h2>Jak się zarejestrować?</h2>
+                          <p>
+                              zgłoszenie swojego pobytu jest dobrowolne, jednak apelujemy o korzystanie z tej możliwości,
+                              zgłoszenia można dokonać na dwa sposoby: proste <strong>zgłoszenie podróży</strong> lub <strong>założenie profilu</strong> w systemie.
+                          </p>
+                          <!-- <div class="x-adv">
+                            <span>Reklama</span>
+                          </div> -->
+                      </div>
+                      <div class="l-col l-col-6">
+                        <h2>Praktyczne porady</h2>
+                        <p>
+                            Osobom przebywającym za granicą dłużej niż <strong>6 miesięcy</strong> polecamy założenie własnego konta, które umożliwi modyfikację swoich danych kontaktowych, zgłaszanie kolejnych podróży oraz otrzymywanie Newslettera i informacji o terminach wyborów.
+                        </p>
+                        <p>
+                            Wszystkie osoby, które założą konto w systemie „Odyseusz” <strong>otrzymają e-mail potwierdzający ten fakt</strong>, a także będą otrzymywać regularne (coroczne) przypomnienia o konieczności aktualizacji swoich danych osobowych i kontaktowych. W przypadku zignorowania takiego wezwania konto zostanie automatycznie usunięte
+                        </p>
+                        <p>
+                            Osobom, które sporadycznie wyjeżdżają za granicę polecamy proste zgłoszenie, bez zakładania profilu. <strong>Zgłoszenie takie będzie archiwizowane w ciągu 14 dni od zakończenia podróży.</strong>
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 2 -->
+                    <div class="x-tab-ctn__item" :class="[tips1 ? 'act' : '']" data-t="2">
+                      <div class="l-col l-col-12 u-padding-xl">
+                        <h2>Ubezpieczenie</h2>
+                        <p>
+                          Wyjeżdżając za granicę zawsze należy pamiętać o wykupieniu ubezpieczenia. Polisy nie są drogie, a koszty, jakie należy ponieść w razie ich braku, są wprost astronomiczne. Na przykład: koszt wezwania karetki pogotowia waha się od równowartości 40 złotych w Egipcie do nawet 2 tysięcy złotych w Hiszpanii; wizyta u lekarza pierwszego kontaktu to wydatek dla nieubezpieczonego od 80 złotych w Rosji do ok. 600 złotych w USA; doba pobytu w szpitalu to obciążenie finansowe od 140 złotych we Włoszech do nawet 2700 złotych w Austrii; transport samolotem sanitarnym to, w zależności od kontynentu, koszt od 10 tysięcy do nawet 100 tysięcy złotych.
+                        </p>
+                        <div class="x-banner__image" style="position: relative;">
+                          <img src="images/x-banner.png" alt=""> 
+                          <div class="x-banner__txt">
+                            <p style="font-size: 1em; margin: 0 0 15px;">
+                              Zapomniałeś się ubezpieczyć?<br>
+                              Nic staconego 
+                            </p> 
+                            <a href="https://www.orange.pl/view/ubezpieczenia-turystyczne" class="o-btn opl-btn opl-btn--primary" style="position: relative;z-index: 11;">Sprawdź</a>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Od czego można i warto się ubezpieczyć? </h2>
+                        <ul>
+                            <li>pokrycie kosztów leczenia i pomocy w podróży. Przedmiotem ubezpieczenia są przeważnie koszty poniesione w następstwie nagłego zachorowania lub nieszczęśliwego wypadku w trakcie trwania okresu ubezpieczenia, poza granicami Polski lub kraju zamieszkania ubezpieczonego, m.in.:</li>
+                            <li>koszty leczenia ubezpieczonego poniesione w następstwie nagłego zachorowania lub nieszczęśliwego wypadku, w okresie trwania umowy ubezpieczenia;</li>
+                            <li>koszty transportu medycznego ubezpieczonego do miejsca zamieszkania lub placówki medycznej na terenie Polski (koszty transportu medycznego nie są ograniczone sumą ubezpieczenia);</li>
+                            <li>koszty transportu ciała ubezpieczonego do miejsca pochówku na terenie Polski lub kraju zamieszkania ubezpieczonego;</li>
+                            <li>organizacja pomocy w podróży i pokrycie jej kosztów.</li>
+                            <li>ubezpieczenie od następstw nieszczęśliwych wypadków (NNW), które gwarantuje wypłatę odszkodowania związanego z nieszczęśliwym wypadkiem, na skutek którego ubezpieczony doznał trwałego uszczerbku na zdrowiu lub poniósł śmierć. Z reguły w ramach ubezpieczenia od następstw nieszczęśliwych wypadków można otrzymać następujące świadczenia:</li>
+                            <li>świadczenie na wypadek trwałego uszczerbku na zdrowiu;</li>
+                            <li>świadczenie na wypadek śmierci - 100% sumy ubezpieczenia.</li>
+                          </ul>
+
+                          <p>Przy wyborze tego typu ubezpieczenia należy zwrócić uwagę na wysokość sumy ubezpieczenia. Sumy określone na zbyt niskim poziomie prowadzą do rozczarowań związanych z wysokością przekazywanych świadczeń odszkodowawczych.</p>
+                          
+                          <ul>
+                            <li>ubezpieczenie kosztów akcji ratowniczej i poszukiwawczej gwarantuje pokrycie wydatków związanych z prowadzeniem akcji ratowniczej i kosztów poszukiwań w celu ratowania życia i zdrowia ubezpieczonego oraz udzielenia doraźnej pomocy lekarskiej na miejscu wypadku. Obejmuje zwykle swym zakresem zwrot kosztów transportu ubezpieczonego z miejsca wypadku do najbliższej placówki pomocy medycznej. Ten rodzaj ubezpieczenia jest polecany w szczególności osobom wypoczywającym aktywnie.</li>
+                            <li>ubezpieczenie od odpowiedzialności cywilnej w życiu prywatnym za szkody na osobie i na rzeczy (OC). Ubezpieczenie OC przenosi materialną odpowiedzialność ubezpieczonego za szkody wyrządzone osobom trzecim na firmę ubezpieczeniową - do wysokości sumy gwarancyjnej ustalonej w polisie ubezpieczenia. Ubezpieczenie OC jest dobrym rozwiązaniem dla osób prowadzących aktywny tryb życia. Chroni ono od skutków finansowych związanych z naprawieniem szkody - może pokrywać koszty leczenia, koszty zniszczonego sprzętu, a nawet koszty procesu sądowego.</li>
+                            <li>pokrycie kosztów utraty lub opóźnienia dostarczenia bagażu podróżnego. Firmy ubezpieczeniowe oferują ubezpieczenie bagażu podróżnego na wypadek jego utraty, zniszczenia i opóźnienia w dostarczeniu na miejsce pobytu. W ramach tego ubezpieczenia ochroną ubezpieczeniową objęte są rzeczy wchodzące w skład bagażu podróżnego, tzn. walizy, nesesery, torby wraz z ich zawartością (odzież i rzeczy osobiste). Ubezpieczenie może również obejmować sprzęt sportowy. Ubezpieczenie bagażu podróżnego jest szczególnie przydatne podczas podróży samolotem, gdy bagaż narażony jest na opóźnione dostarczenie, zniszczenie czy kradzież. Kradzież może przytrafić się zarówno na lotnisku, jak i w hotelu czy w samochodzie. W przypadku ubezpieczenia bagażu podróżnego należy zwrócić szczególną uwagę na wyłączenia odpowiedzialności, bowiem w większości przypadków zakres ubezpieczenia nie obejmuje np. kradzieży z samochodu zaparkowanego w miejscu niestrzeżonym, a także szkód w sprzęcie fotograficznym czy innych przedmiotach wartościowych.</li>
+                            <li>pokrycie kosztów odwołania imprezy przed wyjazdem lub wcześniejszego powrotu czy anulowania pierwszego noclegu w hotelu. Organizatorzy wyjazdów zagranicznych zwykle obciążają turystów kosztami odwołania uczestnictwa we wcześniej zarezerwowanej imprezie. Turysta, który rezygnuje z udziału w imprezie przed planowaną datą wyjazdu, dzięki ubezpieczeniu ma możliwość odzyskania poniesionych w takiej sytuacji kosztów. Ubezpieczenie obejmuje także koszty poniesione przez ubezpieczonego, gdy z przyczyn losowych, niezależnych od niego, musi wcześniej powrócić z zagranicznej imprezy turystycznej.</li>
+                          </ul>
+
+
+                          <h2>Ubezpieczenia grupowe</h2>
+                          <p>W ubezpieczeniach grupowych warto wziąć pod uwagę zobowiązanie do pokrycia kosztów nie tylko powrotu, ale i pobytu do momentu zorganizowania powrotu do kraju.</p>
+                          <h2>Europejska Karta Ubezpieczenia Zdrowotnego (EKUZ)</h2>
+                          <p>
+                            W państwach Unii Europejskiej (UE) i Europejskiego Obszaru Wolnego Handlu (EFTA) podstawową opiekę medyczną mamy zapewnioną dzięki Europejskiej Karcie Ubezpieczenia Zdrowotnego (EKUZ). Przed wyjazdem należy uzyskać ją w najbliższym oddziale NFZ. EKUZ daje prawo do korzystania tylko z usług publicznej służby zdrowia, natomiast nie pokrywa kosztów wizyt specjalistycznych, leczenia planowanego, a co ważniejsze - transportu medycznego, jeśli taki jest niezbędny, a w sytuacjach ostatecznych - transportu ciała. Przy odbieraniu karty EKUZ otrzymujemy pisemną informację o warunkach korzystania z publicznej służby zdrowia w kraju, do którego się udajemy. Warto ją przeczytać.<br>
+                            Szczegółowe informacje dotyczące karty EKUZ, dokumentów potrzebnych do jej wyrobienia, zakresu świadczeń medycznych, opłat za świadczenia w poszczególnych państwach i zwrotu kosztów za leczenie znajdziesz na stronie Narodowego Funduszu Zdrowia.
+                          </p>
+                          <h2>Sporty ekstremalne i sporty wysokiego ryzyka</h2>
+                          <p>Z roku na rok wzrasta liczba osób, którym tradycyjna turystyka już nie wystarcza. Coraz częściej znudzeni biernym wypoczynkiem nad morzem, zmęczeni pracą i codziennością poszukujemy nowych wrażeń. Pragniemy spróbować czegoś nowego i ekscytującego, czasami wręcz niebezpiecznego. Szereg biur turystycznych ma już w swojej ofercie oprócz standardowej turystyki krajoznawczo-wypoczynkowej, również wyjazdy dla osób poszukujących większej dawki adrenaliny, podczas których uczestnicy mogą uprawiać różnego rodzaju sporty, również te ekstremalne lub związane z wysokim ryzykiem. Osoby decydujące się na taki wyjazd, nie mogą zapomnieć o wykupieniu odpowiedniej tzn. poszerzonej polisy ubezpieczeniowej. Ponieważ z reguły w standardowej polisie uwzględnione jest tylko amatorskie uprawianie sportu, istotnym przy wyborze ubezpieczenia jest fakt, jak ubezpieczyciel traktuje uprawiany przez nas rodzaj aktywności oraz rozróżnienie terminu „sporty ekstremalne” oraz „sporty wysokiego ryzyka”, ponieważ wiąże się to z odmiennymi ofertami ubezpieczenia.</p>
+                          <h2>Sporty ekstremalne a sporty wysokiego ryzyka</h2>
+                          <p>Zgodnie z definicją większości firm ubezpieczeniowych, do sportów ekstremalnych zaliczane są wszelkie dyscypliny sportowe, uprawiane poza szlakami czy terenami do tego przeznaczonymi, których uprawianie wymaga ponadprzeciętnych umiejętności, odwagi i działania w warunkach dużego ryzyka, a w szczególności: sporty powietrzne takie jak: skoki ze spadochronem, paralotniarstwo, szybownictwo, pilotowanie jakichkolwiek samolotów silnikowych, kolarstwo górskie, sporty motorowe, jazda na skuterach wodnych, wspinaczka wysokogórska, skalna, skałkowa, speleologia, skoki narciarskie itp. Sporty wysokiego ryzyka natomiast, to sporty takie jak: narciarstwo, snowboard, jazda konna, polo, myślistwo, nurkowanie, rafting lub inne sporty wodne uprawiane na rzekach górskich, sztuki walki oraz wszelkiego rodzaju sporty obronne. Niektóre towarzystwa ubezpieczeniowe do osób amatorsko uprawiających sporty wysokiego ryzyka zaliczają ponadto turystów podróżujących do buszu, na bieguny, w dżungle i tereny lodowcowe lub śnieżne, wymagające użycia sprzętu zabezpieczającego lub asekuracyjnego.</p>
+                          <h2>Ubezpieczenie - koszty i zakres</h2>
+                          <p>Koszty ubezpieczenia w przypadku uprawiania sportów ekstremalnych czy wysokiego ryzyka mogą wprawdzie wzrosnąć nawet do 300 procent w stosunku do ubezpieczenia standardowego (w zależności od oferty, zakresu oraz sumy ubezpieczenia, na jaką się zdecydujemy), jednak w razie konieczności i nieprzewidzianego wypadku ubezpieczenie obejmie również bardzo istotne aspekty z punktu widzenia turysty, np.: koszty akcji ratowniczej, poszukiwań przez wyspecjalizowane służby ratownicze, w tym koszty helikoptera, jeżeli zajdzie taka potrzeba. Koszt transportu rannego narciarza z gór do najbliższego szpitala to ok. 2-3 tys. Euro, ale już rozległe akcje poszukiwawcze z wykorzystaniem śmigłowca i wielu ratowników to koszty rzędu kilkunastu, a czasami i kilkudziesięciu tysięcy Euro.</p>
+                          <h2>Poinformuj biuro podróży o zamiarze uprawiania sportów ekstremalnych</h2>
+                          <p>
+                            Każde biuro turystyczne posiadające koncesję, ma obowiązek swojego klienta ubezpieczyć. Szanujące się i odpowiedzialne biuro podróży będzie wymagało zatem, aby każdy turysta decydujący się na skorzystanie z jego usług wykupił również ubezpieczenie, bądź - jeśli zdecydowanie nie chce tego zrobić - aby złożył pisemne oświadczenie, że dobrowolnie z ubezpieczenia rezygnuje i dlaczego (np. posiada już inne ubezpieczenie). Ponadto, odpowiedzialne biuro, organizując aktywne wyjazdy o podwyższonym stopniu ryzyka (posiadające więc wiedzę, w jaki sposób dany klient ma zamiar spędzić urlop i jaki sport uprawiać), zawsze proponują wykupienie dodatkowego pakietu ubezpieczeniowego. Gorzej sprawa wygląda, gdy turysta wykupuje w biurze turystycznym standardową usługę oraz standardowe ubezpieczenie, a później, już na wyjeździe decyduje się na uprawianie sportów ekstremalnych i ulega przy tej okazji wypadkowi. Turyści, zmuszeni są wtedy niestety, sami pokrywać bardzo wysokie koszty akcji ratunkowej i hospitalizacji, bądź - w sytuacjach skrajnych - rodzina musi sama ponieść koszty transportu ciała do Polski, gdyż pakiet ubezpieczenia, który turysta wykupił przed wyjazdem był pakietem standardowym i nie obejmował ryzyka związanego z uprawianiem sportów ekstremalnych.<br>
+                            Dlatego Ministerstwo Spraw Zagranicznych apeluje, aby decyzji o uprawianiu sportów ekstremalnych poza granicami Polski zawsze towarzyszyła decyzja o wykupieniu właściwej polisy.
+                          </p>
+                          <h2>Skorzystaj z badań lekarskich oferowanych przez ubezpieczyciela</h2>
+                          <p>Przed wykupieniem ubezpieczenia można i należy poddać się badaniom lekarskim, które oferują firmy ubezpieczeniowe. Może się bowiem zdarzyć, że gdy dojdzie do wypadku, odszkodowanie nie zostanie wypłacone, jeśli lekarz stwierdzi, że istniały przeciwwskazania zdrowotne do uprawiania sportów ekstremalnych. Zgodnie z deklaracją towarzystw ubezpieczeniowych, w zasadzie nie ma dyscyplin sportu, przy uprawianiu których w Polsce nie można wykupić ubezpieczenia, jednak mogą się zdarzyć przypadki, gdzie szczególne warunki ustalane są indywidualnie.</p>
+                          <p>Wszelkie wątpliwości należy omówić z agentem ubezpieczeniowym, oraz dokładnie przeczytać ogólne warunki ubezpieczenia, aby później nie mieć kłopotów z realizacją polisy. </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 3 -->
+                    <div class="x-tab-ctn__item" data-t="3">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Przed podróżą</h2>
+                        <p>
+                            Przed wyjazdem zagranicznym zbierz informacje dotyczące kraju podróży, przeczytaj opis danego kraju zamieszczony w naszym serwisie i sprawdź, czy nie figuruje w aktualnych ostrzeżeniach dla podróżujących. Zaopatrz się również w informatory renomowanych wydawnictw turystycznych czy biur podróży. Ponadto:
+                            <ul>
+                                <li>sprawdź aktualne przepisy wjazdowe oraz dodatkowe informacje w przedstawicielstwie dyplomatycznym kraju, do którego się udajesz; </li>
+                                <li>sprawdź ważność Twojego paszportu i upewnij się co do konieczności posiadania innych dokumentów wymaganych przepisami kraju pobytu (z wizą czy bez wizy?); </li>
+                                <li>wykup w rzetelnym towarzystwie ubezpieczeniowym odpowiednie ubezpieczenia; </li>
+                                <li>w przypadku wyjazdu do jednego z państw członkowskich UE lub EFTA- uzyskaj w najbliższym oddziale Narodowego Funduszu Zdrowia bezpłatną Europejską Kartę Ubezpieczenia Zdrowotnego, uprawniającą do podstawowego leczenia na terytorium tych państw zaopatrz się w kartę kredytową oraz zabierz ze sobą rezerwową sumę pieniędzy pozwalającą na powrót do Polski w każdych okolicznościach;</li>
+                                <li>zabierz ze sobą numery telefonów Poland Direct z kraju docelowego oraz dane najbliższej miejsca zamieszkania firmy świadczącej usługi szybkiego transferu pieniędzy za granicę; </li>
+                                <li>pozostaw rodzinie lub zaufanej osobie plan podróży i - jeżeli jest to możliwe - adres lub numer telefonu, pod którym będziesz osiągalny; do rozważenia pozostaje zabranie ze sobą telefonu komórkowego z aktywnym roamingiem; </li>
+                                <li>podaj organizatorowi wyjazdu dane osób, które należy powiadomić w przypadku zaistnienia problemów podczas pobytu za granicą; </li>
+                                <li>zgłoś swoją podróż w systemie Odyseusz.msz.gov.pl </li>
+                                <li>zaopatrz się w adresy i numery telefonów polskich przedstawicielstw dyplomatycznych i urzędów konsularnych, a gdy ich brak - w dane teleadresowe przedstawicielstw państw UE; </li>
+                                <li>zabierz ze sobą słownik lub rozmówki - jeśli nie znasz języka obcego w stopniu komunikatywnym; </li>
+                                <li>zabierz jedno zdjęcie paszportowe- może się przydać w przypadku utraty paszportu i konieczności uzyskania paszportu tymczasowego.</li>
+
+                            </ul>
+                            
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 4 -->
+                    <div class="x-tab-ctn__item" data-t="4">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>W podróży</h2>
+                        <p>Zadbaj o swoje bezpieczeństwo również w jej trakcie.</p>
+                        <p>
+                          <strong>
+                            Pamiętaj by:
+                          </strong>
+                        </p>
+                        <ul>
+                          <li>utrzymywać regularny kontakt z rodziną w Polsce, szczególnie podczas dłuższych pobytów poza krajem;</li>
+                          <li>korzystać z hoteli cieszących się dobrą opinią;</li>
+                          <li>nocować w namiotach i samochodach tylko w miejscach do tego wyznaczonych i chronionych;</li>
+                          <li>deponować w hotelu cenne przedmioty, bilety, środki płatnicze i dokumenty (zwłaszcza paszport i dowód osobisty);</li>
+                          <li>korzystać z kilku rodzajów środków płatniczych (gotówka, czeki podróżne, karty kredytowe itp.) i przechowywać je w różnych miejscach;</li>
+                          <li>przestrzegać zasad higieny i spożywać wyłącznie sprawdzone produkty;</li>
+                          <li>podczas wypraw uwzględnić warunki klimatyczne oraz własne możliwości kondycyjne i zdrowotne;</li>
+                          <li>w miarę możliwości odbywać podróże w większej grupie osób;</li>
+                          <li>przestrzegać praw i zwyczajów kraju pobytu, pamiętając przy tym, że gospodarze mają prawo wymagać stosownego zachowania od turystów odwiedzających ich kraj. Przed wyjazdem przeczytaj uważnie opis kraju, do którego się udajesz.</li>
+                        </ul>
+                        <p>
+                          <strong>
+                              Unikaj:
+                          </strong>
+                        </p>
+                        <ul>
+                          <li>ekstrawaganckiego i prowokującego ubioru oraz takiegoż zachowania;</li>
+                          <li>przygodnych znajomości, autostopu czy korzystania z usług osób postronnych (szczególnie dotyczących zakwaterowania);</li>
+                          <li>ofert uzyskania łatwego zarobku;</li>
+                          <li>miejsc zatłoczonych;</li>
+                          <li>przebywania w nieznanych miejscach po zmroku;</li>
+                          <li>podróżowania nocą, zwłaszcza bocznymi drogami; zatrzymuj się wyłącznie w miejscach do tego wyznaczonych i chronionych;</li>
+                          <li>wypraw w tereny nieznane lub niebezpieczne (sprawdź ostrzeżenia dla podróżujących).</li>
+                        </ul>
+                        <p>
+                            <strong>
+                              Zachowaj:
+                            </strong>
+                          </p>
+                        <ul>
+                          <li>ostrożność w miejscach publicznych;</li>
+                          <li>wzmożoną ostrożność podczas prowadzenia pojazdów - w nieznanych warunkach na drodze nietrudno o kolizję, której spowodowanie przysporzyć może wielu kłopotów, a w szczególnych sytuacjach doprowadzić nawet do zagrożenia bezpieczeństwa osobistego.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 5 -->
+                    <div class="x-tab-ctn__item" data-t="5">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Zagrożenia</h2>
+                        <p>
+                            <strong>Narkotyki</strong><br><br>
+                        </p>
+                        <ul>
+                          <li>Przemytnicy często wykorzystują nieświadomych ryzyka turystów, by przewieźć narkotyki przez granicę.</li>
+                          <li>Ministerstwo Spraw Zagranicznych szczególnie przestrzega przed posiadaniem, przewożeniem i dystrybuowaniem środków odurzających. W wielu krajach czyn ten zagrożony jest sankcją wieloletniego pozbawienia wolności lub karą śmierci. Pamiętaj też o tym, że warunki w więzieniach za granicą mogą odbiegać od naszych standardów i wyobrażeń.</li>
+                        </ul>
+                        <p>
+                          <strong>Dlatego:</strong>
+                        </p>
+                        <ul>
+                          <li>zawsze sam pakuj swój bagaż, upewnij się, czy jest odpowiednio zabezpieczony i nigdy nie pozostawiaj go bez opieki;</li>
+                          <li>nie przenoś przez granicę niczego dla innych osób, niezależnie od tego, jak niewinnie wygląda ten przedmiot i osoba, które Cię o to prosi. Jeżeli podczas kontroli zostaną znalezione przy Tobie narkotyki, tylko Ty poniesiesz odpowiedzialność. Z tych samych powodów bądź ostrożny podczas przyjmowania prezentów od osób, których nie znasz;</li>
+                          <li>nie przekraczaj granicy z osobami, których nie znasz;</li>
+                          <li>nie daj się przekonać do przemytu narkotyków - ryzykujesz wieloletnie więzienie w obcym kraju.</li>
+                        </ul>
+                        <p>
+                            <strong>Terroryzm:</strong><br>
+                            Nie można całkowicie wyeliminować zagrożenia atakiem terrorystycznym, jednak warto podjąć wszelkie działania, aby go uniknąć:
+                        </p>
+                        <ul>
+                          <li>regularnie sprawdzaj ostrzeżenia dla podróżujących, przeczytaj również uważnie opis kraju, do którego się udajesz;</li>
+                          <li>zwróć uwagę na informacje dotyczące danego kraju i regionu w mediach;</li>
+                          <li>jeżeli dostrzeżesz coś podejrzanego, natychmiast zgłoś to miejscowej policji;</li>
+                          <li>jeżeli znajdujesz się w kraju bądź regionie szczególnie narażonym na ataki terrorystyczne, bądź czujny w miejscach, w których przebywa wielu cudzoziemców i unikaj rutynowych zachowań (poruszania się zawsze tą samą trasą, bywania zawsze w tej samej restauracji, itp.).</li>
+                        </ul>
+
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 6 -->
+                    <div class="x-tab-ctn__item" data-t="6">
+                      <div class="l-col l-col-12">
+                        <h2>Utrata pieniędzy</h2>
+                        <p>
+                            Jeżeli zostałeś napadnięty lub okradziony, przede wszystkim powiadom o tym zdarzeniu lokalną policję. Potem skontaktuj się z najbliższą polską placówką dyplomatyczną lub konsularną. Konsul może ułatwić Ci kontakt z krewnymi lub znajomymi w Polsce, którzy prześlą Ci pieniądze za pośrednictwem banku lub firmy świadczącej tego rodzaju usługi. W uzasadnionych przypadkach, jeżeli nie ma innych możliwości przekazania pieniędzy, konsul może wypłacić poszkodowanemu polskiemu obywatelowi kwotę, jaka zostanie wpłacona przez krewnych lub znajomych na konto Ministerstwa Spraw Zagranicznych w Warszawie. W szczególnie uzasadnionych przypadkach udzielić pomocy finansowej niezbędnej na powrót do Polski najtańszym środkiem transportu, o ile turysta zobowiąże się do zwrotu pożyczki po powrocie. Należy pamiętać, że przekazywanie środków pieniężnych przez polskie przedstawicielstwa dyplomatyczno-konsularne ograniczone jest do wyjątkowych sytuacji. Do zdecydowanej większości państw można przesłać pieniądze z Polski drogą bankową. Ponadto w kraju działają firmy świadczące płatne usługi transferu pieniędzy za granicę, które niemalże natychmiast po potwierdzeniu operacji wypłacają turyście za granicą równowartość kwoty wpłaconej w Polsce.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 7 -->
+                    <div class="x-tab-ctn__item" :class="[tips2 ? 'act' : '']" data-t="7">
+                      <div class="l-col l-col-12">
+                        <h2>Choroba</h2>
+                        <p>
+                            Przed wyjazdem za granicę zawsze należy pamiętać o wykupieniu ubezpieczenia. Opieka konsularna nie obejmuje kosztów pomocy lekarskiej. W przypadku braku ubezpieczenia koszty leczenia obciążają bezpośrednio obywatela, któremu została udzielona pomoc lekarska za granicą
+                        </p>
+                        <div class="x-banner__image" style="position: relative;">
+                            <img src="images/x-banner.png" alt=""> 
+                            <div class="x-banner__txt">
+                              <p style="font-size: 1em; margin: 0 0 15px;">
+                                Zapomniałeś się ubezpieczyć?<br>
+                                Nic staconego 
+                              </p> 
+                              <a href="https://www.orange.pl/view/ubezpieczenia-turystyczne" class="o-btn opl-btn opl-btn--primary" style="position: relative;z-index: 11;">Sprawdź</a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 8 -->
+                    <div class="x-tab-ctn__item" data-t="8">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Utraciłem dokumenty</h2>
+                        <p>
+                          <strong>Jeśli utraciłeś dokument paszportowy za granicą</strong>, skontaktuj się z właściwym urzędem konsularnym. Na Twój wniosek konsul po potwierdzeniu danych i tożsamości wyda paszport tymczasowy na powrót do miejsca pobytu stałego (w Polsce lub w innym kraju). Pamietaj, że konsul honorowy nie realizuje spraw paszportowych, czyli nie wydaje również paszportów tymczasowych.
+                        </p>
+                        <p>
+                          W przypadku utraty dokumentu paszportowego lub jego zniszczenia, należy niezwłocznie zawiadomić o tym organ paszportowy, który dokument wydał lub organ paszportowy właściwy ze względu na miejsce pobytu osoby (czyli za granicą jest to konsul). Konsul po przyjęciu zawiadomienia, ustaleniu tożsamości osoby i danych utraconego/zniszczonego dokumentu paszportowego - wprowadza do ewidencji paszportowej, a następnie przekazuje do centralnej ewidencji wydanych i unieważnionych dokumentów paszportowych - informację, że dokument ten utracił ważność.
+                        </p>
+                        <p>
+                          Odnaleziony dokument paszportowy nie podlega zwrotowi osobie, której został wydany (art. 36. 2 ustawy). Jeżeli osoba odnalazła własny dokument paszportowy wcześniej zgłoszony jako utracony, jest obowiązana do jego zwrotu właściwemu miejscowo organowi paszportowemu. Obowiązek zwrotu dokumentu paszportowego następuje bez względu na to, czy osoba posiada już nowy dokument wydany w miejsce utraconego, czy też o wydanie nowego dokumentu nie występowała.
+                        </p>
+                        <p>
+                          Aby otrzymać paszport tymczasowy należy złożyć:
+                        </p>
+                        <ul>
+                          <li>wypełniony wniosek o wydanie paszportu albo paszportu tymczasowego (wnioski są dostępne w urzędzie konsularnym);</li>
+                          <li>jedną kolorową fotografię (warto mieć jedna przy sobie wyjeżdżając za granicę).</li>
+                        </ul>
+                        <p>
+                          Jeśli utraciłeś paszport podczas pobytu w kraju, w którym nie ma polskiego urzędu konsularnego, możesz zwrócić się do konsula przedstawicielstwa dyplomatycznego Państwa Członkowskiego Unii Europejskiej - w celu uzyskania tymczasowego dokumentu podróży (Emergency Travel Document).
+                        </p>
+                        <p>
+                          Dokument ten może być wydany na <strong>pojedynczy przejazd w celu powrotu do Polski lub do innego Państwa Członkowskiego Unii Europejskiej</strong>. Tymczasowy dokument podróży wydaje się z upoważnienia państwa, którego wnioskujący jest obywatelem (czyli konsula RP).
+                        </p>
+                        <p>
+                          W pierwszej kolejności skontaktuj się (telefonicznie bądź e-mailowo) z polskim konsulem wykonującym funkcje w państwie, w którym przebywasz - w celu ustalenia, jakie kroki należy podjąć, aby uzyskać w/w dokument. Konsul udzieli praktycznej porady w zakresie dotyczącym złożenia wniosku o wydanie tymczasowego dokumentu podróży.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 9 -->
+                    <div class="x-tab-ctn__item" data-t="9">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Zatrzymanie/aresztowanie</h2>
+                        <p>
+                            Jeżeli zostałeś zatrzymany, aresztowany lub pozbawiony wolności, masz prawo żądać kontaktu z konsulem. Konsul zadba o to, aby obywatel RP nie był traktowany gorzej, niż obywatel państwa, w którym przebywa.<br>
+                        </p>
+                        <p>
+                          <strong>Na wniosek zatrzymanego konsul może:</strong>
+                        </p>
+                        <ul>
+                          <li>powiadomić rodzinę o aresztowaniu;</li>
+                          <li>uzyskać od władz miejscowych i przekazać zainteresowanemu informację o powodach zatrzymania, przewidywanej w ustawodawstwie sankcji karnej za popełnienie zarzucanego czynu, czasie trwania procedury sądowej oraz ewentualnej możliwości zwolnienia, a także dostarczyć aresztowanemu listę adwokatów (wyboru pełnomocnika musi dokonać sam zainteresowany);</li>
+                          <li>utrzymywać kontakt z zatrzymanym.</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 10 -->
+                    <div class="x-tab-ctn__item" data-t="10">
+                      <div class="l-col l-col-12">
+                        <h2>Brak polskiego przedstawiciela</h2>
+                        <p>
+                          Na terytorium państw trzecich, w których Polska nie ma swojego przedstawicielstwa - ambasady, konsulatu zawodowego lub honorowego - masz prawo do opieki konsularnej ze strony przedstawicielstw innych państw członkowskich Unii Europejskiej na równi z obywatelami tych państw.
+                        </p>
+                        <p>
+                          W razie wypadku lub choroby konsul jednego z państw Unii Europejskiej przekaże na wniosek zainteresowanego informacje o jego stanie zdrowia polskim władzom.
+                        </p>
+                        <p>
+                          W przypadku zatrzymania, aresztowania lub pozbawienia wolności konsul jednego z państw Unii Europejskiej poinformuje na prośbę zainteresowanego stronę polską; będzie czuwał, aby obywatel RP był traktowany w taki sam sposób jak inni pozbawieni wolności.
+                        </p>
+                        <p>
+                            W przypadku utraty lub kradzieży dokumentów konsul jednego z państw Unii Europejskiej po uprzednim potwierdzeniu danych osobowych oraz uzyskaniu zgody władz polskich wyda Europejski Dokument Podróży (ETD), dzięki któremu możliwy stanie się powrót do miejsca stałego pobytu.
+                        </p>
+                        <p>
+                          W przypadku utraty pieniędzy konsul jednego z państw Unii Europejskiej udzieli pomocy finansowej, jednakże po uprzednim zezwoleniu władz polskich.
+                        </p>
+                        <p>
+                          W przypadku zgonu polskiego obywatela konsul jednego z państw Unii Europejskiej powiadomi władze polskie, na których spoczywa obowiązek poinformowania najbliższych krewnych osoby zmarłej. Konsul unijny udzieli niezbędnej pomocy przy uzyskaniu świadectwa zgonu i poczyni niezbędne kroki w celu umożliwienia pochówku, kremacji lub odesłania ciała zmarłego do ojczystego kraju.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 11 -->
+                    <div class="x-tab-ctn__item" data-t="11">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Dokumenty uprawniające do przekraczania granic państw Unii Europejskiej</h2>
+                        <p>
+                          Departament Konsularny MSZ RP uprzejmie przypomina, że od dnia 1 maja 2004 roku obywatele Rzeczypospolitej Polskiej mogą przekraczać granice wewnętrzne państw UE i strefy Schengen na podstawie paszportu, ale również na podstawie dowodu osobistego.
+                        </p>
+                        <p>
+                          Jednocześnie wyjaśniamy, iż: 
+                        </p>
+                        <ul>
+                            <li>małoletni mogą przekraczać granice państw Unii Europejskiej na podstawie własnego paszportu lub własnego dowodu osobistego;</li>
+                            <li>właściwe służby państw UE są uprawnione do kontroli dokumentów tożsamości, a ich brak podczas rutynowej kontroli może skutkować - zgodnie z ich ustawodawstwem wewnętrznym - nałożeniem kary pieniężnej.</li>
+                        </ul>
+                        <p>
+                          Ponadto przypominamy, że przekraczanie granic Schengen celem wjazdu do innych państw Unii Europejskiej (nie będących członkami Schengen) przez obywateli państw trzecich zamieszkałych na stałe w Polsce w dalszym ciągu odbywa się na podstawie ważnego paszportu i wizy, jeżeli jest wymagana.
+                        </p>
+                        <p>
+                          Więcej informacji o dowodach osobistych na stronie Ministerstwa Spraw Wewnętrznych.
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 12 -->
+                    <div class="x-tab-ctn__item" data-t="12">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Poszukiwania zaginionych</h2>
+                        <p>
+                          <strong>Jak przygotować się do zagranicznego wyjazdu, aby zmniejszyć ryzyko zaginięcia?</strong>
+                        </p>
+                        <ul>
+                          <li>Poinformuj rodzinę gdzie dokładnie jedziesz. Jeżeli planujesz odwiedzić kilka miejsc, zostaw dokładny plan podróży wraz z przewidywanymi terminami pobytu, adresami i numerami telefonów, osobami kontaktowymi itp.</li>
+                          <li>Umów się z na częstotliwość i formę kontaktu z rodziną (telefon, e-mail, SMS). Zaznacz, jak długi brak kontaktu z Twojej strony rodzina powinna uznać za niepokojący.</li>
+                          <li>Zaraz po przybyciu na miejsce skontaktuj się z bliskimi i przekaż im informacje o Twojej sytuacji.</li>
+                          <li>Pamiętaj, że z każdego kraju możesz łączyć się z bliskimi na koszt rozmówcy za pomocą tzw. numerów dostępowych (Poland direct). Połączenie dotyczy tylko numerów stacjonarnych, rozmówca musi wyrazić zgodę na połączenie. W centrali telefonicznej mówią po polsku.</li>
+                          <li>Dowiedz się jak najwięcej o miejscu, do którego wyjeżdżasz. Warto odwiedzić fora internetowe, które zawierają praktyczne informacje o specyfice danego kraju lub regionu.</li>
+                          <li>Zapisz dane kontaktowe do konsulatu RP w kraju, do którego wyjeżdżasz (telefon, adres).</li>
+                          <li>Jeżeli czujesz zagrożenie (ktoś cię śledzi, ktoś ci grozi) natychmiast skontaktuj się z najbliższym komisariatem policji. Nie bój się prosić o pomoc, nawet obcych ludzi na ulicy.</li>
+                          <li>W wyjątkowych przypadkach, jeżeli będziesz podróżować samodzielnie i obawiasz się, że możesz znaleźć się w niebezpieczeństwie, ustal z rodziną specjalne hasło/kod. Będzie można go użyć w rozmowie telefonicznej lub liście, aby niepostrzeżenie poinformować rodzinę, że jesteś w niebezpieczeństwie.</li>
+                        </ul>
+
+                        <p>
+                          <strong>Co zrobić, jeżeli podczas wyjazdu zagranicznego zaginie dziecko?</strong>
+                        </p>
+                    
+                        <ul>
+                          <li>Natychmiast skontaktuj się z najbliższą jednostką policji w kraju pobytu i zgłoś zaginięcie.</li>
+                          <li>Natychmiast skontaktuj się z organizacją pozarządową, która prowadzi poszukiwania zaginionych dzieci. W tym celu w większości krajów UE wystarczy zadzwonić z dowolnego telefonu stacjonarnego lub komórkowego na bezpłatny numer 116 000. Listę i adresy organizacji znajdziesz na stronie: www.missingchildreneurope.eu. Informacje o krajach, gdzie działa już telefon 116 000 znajdziesz na stronie: www.hotline116000.eu.</li>
+                          <li>Skontaktuj się konsulatem RP, który udzieli pomocy i wsparcia.</li>
+                          <li>Skontaktuj się z fundacją ITAKA (24h linia wsparcia +48 22 654 70 70), która udzieli dodatkowych informacji i wsparcia w poszukiwaniach.</li>
+                        </ul>
+
+                        <p>
+                          <strong>Co zrobić, jeżeli podczas wspólnego wyjazdu zaginie osoba dorosła?</strong>
+                        </p>
+                    
+                        <ul>
+                          <li>Natychmiast skontaktuj się z najbliższą jednostką policji w kraju pobytu i zgłoś zaginięcie.</li>
+                          <li>Staraj się sprawdzić, czy policja wykonuje wszystkie działania, do których jest zobowiązana. W zależności od okoliczności policja może przeszukać okolicę, rozpytać osoby itp.</li>
+                          <li>Skontaktuj się konsulatem RP, który sprawdzi, czy poszukiwana osoba, nie przebywa w szpitalu lub areszcie.</li>
+                          <li>
+                            Jeżeli w danym kraju działa organizacja pozarządowa, która zajmuje się poszukiwaniem zaginionych osób, nawiąż z nią kontakt i zgłoś zaginięcie. Organizacje poszukujące zaginionych, współpracujące z fundacją ITAKA w ramach sieci MPIN (Missing Persons International Network):
+                            <br><br>
+                            Missing Persons' Families Support Centre (MPFSC) - Litwa<br>
+                            Missing People - Wielka Brytania<br>
+                            Persone-Scomparse.it - Włochy<br>
+                            Holenderski Czerwony Krzyż, Missing Person Helpline - Holandia<br>
+                            Sosdesaparecidos - Hiszpania<br>
+                            Swiss Missing - Szwajcaria<br>
+                            MANU Association - Francja
+                          </li>
+                        </ul>
+                        <p>Skontaktuj się z fundacją ITAKA (24h linia wsparcia +48 22 654 70 70), która w miarę możliwości udzieli dodatkowych informacji i wsparcia.</p>
+                      </div>
+                    </div>
+
+                    <!-- ctn tab 13 -->
+                    <div class="x-tab-ctn__item" data-t="13">
+                      <div class="l-col l-col-12 opl-cms">
+                        <h2>Kiedy konsul nie może działać</h2>
+                        <p>
+                            Niestety, nie zawsze możemy Ci pomóc - uprawnienia konsula są ograniczone. Konsul nie może:
+                        </p>
+                        <ul>
+                          <li>regulować jakichkolwiek zobowiązań finansowych, takich jak długi, grzywny, mandaty, koszty postępowania sądowego itp.;</li>
+                          <li>świadczyć usług, które wykonują biura turystyczne, banki, firmy ubezpieczeniowe oraz firmy transportowe;</li>
+                          <li>pośredniczyć w uzyskaniu zgody na zatrudnienie czy uzyskaniu zakwaterowania;</li>
+                          <li>ingerować w konflikty dotyczące niewywiązywania się ze zobowiązań jednej ze stron wynikających z zawartych przez nie umów cywilnoprawnych (stosunek pracy, zakup usług turystycznych etc.);</li>
+                          <li>pełnić funkcji adwokata lub angażować za osobę zainteresowaną pełnomocnika (może natomiast dostarczyć zainteresowanemu listę adwokatów cieszących się zaufaniem urzędu konsularnego).</li>
+                        </ul>
+
+                      </div>
+                    </div>
+
+                    <!-- <button class="o-btn opl-btn x-mobile-btn x-static opl-btn--primary" id="x-back-nav">
+                      <span>Wróć</span>
+                    </button> -->
+
+                    <button class="o-btn opl-btn opl-btn--primary" onclick="sTop(event)" id="x-back-nav">
+                      <span>Wróć</span>
+                    </button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- info -->
+            <p class="x-info x-hide-mob">
+              Informacje przedstawione na stronie www.orange.pl/zagranica bazują na informacjach udostępnionych na portalu MSZ (www.msz.gov.pl). MSZ dokłada wszelkich starań, aby ostrzeżenia dla podróżujących publikowane na stronie MSZ (http://www.msz.gov.pl/pl/informacje_konsularne/ostrzezenia/ostrzezenia_dla_podrozujacych) były rzetelne, wyczerpujące i aktualne. Podkreślamy, że publikowane na portalu MSZ ostrzeżenia należy traktować wyłącznie jako rekomendację: mają one charakter informacyjny i nie mogą stanowić podstawy do jakichkolwiek roszczeń. Należy pamiętać, że MSZ nie ma prawnych możliwości zakazania wyjazdu do jakiegokolwiek państwa. Treść ostrzeżenia na portalu MSZ pozostaje aktualna do czasu publikacji nowego komunikatu.
+              <!-- Informacje przedstawione na stronie www.orange.pl/zagranica bazują na informacjach udostępnionych na portalu MSZ (www.msz.gov.pl). MSZ dokłada wszelkich starań, aby ostrzeżenia dla podróżujących publikowane na stronie MSZ (http://www.msz.gov.pl/pl/informacje_konsularne/ostrzezenia/ostrzezenia_dla_podrozujacych) były rzetelne, wyczerpujące i aktualne. Podkreślamy, że publikowane na portalu MSZ ostrzeżenia należy traktować wyłącznie jako rekomendację: mają one charakter informacyjny i nie mogą stanowić podstawy do jakichkolwiek roszczeń. Należy pamiętać, że MSZ nie ma prawnych możliwości zakazania wyjazdu do jakiegokolwiek państwa. Treść ostrzeżenia na portalu MSZ pozostaje aktualna do czasu publikacji nowego komunikatu. -->
+            </p>
+          </section>
+
+
+        </div>
+    </section>
+  </div>
+
+  <script src="https://orange.binaries.pl/ui/js/common/lib/requirejs/require.js" data-main="https://orange.binaries.pl/ui/js/core/main.js" defer="defer" data-opl-main="true"></script>
+  <script src="js/x-vue.js"></script>
+  <script src="js/x-multiselect.js"></script>
+  <script src="js/x-styled.js"></script>
+  <script src="js/x-markers.js"></script>
+  <script async defer src="//www.instagram.com/embed.js"></script>
+  <script src="js/x-j.js"></script>
+  <script src="js/x-main.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAof9SlRVe-lpKXloXRT3BcTC6u7_Qoyso&callback=initMap"></script>
+
+  
+</body>
+</html>

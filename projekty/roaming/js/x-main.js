@@ -132,7 +132,10 @@ var V = new Vue({
         });
 
         infowindow.open(map, marker);
-        V.showCountryDetail();
+        var st = setTimeout(function(){
+          V.showCountryDetail();
+          clearTimeout(st);
+        },400)
     },
     showCountryDetail() {
       var link = document.querySelectorAll('[data-cid]');

@@ -1,0 +1,15 @@
+#preloader {
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   background: #4ae2ea;
+   z-index: 1000;
+   transition: all .4s ease-out;
+}
+
+.page-loaded #preloader {
+   opacity: 0;
+   pointer-events: none;
+}

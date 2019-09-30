@@ -1,0 +1,21 @@
+.mheader {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   padding: 40px;
+   z-index: 15;
+
+   @include media-m() {
+      padding: 15px;
+   }
+
+   img {
+      @include media-xl {
+         max-width: 100px;
+      }
+   }
+}

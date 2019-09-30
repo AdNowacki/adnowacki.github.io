@@ -1,0 +1,30 @@
+.mfooter {
+   background-color: map-get($section-colors, 'default');
+   text-align: center;
+   position: relative;
+   padding-bottom: 180px !important;
+
+   .decor-image, &>img {
+      z-index: 3;
+   }
+
+   &--fruits {
+      background-color: map-get($section-colors, 'fruits');
+   }
+
+   &--vegetables {
+      background-color: map-get($section-colors, 'vegetables');
+   }
+
+   &--porridge {
+      background-color: map-get($section-colors, 'porridge');
+   }
+
+   &--soup {
+      background-color: map-get($section-colors, 'soup');
+   }  
+
+   [src*="produkty-grupa-4.png"] {
+      margin: 8rem 0;
+   }
+}

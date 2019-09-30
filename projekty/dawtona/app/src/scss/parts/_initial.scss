@@ -1,0 +1,51 @@
+a,
+input,
+button,
+textarea {
+  outline: none;
+}
+
+figure {
+  margin: 0;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: $scrollbar-track;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $scrollbar-thumb;
+}
+
+address {
+  font-style: normal;
+}
+
+html,
+body {
+  font: 400 10px/1.4 $base-font-family, sans-serif;
+  text-align: left;
+  color: $base-color;
+  position: relative;
+  min-height: 100vh;
+
+  &.normal-page {
+    // background-image: url(assets/images/blue-bcg.png);
+    background-color: map-get($section-colors, 'default');
+  }
+}

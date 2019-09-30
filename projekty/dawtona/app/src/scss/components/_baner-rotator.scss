@@ -1,0 +1,32 @@
+.baner-rotator {
+   background: #fff;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   padding: 0 20%;
+
+   &__item {
+      padding: 25px;
+      display: inline-block;
+      vertical-align: middle;
+
+      @include media-s() {
+         padding: 10px 5px;
+      }
+   }
+
+   img {
+      max-width: 90%;
+      filter: grayscale(100%);
+      opacity: .6;
+      max-height: 50px;
+   }
+
+}
+
+.slick-track {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}

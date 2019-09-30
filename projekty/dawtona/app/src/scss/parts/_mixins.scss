@@ -1,0 +1,105 @@
+@mixin resetLink($color) {
+   text-decoration: none;
+   color: $color;
+
+   &:hover, &:active, &.act {
+      color: $color;
+      text-decoration: none;
+   }
+}
+
+@mixin resetButton() {
+   padding: 0;
+   border: 0;
+   background: none;
+   cursor: pointer;
+}
+
+$borders: (
+   "right": 'border-right',
+   "left": 'border-left',
+   "top": 'border-top',
+   "bottom": 'border-bottom',
+);
+
+@mixin borderDecoration($border, $width: 3px, $color: rgba(255, 255, 255,.6), $style: dashed) {
+   border-#{$border}: $width $style $color;
+}
+
+@mixin right-bottom-corner-hover($right: 0, $bottom: 0) {
+   right: $right;
+   bottom: $bottom;
+   transform: translate3d(15vw, 15vw, 0);
+}
+
+@mixin left-top-corner-hover($left: 0, $top: 0) {
+   left: $left;
+   top: $top;
+   transform: translate3d(-15vw, -15vw, 0);
+}
+
+@mixin left-bottom-corner-hover($left: 0, $bottom: 0) {
+   left: $left;
+   bottom: $bottom;
+   transform: translate3d(-15vw, 15vw, 0);
+}
+
+@mixin right-top-corner-hover($right: 0, $top: 0) {
+   right: $right;
+   top: $top;
+   transform: translate3d(15vw, -15vw, 0);
+}
+
+@mixin media-xxl() {
+   @media (max-width: $xxl) {
+      @content;
+   }
+}
+
+@mixin media-xl() {
+   @media (max-width: $xl) {
+      @content;
+   }
+}
+
+@mixin media-l() {
+   @media (max-width: $l) {
+      @content;
+   }
+}
+
+@mixin media-m() {
+   @media (max-width: $m) {
+      @content;
+   }
+}
+
+@mixin media-s() {
+   @media (max-width: $s) {
+      @content;
+   }
+}
+
+@mixin media-xs() {
+   @media (max-width: $xs) {
+      @content;
+   }
+}
+
+@mixin media-xxs() {
+   @media (max-width: $xxs) {
+      @content;
+   }
+}
+
+@mixin media-height-790() {
+   @media (max-height: 790px) {
+      @content;
+   }
+}
+
+@mixin media-height-600() {
+   @media (max-height: 600px) {
+      @content;
+   }
+}

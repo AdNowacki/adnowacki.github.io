@@ -1,0 +1,92 @@
+.sec {
+   position: relative;
+   
+   &--main, &--main-2, &--main-3, &--main-4, &--main-5, &--fruit-space {
+      // background: map-get($section-colors, 'default') url('assets/images/section-default-light-bg.jpg') no-repeat;
+      // background-size: 100% 100%; 
+      background: map-get($section-colors, 'default');
+   }
+
+   &--main {
+      @include media-m {
+         &.pt-150 {
+            padding: 30px 0;
+         }
+
+         .sec__col {
+            width: 50%;
+         }
+      }
+   }
+
+   &--main-2 {
+      @include media-m {
+         padding-left: 15%;
+         
+         .sec__col {
+            width: 40%;
+         }
+      }
+   }
+
+   &--main-3, &--main-4 {
+      @include media-m {
+         .sec__col {
+            width: 100%;
+            text-align: center;
+            padding: 30px 15px;
+         }
+      }
+   }
+
+   &--main-3 {
+      @include media-m {
+         padding-bottom: 0;
+      }
+   }
+
+   &--fruit-space {
+      background-size: 100% auto;
+   }
+
+   &--main-2 {
+      // background-image: url('assets/images/section-default-light-bg-3.jpg');
+      // background: map-get($section-colors, 'default');
+      padding-left: 25%;
+
+      @include media-m {
+         padding-left: 10%;
+         padding-right: 10%;
+      }
+   }
+
+   // &--main-3 {
+   //    background-image: url('assets/images/section-default-light-bg-4.jpg');
+   // }
+
+   // &--main-4 {
+   //    background-image: url('assets/images/section-default-light-bg-5.jpg');
+   // }
+
+   // &--main-5 {
+   //    background-image: url('assets/images/section-default-light-bg-6.jpg');
+   // }
+
+   &__col {
+      padding-right: 2vw;
+      position: relative;
+
+      &--no-spacing-x {
+         padding-left: 0;
+         padding-right: 0;
+      }
+
+      &--50 {
+         width: 50%;
+      }
+
+      &--self-align-start {
+         align-self: flex-start;
+      }
+   }
+}

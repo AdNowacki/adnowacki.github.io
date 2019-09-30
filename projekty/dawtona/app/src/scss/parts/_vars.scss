@@ -1,0 +1,66 @@
+// sizes
+$xxl: 1440px;
+$xl: 1140px;
+$l: 1024px;
+$m: 992px;
+$s: 768px;
+$xs: 540px;
+$xxs: 430px;
+
+$default-section-spacing: 60px;
+
+// colors
+$base-color: #030303;
+$base-light-color: #fff;
+$base-dark-color: #000;
+$base-decor-color: #f1d7bc;
+$base-decor-color-dark: #404040;
+
+$scrollbar-track: #ebebeb;
+$scrollbar-thumb: darken( $scrollbar-track, 18% );
+
+$section-colors: (
+   "default": rgb(74, 218, 226),
+   "default-light": rgb(80, 223, 231),
+   "fruits": rgb(74, 218, 226),
+   "vegetables": rgb(110, 80, 178),
+   "porridge": rgb(247, 226, 171),
+   'soup': rgb(28, 139, 106)
+);
+
+
+$font-color-base: rgb(57, 77, 130);
+$font-color-light-color: rgb(253, 240, 116);
+$font-color-dark-color: rgb(135, 25, 109);
+$font-color-dark-subtitle-color: rgb(162, 17, 21);
+$font-color-decor-subtitle-color: rgb(15, 90, 79);
+$font-color-decor-color: rgb(74, 218, 226);
+$link-color: rgb(255, 255, 255);
+$font-color-before-title: rgb(19, 48, 106);
+
+
+// font
+$base-font-family: 'DosisNormal';
+$decor-font-family: 'Sheldon';
+
+// components
+$tables-max-width: 860px;
+$tables-color-dark: rgba(163, 64, 44, .6);
+
+// extends
+%decor-font {
+   font-family: $decor-font-family;
+   color: $link-color;
+   font-size: 4.6vw;
+   text-transform: uppercase;
+   line-height: 2;
+   text-shadow: 0.956px 0.955px 0px rgba(0, 0, 0, 0.4);
+}
+
+%title-width {
+   max-width: 97%;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+

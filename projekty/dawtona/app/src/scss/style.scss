@@ -1,0 +1,1571 @@
+/* wczytanie webfontów */
+@import 'parts/fonts';
+
+/* style normalizujące */
+@import 'parts/reset';
+
+/* zmienne SASS */
+@import 'parts/vars';
+
+/* mixiny SASS */
+@import 'parts/mixins';
+
+/* Bootstrap */
+@import 'parts/bootstrap';
+
+/* wszystko to co powinno być w reset, ale musi być wczytane po Bootstrapie */
+@import 'parts/initial';
+
+/* pomocnicze klasy */
+@import 'parts/helpers';
+
+/* animacje */
+@import 'parts/animations';
+
+@import 'parts/slick';
+
+@import 'parts/slick-theme';
+
+
+/* C O M P O N E N T S */
+
+/* main header */
+@import 'components/header';
+
+/* main navigation */
+@import 'components/navigation';
+
+/* all titles */
+@import 'components/titles';
+
+/* all links */
+@import 'components/links';
+
+/* tables */
+@import 'components/tables';
+
+/* view */
+@import 'components/view';
+
+/* first section - slider */
+@import 'components/slider-section';
+
+/* other sections */
+@import 'components/sections';
+
+/* products list */
+@import 'components/products-list';
+
+/* products list */
+@import 'components/baner-rotator';
+
+
+/* main footer */
+@import 'components/footer';
+
+
+
+body {
+   &.disabled {
+      pointer-events: none;
+   }
+}
+
+.decor-image {
+   position: absolute;
+   max-width: 90%;
+   pointer-events: none;
+   transition: all .4s ease-in-out .5s;
+   will-change: transform;
+
+   &--top-layer {
+      z-index: 3;
+   }
+
+   &[data-fruit="strawberry"] {
+      left: 80px;
+      top: 90px;
+
+      @include media-xxl(){
+         width: 150px;
+      }
+
+      @include media-m(){
+         width: 70px;
+         left: auto;
+         right: 5%;
+         top: 0;
+      }
+   }
+
+   &[data-fruit="beetroot"], &[data-fruit="cherry-footer-xxl"], &[data-fruit="strawberr-footer"] {
+      left: 0;
+      bottom: 0;
+
+      @include media-xxl(){
+         width: 230px;
+      }
+   }
+
+   &[data-fruit="strawberr-footer"] {
+      @include media-m() {
+         width: 130px;
+      }
+   }
+
+   &[data-fruit="cherry-footer-xxl"] {
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="beetroot"] {
+      left: -100px;
+      bottom: -100px;
+
+      @include media-m() {
+         width: 22%;
+         left: -10px;
+         bottom: -10px;
+      }
+   }
+
+   &[data-fruit="beetroot-2"], &[data-fruit="mint-3"], &[data-fruit="soup-carrot-2"],&[data-fruit="parsley-2"] {
+      top: 40px;
+      right: 18%;
+      max-width: 210px;
+   }
+
+   &[data-fruit="mint-3"] {
+      @include media-m() {
+         max-width: 21%;
+         left: -30px;
+         top: 45%;
+         right: auto;
+         transform: rotate(459deg);
+      }
+   }
+
+   &[data-fruit="pepper-1-2"] {
+      max-width: 10px;
+      right: 14%;
+      top: 27%;
+   }
+
+   &[data-fruit="soup-carrot-2"], &[data-fruit="parsley-2"] {
+      right: 22%;
+      max-width: 180px;
+   }
+
+   &[data-fruit="parsley-3"] {
+      left: 0;
+      top: 24%;
+
+      @include media-m() {
+         max-width: 27%;
+         top: 37%;
+         transform: rotate(-27deg);
+      }
+   }
+
+   &[data-fruit="parsley-2"] {
+
+      @include media-m() {
+         max-width: 26%;
+         right: 0;
+         top: 33%;
+         transform: rotate(123deg);
+      }
+   }
+
+   &[data-fruit="soup-carrot-rotate"] {
+      max-width: 18%;
+      left: -15px;
+      top: 45%;
+      transform: rotate(180deg);
+   }
+
+   &[data-fruit="soup-carrot-2"], &[data-fruit="soup-strawberry-2"] {
+      top: 40px;
+      right: 22%;
+      max-width: 180px;
+
+      @include media-m() {
+         max-width: 80px;
+         right: -15px;
+         top: 34%;
+      }
+   }
+
+   &[data-fruit="soup-carrot-2"] {
+      max-width: 27%;
+      right: -25px;
+      top: 36%;
+   }
+
+   &[data-fruit="soup-strawberry-2"] {
+      @include media-m() {
+         right: 3%;
+         top: 26%;
+      }
+   }
+
+   &[data-fruit="pietrucha"] {
+      left: -39px;
+      top: 39%;
+      max-width: 34%;
+   }
+
+   &[data-fruit="coconut"], &[data-fruit="soup-coconut-xxl"] {
+      right: 0;
+      bottom: 0;
+
+      @include media-xxl(){
+         width: 320px;
+      }
+   }
+
+   &[data-fruit="coconut"] {
+      @include media-m {
+         width: 100px;
+         right: -10px;
+         bottom: -20px;
+      }
+
+      @include media-s {
+         width: 27%;
+      }
+   }
+
+   &[data-fruit="soup-coconut-xxl"] {
+      bottom: -300px;
+
+      @include media-xxl(){
+         bottom: -150px;
+      }
+
+      @include media-m {
+         max-width: 230px;
+         bottom: -100px;
+         right: -90px;
+      }
+   }
+
+   &[data-fruit="coconut-footer"] {
+      max-width: 20%;
+      right: 0;
+      bottom: 0;
+   }
+
+   &[data-fruit="raspberry"] {
+      top: 50px;
+      right: 300px;
+
+      @include media-xxl(){
+         width: 120px;
+         right: 180px;
+      }
+
+      @include media-m {
+         width: 70px;
+         right: 10%;
+         top: 43%;
+      }
+   }
+
+   &[data-fruit="coconut-nav"] {
+      bottom: 0;
+      right: 95px;
+
+      @include media-xxl(){
+         width: 350px;
+         right: 30px;
+      }
+
+      @include media-m(){
+         width: 150px;
+         right: -40px;
+      }
+   }
+
+   &[data-fruit="strawberry-main"] {
+      top: 0;
+      left: 62%;
+
+      @include media-m() {
+         display: none;
+      }
+   }
+
+   &[data-fruit="bilberry-small-with-line"] {
+      top: 73vh;
+      left: 40%;
+
+
+      @include media-m {
+         width: 70px;
+      }
+
+      @include media-m {
+         top: 40vh;
+         left: calc(50% - 70px);
+      }
+   }
+
+   &[data-fruit="bilberry-small-with-line--fruits"] {
+      bottom: 2%;
+      left: 40%;
+
+      @include media-m {
+         width: 18%;
+         bottom: auto;
+         top: 42vh;
+         left: 32%;
+      }
+   }
+
+   &[data-fruit="bilberry-small-with-line-2"] {
+      bottom: -240px;
+      left: 22.9%;
+      z-index: 2;
+
+      @include media-xxl() {
+         bottom: auto;
+         top: 74%;
+         left: 30.5%;
+         width: 22%;
+      }
+
+      @include media-m {
+         left: -41px;
+         width: 50%;
+         bottom: auto;
+         top: 71%;
+      }
+   }
+   &[data-fruit="bilberry-small-with-line-3"] {
+      top: 108%;
+      left: 25%;
+      z-index: 2;
+
+      @include media-m {
+         display: none;
+      }
+   }
+   &[data-fruit="bilberry-small-with-line-4"] {
+      top: 108%;
+      left: -51%;
+      z-index: 2;
+   }
+   &[data-fruit="bilberry-small-with-line-5"] {
+      max-width: 24%;
+      top: 108%;
+      right: -4%;
+      z-index: 2;
+
+      @include media-m {
+         right: auto;
+         left: 5%;
+         top: 100%;
+         max-width: 26%;
+      }
+   }
+   &[data-fruit="bilberry-main-medium"] {
+      top: 200px;
+      left: 3%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="porridge-banan-medium"] {
+      top: 200px;
+      left: 8%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="bilberry-main-xxl"] {
+      top: 146px;
+      left: 0;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="bilberry-50"] {
+      bottom: 0;
+      right: 0;
+   }
+
+   &[data-fruit="raspberry-main-small"] {
+      top: 170px;
+      left: 26%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="raspberry-rotate"] {
+      top: 30px;
+      right: -38%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="slider-fruit-raspberry-1"] {
+      bottom: 16%;
+      left: 1%;
+      width: 100px;
+
+      @include media-m {
+         width: 60px;
+         bottom: auto;
+         top: 43%;
+         left: 6%;
+         transform: rotateY(180deg);
+      }
+   }
+
+   &[data-fruit="slider-fruit-raspberry-2"] {
+      right: 6%;
+      top: 120px;
+      width: 45px;
+
+      @include media-m() {
+         top: 23%;
+         right: 10%;
+      }
+   }
+
+   &[data-fruit="slider-kiwi-xs"], &[data-fruit="green-apple-pumpkin-1"] {
+      bottom: 16%;
+      left: 3%;
+   }
+
+   &[data-fruit="green-apple-pumpkin-1"] {
+      @include media-m() {
+         max-width: 70px;
+         transform: rotate(180deg);
+         left: 3%;
+         bottom: auto;
+         top: 94%;
+      }
+   }
+
+   &[data-fruit="slider-kiwi-xs"] {
+      @include media-m {
+         max-width: 50px;
+         bottom: auto;
+         left: auto;
+         top: 28%;
+         right: 25%;
+         z-index: 2;
+         transform: rotate(90deg);
+      }
+   }
+
+   &[data-fruit="slider-kiwi-xs-2"] {
+      left: 6%;
+      top: 94%;
+      max-width: 60px;
+   }
+
+   &[data-fruit="slider-apple-xxl"], &[data-fruit="green-apple-rotate-3"] {
+      left: 0;
+      bottom: 15%;
+   }
+
+   &[data-fruit="slider-apple-xxl"] {
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="apple-rotate-4"] {
+      left: 0;
+      bottom: 2%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="apple-rotate-5"] {
+      right: 10%;
+      top: 30%;
+      max-width: 18%;
+   }
+
+
+   &[data-fruit="mint-main"] {
+      top: 36vh;
+      left: 0;
+      width: 8%;
+
+      @include media-m {
+         width: 20%;
+         top: 50vh;
+      }
+   }
+
+   &[data-fruit="raspberry-main-medium"] {
+      top: 75vh;
+      left: 11%;
+      z-index: 3;
+
+      @include media-m {
+         width: 100px;
+         left: auto;
+         right: -10px;
+         top: 80vh;
+      }
+   }
+
+   &[data-fruit="fruits-strawberry"] {
+      top: calc(100vh - 140px);
+      left: 20%;
+      z-index: 3;
+
+      @include media-m {
+         width: 15%;
+         left: 5%;
+         top: 40vh;
+      }
+   }
+
+   &[data-fruit="vege-apple-slice"] {
+      top: calc(100vh - 120px);
+      left: 18%;
+      z-index: 3;
+      max-width: 180px;
+
+      @include media-xxl {
+         max-width: 140px;
+      }
+
+      @include media-m {
+         bottom: auto;
+         top: 60vh;
+         left: -20px;
+         max-width: 26%;
+      }
+   }
+
+   &[data-fruit="raspberry-main-medium--fruits"], &[data-fruit="kiwi-s"], &[data-fruit="porridge-banan-slice"], &[data-fruit="bilberry-vxxl"] {
+      right: 24%;
+      top: 90px;
+      max-width: 110px; 
+   }
+
+   &[data-fruit="kiwi-s"] {
+      @include media-m {
+         max-width: 60px;
+         right: 25%;
+         top: 44px;
+      }
+   }
+
+   &[data-fruit="raspberry-main-medium--fruits"] {
+      @include media-m {
+         width: 12%;
+         right: 12%;
+         top: 70px;
+      }
+   }
+
+   &[data-fruit="bilberry-vxxl"] {
+      top: 40px;
+
+      @include media-m() {
+         max-width: 19%;
+         right: -20px;
+         top: 44%;
+         transform: rotate(91deg);
+      }
+   }
+
+   &[data-fruit="gujawa-mango"] {
+      top: 20px;
+      right: 24%;
+      max-height: 140px;
+
+      @include media-m() {
+         left: -30px;
+         top: 72%;
+         max-width: 100px;
+         transform: rotate(115deg);
+      }
+   }
+
+   &[data-fruit="porridge-banan-slice"] {
+      top: 40px;
+
+      @include media-m {
+         left: -20px;
+         top: 30%;
+         max-width: 80px;
+      }
+   }
+
+   &[data-fruit="porridge-banan-slice-mobile"] {
+      max-width: 50px;
+      right: 2%;
+      top: 72%;
+   }
+
+   &[data-fruit="peach-main"] {
+      top: 70vh;
+      right: 8%;
+      z-index: 3;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="peach-blur"] {
+      max-width: 26%;
+      top: calc(100vh - 230px);
+      right: 7%;
+      z-index: 3;
+
+      @include media-m {
+         max-width: 50%;
+         right: -70px;
+         top: calc(100vh - 140px);
+      }
+   }
+
+   &[data-fruit="vege-mango-slice"], &[data-fruit="porridge-cherry-blur"], &[data-fruit="soup-coconut-down"] {
+      bottom: 0;
+      right: 3%;
+      z-index: 3;
+   }
+
+   &[data-fruit="porridge-cherry-blur"], &[data-fruit="soup-coconut-down"] {
+      max-width: 320px;
+      bottom: -160px;
+
+      @include media-m {
+         bottom: 0;
+         right: 0;
+         max-width: 100px;
+      }
+   }
+
+   &[data-fruit="porridge-cherry-blur"] {
+      bottom: auto;
+      top: calc(100vh - 190px);
+      max-width: 17%;
+      @include media-m {
+         bottom: 0;
+         right: -60px;
+         max-width: 150px;
+      }
+   }
+
+   &[data-fruit="soup-basil-mobile"] {
+      left: 0;
+      top: 66vh;
+      max-width: 20%;
+   }
+
+   &[data-fruit="soup-coconut-down"] {
+      max-width: 21%;
+      bottom: auto;
+      top: calc(89vh - 130px);
+
+      @include media-m() {
+         max-width: 46%;
+         top: calc(89vh - 70px);
+         right: -90px;
+      }
+   }
+
+   &[data-fruit="vege-mango-slice"] {
+      top: calc(100vh - 190px);
+      max-width: 24%;
+      right: 1%;
+
+      @include media-m {
+         max-width: 117px;
+         top: 70vh;
+         right: -40px;
+      }
+   }
+
+   &[data-fruit="strawberry-rotate"] {
+      top: 190px;
+      left: -100%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+   
+   &[data-fruit="mango"] {
+      bottom: 19%;
+      right: 0;
+   }
+   &[data-fruit="banan-xl"] {
+      bottom: -8%;
+      left: 10%;
+      z-index: 3;
+
+      @include media-m {
+         width: 31%;
+         left: auto;
+         right: 0;
+         bottom: -50%;
+      }
+   }
+
+   &[data-fruit="bilberry-title"] {
+      right: 26%;
+      bottom: 0;
+   }
+
+   &[data-fruit="cherry-title"] {
+      right: 0;
+      top: -120px;
+   }
+
+   &[data-fruit="grain-title"] {
+      right: 48%;
+      bottom: -60px;
+   }
+
+   &[data-fruit="grain-light"] {
+      left: 3%;
+      bottom: -50px;
+   }
+
+   &[data-fruit="mint-2"] {
+      left: -10%;
+      bottom: -100px;
+   }
+
+   &[data-fruit="banan-xxl"], &[data-fruit="splash"], &[data-fruit="more-mango-slice"], &[data-fruit="mango-6"] {
+      left: 5.5%;
+      bottom: 0;
+   }
+
+   &[data-fruit="mango-6"] {
+      bottom: 20px;
+   }
+
+   &[data-fruit="more-bilberry"], &[data-fruit="banan-grain"] {
+      bottom: 40px;
+      left: 5.5%;
+   }
+
+   &[data-fruit="rasberry-xxl"], &[data-fruit="cherry-xxl"], &[data-fruit="mango-slice-xxl"], &[data-fruit="pear-xxl"], &[data-fruit="peach-slice-xxl"], &[data-fruit="strawberry-slice-xxl"], &[data-fruit="vegetables-apple-slice"], &[data-fruit="pumpkin-slice-xxl"], &[data-fruit="more-apple-slice"], &[data-fruit="mango-7"], &[data-fruit="gujawa-xxl"], &[data-fruit="strawberry-vxxl"] {
+      right: 0;
+      bottom: 0;
+   }
+
+   &[data-fruit="coconut-full"], &[data-fruit="more-beetroot"] {
+      right: 2%;
+      bottom: 0;
+   }
+
+   &[data-fruit="fruit-footer-banan-1"] {
+      top: 120px;
+      left: 0;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="fruit-footer-banan-2"] {
+      bottom: 0;
+      right: 0;
+      max-width: 20%;
+
+      @include media-m {
+         width: 18%;
+      }
+   }
+
+   &[data-fruit="fruit-footer-raspberry"] {
+      bottom: 0;
+      left: 0;
+      max-width: 20%;
+
+      @include media-m {
+         width: 18%;
+      }
+   }
+
+   &[data-fruit="vegetable-fruit-decor"], &[data-fruit="porridge-fruit-decor"] {
+      right: 22%;
+      top: 0;
+   }
+
+   &[data-fruit="vegetable-fruit-decor"], &[data-fruit="porridge-fruit-decor"] {
+      @include media-m {
+         width: 60px;
+         right: 6%;
+      }
+   }
+
+   &[data-fruit="slider-vege-banan"], &[data-fruit="slider-carrot-full"] {
+      right: 25%;
+      top: 25px;
+      max-width: 150px;
+   }
+
+   &[data-fruit="slider-vege-banan"] {
+      @include media-m {
+         max-width: 100px;
+         right: -23px;
+         top: 45px;
+      }
+   }
+
+   &[data-fruit="slider-carrot-full"] {
+      max-width: 220px;
+
+      @include media-m() {
+         max-width: 190px;
+         right: auto;
+         left: -73px;
+         top: 30%;
+         transform: rotate(-35deg);
+      }
+   }
+
+   &[data-fruit="carrot"] {
+      left: 0;
+      top: 70px;
+      max-width: 280px;
+
+      @include media-m {
+         width: 80px;
+         top: auto;
+         bottom: 0;
+      }
+   }
+
+   &[data-fruit="raisin"] {
+      top: 70px;
+      left: -60px;
+
+      @include media-m {
+         max-width: 20px;
+         left: 20%;
+         top: 20%;
+
+         [data-view="soup"] & {
+            display: none;
+         }
+      }
+   }
+
+   &[data-fruit="porridge-grain-1"] {
+      top: 62%;
+      left: -50px;
+   }
+
+   &[data-fruit="porridge-grain-2"] {
+      bottom: -45px;
+      right: 0;
+
+      @include media-m {
+         left: 50px;
+         top: 34%;
+         bottom: auto;
+         max-width: 20px;
+      }
+   }
+
+   &[data-fruit="porridge-grain-3"] {
+      bottom: -45px;
+      left: 0;
+   }
+
+   &[data-fruit="porridge-grain-4"] {
+      bottom: 60px;
+      left: 17%;
+   }
+
+   &[data-fruit="footer-grain-3"] {
+      top: 48%;
+      left: 8%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="footer-grain-1"] {
+      top: 77%;
+      left: 29%;
+
+      @include media-m {
+         max-width: 20px;
+         left: 15px;
+         top: 81%;
+      }
+   }
+
+   &[data-fruit="porridge-banan-slice-3"], &[data-fruit="porridge-banan-slice-3-1"], &[data-fruit="porridge-banan-slice-3-2"] {
+      left: 0;
+      top: 45%;
+
+      @include media-m() {
+         max-width: 80px;
+         left: -20px;
+         top: 72%;
+         transform: rotate(-18deg);
+      }
+   }
+
+   &[data-fruit="grain-1-p-mobile"] {
+      right: 20%;
+      top: 20%;
+      transform: rotate(180deg);
+      max-width: 10px;
+   }
+
+   &[data-fruit="gujawa-mint"] {
+      right: 8%;
+      top: 95%;
+      max-width: 10%;
+   }
+
+   &[data-fruit="gujawa-grain"] {
+      right: 50%;
+      top: 94%;
+      max-width: 15px;
+   }
+
+   &[data-fruit="gujawa-grain-2"] {
+      right: 7%;
+      top: 78%;
+      max-width: 35px;
+   }
+
+   &[data-fruit="strawberry-mint"] {
+      left: 10%;
+      top: 16%;
+      max-width: 10%;
+   }
+
+   &[data-fruit="porridge-banan-slice-3-1"] {
+      @include media-m() {
+         max-width: 100px;
+         left: -15px;
+         top: 40%;
+         transform: rotateX(180deg);
+      }
+   }
+
+   &[data-fruit="porridge-banan-slice-3-2"] {
+      @include media-m() {
+         max-width: 80px;
+         left: 0;
+         top: 30%;
+         transform: rotate(0deg);
+      }
+   }
+
+   &[data-fruit="soup-tomato"] {
+      top: 13vh;
+      left: 13%;
+      max-width: 28%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="soup-celery"] {
+      bottom: -80px;
+      left: 15%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="soup-carrot"] {
+      right: 21%;
+      top: 70px;
+
+      @include media-m {
+         max-width: 26%;
+         right: auto;
+         left: -30px;
+         top: 29vh;
+      }
+   }
+
+   &[data-fruit="soup-strawberry-footer"] {
+      top: 60px;
+      left: 10%;
+
+      @include media-m {
+         display: none;
+      }
+   }
+
+   &[data-fruit="pepper-1"] {
+      top: 90px;
+      left: 22%;
+
+      @include media-m() {
+         max-width: 15px;
+         left: 14%;
+         top: 22%;
+      }
+   }
+
+   &[data-fruit="policy-billberry"] {
+      left: 24%;
+      top: 75px;
+
+      @include media-m(){
+         right: 3%;
+         left: auto;
+         top: 43.6%;
+         max-width: 30px;
+         transform: rotate(80deg);
+      }
+   }
+   &[data-fruit="policy-raspberry"] {
+      right: 13%;
+      top: 180px;
+      max-width: 130px;
+   }
+   &[data-fruit="policy-banan-slice"] {
+      left: 2%;
+      top: 33%;
+
+      @include media-m() {
+         left: auto;
+         right: 3%;
+         top: 5.4%;
+         max-width: 90px;
+      }
+   }
+   &[data-fruit="policy-peach-blur"] {
+      right: 0;
+      top: 23%;
+   }
+   &[data-fruit="policy-cherry"] {
+      right: 3%;
+      top: 58%;
+   }
+   &[data-fruit="policy-mint"] {
+      left: 4%;
+      top: 84%;
+
+      @include media-m() {
+         max-width: 50px;
+         right: 4%;
+         top: 21%;
+         left: auto;
+      }
+   }
+
+   &[data-fruit="contact-rapsberry-xxl"] {
+      //bottom: 70px;
+      bottom: 0;
+      transform: translateY(40%);
+      left: 0;
+      max-width: 20%;
+      z-index: 2;
+
+      @include media-xl() {
+         left: -50px !important;
+      }
+   }
+
+   &[data-fruit="contact-kiwi"] {
+      right: 20px;
+      top: -130px;
+
+      @include media-m() {
+         top: -55vh;
+      }
+
+      @include media-m() {
+         max-width: 70px;
+      }
+   }
+
+   &[data-fruit="contact-kiwi-mobile"] {
+      @include media-m() {
+         top: 20%;
+         right: 4%;
+      }
+
+      @include media-m() {
+         max-width: 70px;
+      }
+   }
+
+   &[data-fruit="contact-rapsberry-xxl-mobile"] {
+      max-width: 20%;
+      left: -20px;
+      top: 55%;
+      z-index: 3;
+
+      @include media-s() {
+         max-width:30%;
+         top: 70%;
+      }
+   }
+
+   &[data-fruit="contact-fruits"] {
+      top: 0;
+      right: 50%;
+      z-index: 2;
+   }
+
+   &[data-fruit="news-slide-banan"] {
+      left: 31%;
+      top: 0;
+      max-width: 16%;
+   }
+
+   &[data-fruit="news-carrot"] {
+      bottom: -80px;
+      left: 20%;
+   }
+
+   &[data-fruit="news-raspberry"] {
+      top: 100px;
+      right: 13%;
+   }
+
+   &[data-fruit="news-banan-slice-xxl"] {
+      top: 166px;
+      left: 72px;
+      z-index: 2;
+   }
+
+   &[data-fruit="footer-grain"] {
+      left: 23%;
+      top: -80px;
+   }
+
+   &[data-fruit="footer-cherry"] {
+      right: 19%;
+      top: -40px;
+   }
+
+   &[data-fruit="footer-strawberry"] {
+      left: 38%;
+      bottom: -150px;
+   }
+
+   &[data-fruit="banan-cut-mobile"] {
+      left: 0;
+      top: 38%;
+      max-width: 20%;
+   }
+
+   &[data-fruit="jablko-full-mobile"] {
+      right: 6%;
+      top: 28%;
+      max-width: 20%;
+   }
+
+   &[data-fruit="jablko-cut-mobile"] {
+      right: 0;
+      top: 67%;
+      max-width: 13%;
+   }
+
+   &[data-fruit="banan-cut-mobile-2"] {
+      left: 0;
+      top: 36%;
+      max-width: 20%;
+   }
+
+   &[data-fruit="apple-rotate-mobile"] {
+      right: 7%;
+      top: 25%;
+      max-width: 15%;
+   }
+
+   &[data-fruit="mango-rotate-mobile"]{
+      right: 0;
+      top: 73%;
+      max-width: 12%;
+   }
+
+   &[data-fruit="grucha-cut-mobile"] {
+      max-width: 17%;
+      right: 0;
+      top: 69%;
+   }
+
+   &[data-fruit="apple-red-mobile"] {
+      max-width: 17%;
+      right: 7%;
+      top: 24%;
+   }
+
+   &[data-fruit="peach-cut-mobile"], &[data-fruit="strawberry-cut-mobile"] {
+      max-width: 14%;
+      right: 0;
+      top: 67%;
+   }
+
+   &[data-fruit="green-apple-mobile"] {
+      right: 8%;
+      top: 24%;
+      max-width: 17%;
+   }
+
+   &[data-fruit="banan-courgette-mobile"] {
+      max-width: 65px;
+      left: 0;
+      top: 35%;
+   }
+
+   &[data-fruit="apple-courgette-mobile"] {
+      max-width: 65px;
+      right: 0;
+      top: 36%;
+   }
+
+   &[data-fruit="leaf-courgette-mobile"], &[data-fruit="leaf-pumpkin-mobile-2"], &[data-fruit="leaf-carrot-mobile-2"] {
+      max-width: 35px;
+      right: 4%;
+      top: 80%;
+   }
+
+   &[data-fruit="leaf-courgette-mobile"] {
+      right: 10%;
+      max-width: 26px;
+      top: 96%;
+   }
+
+   &[data-fruit="leaf-pumpkin-mobile-2"] {
+      top: 94%;
+      right: 7%;
+      max-width: 26px;
+   }
+
+   &[data-fruit="leaf-carrot-mobile-2"] {
+      top: 94%;
+      max-width: 25px;
+      right: 6%;
+   }
+
+   &[data-fruit="vege-apple-mobile-2"] {
+      max-width: 50px;
+      right: 27%;
+      top: 23%;
+      z-index: 2;
+   }
+
+   &[data-fruit="vege-banan-mobile-2"] {
+      max-width: 110px;
+      left: -40px;
+      top: 35%;
+   }
+
+   &[data-fruit="pumpkin-mobile"] {
+      right: 0;
+      top: 40%;
+      max-width: 70px;
+   }
+
+   &[data-fruit="mango-marchew-mobile"] {
+      max-width: 80px;
+      right: 0;
+      top: 38%;
+   }
+
+   &[data-fruit="vege-carrot-apple-mobile"] {
+      max-width: 70px;
+      left: 6%;
+      top: 90%;
+   }
+
+   &[data-fruit="mint-p-mobile"] {
+      max-width: 12%;
+      left: 8%;
+      top: 38%;
+   }
+
+   &[data-fruit="mint-p-mobile-2"] {
+      max-width: 50px;
+      left: 5%;
+      top: 17%;
+   }
+
+   &[data-fruit="cherry-p-mobile"] {
+      max-width: 28%;
+      right: -40px;
+      top: 35%;
+   }
+
+   &[data-fruit="grain-p-mobile"] {
+      left: 11%;
+      top: 33%;
+   }
+
+   &[data-fruit="gujawa-xxl-m"] {
+      right: 0;
+      top: 42%;
+      max-width: 70px;
+   }
+
+   &[data-fruit="strawberry-p-mobile"] {
+      right: 0;
+      top: 43%;
+      max-width: 70px;
+   }
+
+   &[data-fruit="banan-slice-p-mobile"] {
+      left: -15px;
+      top: 43%;
+      max-width: 20%;
+   }
+
+   &[data-fruit="grain-p2-mobile"] {
+      top: 78%;
+      right: 4%;
+      max-width: 22px;
+   }
+
+   &[data-fruit="strawberry-raisin"] {
+      left: 8%;
+      max-width: 27px;
+      top: 32%;
+   }
+
+   &[data-fruit="raisin-p-mobile"] {
+      left: 4%;
+      top: 74%;
+      max-width: 30px;
+      transform: rotate(-90deg);
+   }
+
+   &[data-fruit="strawberry-grain-2"] {
+      right: 18%;
+      top: 20%;
+      max-width: 15px;
+      transform: rotate(99deg);
+   }
+
+   &[data-fruit="s-beetroot-mobile"], &[data-fruit="s-beetroot-mobile-2"] {
+      max-width: 140px;
+      right: -80px;
+      top: 37%;
+      transform: rotate(-40deg);
+   }
+
+   &[data-fruit="s-beetroot-mobile-2"] {
+      transform: rotate(-87deg);
+      right: -55px;
+      top: 38%;
+   }
+
+   &[data-fruit="s-beetroot-mobile"] {
+      transform: rotate(-39deg);
+      top: 39%;
+      max-width: 33%;
+   }
+
+   &[data-fruit="beetroot-slice-mobile-2"] {
+      max-width: 15%;
+      left: 0;
+      top: 34%;
+   }
+
+   &[data-fruit="truskawka-top"] {
+      max-width: 70px;
+      left: 0;
+      top: 36%;
+   }
+
+   &[data-fruit="bilberry-contact-mobile"] {
+     // max-height: 110px;
+      left: 48%;
+      top: 0;
+
+      @include media-m() {
+         width: 30px;
+      }
+   }
+
+   &[data-fruit="pc-raisin"] {
+      max-width: 50px;
+      left: 5px;
+      top: 12%;
+
+      @include media-m() {
+         max-width: 27px;
+      }
+   }
+
+   &[data-fruit="pc-mint"] {
+      max-width: 90px;
+      right: 7%;
+      bottom: 24%;
+      z-index: 2;
+   }
+
+   &[data-fruit="pc-grain-1"] {
+      max-width: 26px;
+      left: 0;
+      bottom: 35%;
+   }
+
+   &[data-fruit="pc-grain-2"] {
+      max-width: 30px;
+      right: 0;
+      top: 42%;
+      transform: rotate(45deg);
+   }
+}
+
+[src$="hand.png"] {
+   @include media-m {
+      transform: translate3d(-70px, 0, 0);
+      max-width: calc(100% + 50px);
+   }
+}
+
+[src*="images/sklad"] {
+   @include media-m {
+      max-width: 80%;
+   }
+}
+
+[src$="strawberry-splash.png"] {
+   margin-top: -63px;
+}
+
+.image-paralax {
+   transition-delay: 0s !important;
+   transition-duration: .05s !important;
+   transition-timing-function: linear !important;
+}
+
+.mcontent {
+   color: $font-color-base;
+
+   h3 {
+      font-size: 3rem;
+      margin: 4rem 0;
+      font-family: 'Dosis600';
+
+      @include media-m() {
+         font-size: 2.2rem;
+      }
+   }
+
+   p {
+      font-size: 2.4rem;
+      margin: 4rem 0;
+
+      @include media-m() {
+         // font-size: 1.8rem;
+         font-size: 2.2rem;
+         margin: 3rem 0;
+      }
+   }
+
+   strong {
+      font-family: 'Dosis600';
+   }
+
+   a {
+      font-size: 3.6vw;
+      font-family: "Sheldon";
+      color: rgb(255, 255, 255);
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: 0.656px 0.755px 0px rgba(0, 0, 0, 0.2);
+      transform: matrix( 0.39809068615896,0.00267677305488,-0.00267697651631,0.39812094501879,0,0);
+
+      @include media-m() {
+         font-size: 3.3rem;
+
+         img {
+            width: 26px;
+         }
+      }
+
+      &:hover {
+         text-decoration: none;
+      }
+   }
+}
+
+#scroll-to-top {
+   @include resetButton();
+   position: fixed;
+   right: 35px;
+   bottom: 60px;
+   z-index: 6;
+   opacity: 0;
+   pointer-events: none;
+   transition: all .3s ease-in;
+
+   @include media-s() {
+      transform: scale(.7);
+      transform-origin: 100% 100%;
+   }
+
+   &.btn-show {
+      opacity: 1;
+      pointer-events: auto;
+   }
+
+   &.main-view-scroll-top {
+      right: 15px;
+      bottom: 25px;
+   }
+}
+
+
+button:focus {
+   outline: none;
+}
+
+body.page-template-kontakt .mcontent a {
+   font-size: 2.2vw;
+   
+   @include media-m(){
+      font-size: 4rem;
+   }
+}
+body.page-template-kontakt .mcontent a > img {
+   width: 1.8vw;
+
+   @include media-m() {
+      width: 2.8rem;
+   }
+}
+
+body.page-template-kontakt .mtitle--fs-l {
+   //font-size: 4.5vw;
+   font-size: 86px;
+
+   @include media-m() {
+      margin-top: 150px;
+   };
+}
+
+#contact-footer {
+   padding-bottom: 50px !important;
+   // background-image: url(assets/images/blue-bcg.png);
+}

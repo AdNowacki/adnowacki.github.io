@@ -1,0 +1,541 @@
+.products-list {
+   display: flex;
+   flex-wrap: wrap;
+   background: #88f0f3;
+
+   @include media-m {
+      flex-wrap: nowrap;
+      // overflow-y: hidden;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+         display: none;
+      }
+   }
+
+   &__el {
+      height: 400px;
+      width: 33.33%;
+      position: relative;
+      background: #88f0f3;
+      padding: 25px;
+      transition: all .3s ease-in-out;
+      overflow: hidden;
+
+      @include media-m {
+         width: 66%;
+         flex: 0 0 auto;
+      }
+
+      @include media-s {
+         width: 71%;
+         height: 280px;
+      }
+
+
+      &:nth-of-type(2n) {
+         background: #45e0e4;
+      }
+
+      a {
+         position: absolute;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         z-index: 3;
+
+         .animation-product-slider & {
+            pointer-events: none;
+         }
+      }
+
+      img {
+         position: absolute;
+         
+      }
+
+      &:hover {
+         background: #45e0e4;
+
+         .products-list__figure {
+            transform: translate(-50%, -50%) scale(1) rotate(10deg);
+         }
+         .products-list__hover {
+            opacity: 1;
+         }
+
+         .products-list__hover-image {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+            transition: all .3s ease-out;
+
+            &[data-delay="1"] {
+               transition-delay: .15s
+            }
+      
+            &[data-delay="2"] {
+               transition-delay: .3s
+            }
+      
+            &[data-delay="3"] {
+               transition-delay: .45s
+            }
+
+            &[data-delay="4"] {
+               transition-delay: .6s
+            }
+         }
+      }
+
+      &--vegetables {
+         background: url('assets/images/musy_warzywne_over_02.jpg') no-repeat center center;
+         background-size: cover;
+
+         &:hover, &:nth-of-type(2n) {
+            background: url('assets/images/musy_warzywne_over_02.jpg') no-repeat center center;
+            background-size: cover;
+         }
+      }
+
+      &--porridge {
+         width: 50%;
+   
+         @include media-m {
+            width: 66%;
+            flex: 0 0 auto;
+         }
+   
+         @include media-s {
+            width: 71%;
+            height: 280px;
+         }
+
+         background: url('assets/images/musy-owsianki-over-light.jpg') no-repeat center center;
+         background-size: cover;
+
+         &:hover, &:nth-of-type(2n) {
+            background: url('assets/images/musy_owsianki_over.jpg') no-repeat center center;
+            background-size: cover;
+         }
+      }
+
+      &--soup {
+
+         background: url('assets/images/soup_over.jpg') no-repeat center center;
+         background-size: cover;
+
+         &:hover, &:nth-of-type(2n) {
+            background: url('assets/images/soup_over.jpg') no-repeat center center;
+            background-size: cover;
+         }
+      }
+   }
+
+   .products-list__el--more {
+      background: url('assets/images/fruits-to-vege-link.png') no-repeat;
+      background-size: 100% 100%;
+      padding: 80px 25px 25px 60px;
+
+      img {
+         position: initial;
+
+         @include media-m() {
+            width: 72px;
+         }
+      }
+
+      // @include media-m {
+      //    height: 220px;
+      //    padding: 30px 50px;
+      // }
+
+      @include media-m() {
+         padding: 30px 50px;
+         height: 400px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+      }
+
+      @include media-s() {
+         height: 280px;
+      }
+   }
+
+   .products-list__el--vegetables-more {
+      background: url('assets/images/next-step-porridge.jpg') no-repeat center center;
+      background-size: 100% 100%;
+   }
+
+   .products-list__el--porridge-more {
+      background: url('assets/images/next-step-drinkables.png') no-repeat center center;
+      background-size: 100% 100%;
+      width: 50%;
+      padding-left: 14%;
+
+      @include media-s {
+         width: 100%;
+      }
+
+      @include media-m() {
+         width: 66%;
+      }
+
+      @include media-s() {
+         width: 71%;
+      }
+   }
+
+   .products-list__el--soup-more {
+      background: url('assets/images/next-step-soup.png') no-repeat center center;
+      background-size: 100% 100%;
+   }
+
+   &__figure {
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      max-width: 90%;
+      transform: translate(-50%, -50%) scale(.9);
+      transition: .15s ease-in-out;
+
+      @include media-m {
+         max-width: none;
+         max-height: 60%;
+      }
+   }
+
+   &__hover {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 1;
+      opacity: 0;
+      transition: all .3s ease-in-out;
+   }
+
+   &__hover-image {
+      position: absolute;
+      opacity: 0;
+      transition: all .3s ease-out 0s;
+      z-index: 2;
+
+      @include media-m {
+         max-height: 120px;
+      }
+
+      &[data-hover="wisnia-hover-1"] {
+         left: -20px;
+         bottom: -50px;
+         width: 20%;
+         transform: translate3d(-15vw, 15vw, 0);
+      }
+
+      &[data-hover="wisnia-hover-2"] {
+         max-width: 20%;
+         left: -30px;
+         top: 6%;
+         transform: translate3d(-15vw, 0, 0);
+      }
+
+      &[data-hover="wisnia-hover-3"] {
+         @include right-bottom-corner-hover(-40px, -40px);
+         max-width: 30%;
+      }
+
+      &[data-hover="mango-mango-hover-1"] {
+         @include left-top-corner-hover(-30px, -30px);
+         max-width: 30%;
+      }
+
+      &[data-hover="apple-mango-hover-2"] {
+         @include right-bottom-corner-hover(-30px, -30px);
+         max-width: 35%;
+      }
+
+      &[data-hover="gruszka-hover-1"] {
+         @include left-top-corner-hover(-30px, -30px);
+         max-width: 30%;
+      }
+
+      &[data-hover="gruszka-hover-2"] {
+         @include right-bottom-corner-hover(-30px, -30px);
+         max-width: 35%;
+      }
+
+      &[data-hover="marakuja-hover-1"] {
+         left: 6%;
+         top: -50px;
+         width: 20%;
+         transform: translate3d(0, -15vw, 0);
+      }
+
+      &[data-hover="marakuja-hover-2"] {
+         @include right-bottom-corner-hover(-30px, -30px);
+         max-width: 35%;
+      }
+
+      &[data-hover="truskawka-hover-1"] {
+         @include left-bottom-corner-hover(2%, -50px);
+         max-width: 20%;
+      }
+
+      &[data-hover="truskawka-hover-2"] {
+         @include left-top-corner-hover(-20px, -20px);
+         max-width: 30%;
+      }
+
+      &[data-hover="truskawka-hover-3"] {
+         @include right-bottom-corner-hover(-10px, -10px);
+         max-width: 30%;
+      }
+
+      &[data-hover="dynia-hover-1"] {
+         @include left-top-corner-hover(-10px, -10px);
+         max-width: 25%;
+      }
+
+      &[data-hover="dynia-hover-2"] {
+         @include left-bottom-corner-hover(0, 0);
+         max-width: 20%;
+      }
+
+      &[data-hover="dynia-hover-3"] {
+         @include right-bottom-corner-hover(0, 0);
+         max-width: 30%;
+      }
+
+      &[data-hover="marchew-hover-1"] {
+         @include left-bottom-corner-hover(1%, 0);
+         max-width: 20%;
+      }
+
+      &[data-hover="marchew-hover-2"] {
+         @include right-top-corner-hover(-10px, -10px);
+         max-width: 24%;
+      }
+
+      &[data-hover="marchew-hover-3"] {
+         @include right-bottom-corner-hover(-10px, -10px);
+         max-width: 24%;
+      }
+
+      &[data-hover="jagoda-hover-1"] {
+         @include right-top-corner-hover(18%, 15%);
+      }
+
+      &[data-hover="jagoda-hover-2"] {
+         @include left-bottom-corner-hover(0, 0);
+      }
+
+      &[data-hover="jagoda-hover-3"] {
+         @include left-top-corner-hover(18%, 15%);
+      }
+
+      &[data-hover="jagoda-hover-4"] {
+         @include right-bottom-corner-hover(18%, 15%);
+      }
+
+      &[data-hover="gujawa-hover-1"] {
+         @include right-top-corner-hover(18%, 15%);
+      }
+
+      &[data-hover="gujawa-hover-2"] {
+         @include left-bottom-corner-hover(0, 0);
+      }
+
+      &[data-hover="gujawa-hover-3"] {
+         @include left-top-corner-hover(17%, 15%);
+      }
+
+      &[data-hover="gujawa-hover-4"] {
+         @include right-bottom-corner-hover(18%, 15%);
+      }
+
+      &[data-hover="t-hover-1"] {
+         @include right-top-corner-hover(20%, 15%);
+      }
+
+      &[data-hover="t-hover-2"] {
+         @include right-bottom-corner-hover(0, 0);
+         max-width: 23%;
+      }
+
+      &[data-hover="t-hover-3"] {
+         @include left-top-corner-hover(10%, 15%);
+         max-width: 23%;
+      }
+
+      &[data-hover="burak-smietana-hover-1"] {
+         @include left-bottom-corner-hover(-30px, -95px);
+      }
+
+      &[data-hover="burak-smietana-hover-2"], &[data-hover="m-hover-1"] {
+         @include right-top-corner-hover(-50px, -65px);
+      }
+
+      &[data-hover="pomidor-hover-1"] {
+         @include left-top-corner-hover(-40px, -40px);
+      }
+
+      &[data-hover="pomidor-hover-2"] {
+         @include right-bottom-corner-hover(-30px, -30px);
+      }
+
+      &[data-hover="ts-hover-1"] {
+         @include left-top-corner-hover(-55px, -55px);
+      }
+
+      &[data-hover="ts-hover-2"] {
+         @include right-bottom-corner-hover(-10px, -10px);
+      }
+
+      &[data-hover="seler-hover-1"] {
+         @include left-bottom-corner-hover(-20px, -80px);
+      }
+
+      &[data-hover="seler-hover-2"] {
+         @include right-top-corner-hover(-46px, -55px);
+      }
+
+      &[data-hover="m-hover-2"] {
+         @include left-bottom-corner-hover(-20px, -20px);
+      } 
+   }
+}
+
+.more-products {
+   text-align: center;
+   padding: 40px 15px;
+   background: #46dae1;
+   position: relative;
+   z-index: 2;
+
+   &--vegetables {
+      background: map-get($section-colors, 'vegetables');
+   }
+
+   &--porrdiges {
+      background: map-get($section-colors, 'porridge');
+
+   }
+
+   &--soup {
+      background: map-get($section-colors, 'soup');
+   }
+
+   @include media-m {
+      img {
+         display: none;
+      }
+   }
+
+   @include media-s {
+      .mtitle {
+         font-size: 4rem;
+      }
+   }
+}
+
+.packshot {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   align-items: flex-start;
+
+   @include media-m() {
+      align-items: center;
+   }
+
+   &__el {
+      position: relative;
+   }
+
+   &__product {
+      margin-top: 60px;
+
+      &--top-spacing {
+         margin-top: 120px;
+
+         @include media-m() {
+            margin-top: 45px !important;
+         }
+      }
+
+      @include media-m() {
+         margin-top: 30px;
+      }
+   }
+
+   &__decor {
+      position: absolute;
+      
+      &--dots-top {
+         top: 0;
+         left: 5%;
+         // opacity: 0;
+         transition: opacity .3s ease-in-out .7s;
+
+         .view--animate-images & {
+            opacity: 1;
+         }
+      }
+
+      &--dots-bottom {
+         bottom: -3%;
+         left: 21%;
+         // opacity: 0;
+         transition: opacity .3s ease-in-out .7s;
+
+         .view--animate-images & {
+            opacity: 1;
+         }
+
+         &-2 {
+            @include media-m() {
+               left: 14%;
+            }
+         }
+      }
+
+      &--top {
+         bottom: 7%;
+         left: 50%;
+      }
+
+      &--visible {
+         opacity: 1;
+      }
+
+      &--element {
+         bottom: -6%;
+         left: 8%;
+         max-width: 15%;
+
+         &-2 {
+            left: 12%;
+
+            @include media-m() {
+               left: 4%;
+            }
+         }
+
+         &--3 {
+            bottom: -14%;
+         }
+
+         &--4 {
+            bottom: -11%;
+         }
+
+         &-5 {
+            bottom: auto;
+            top: 40px;
+            left: 26%;
+         }
+      }
+   }
+}

@@ -1,0 +1,331 @@
+.mtitle {
+   @extend %decor-font;
+   @extend %title-width;
+   transform: matrix( 0.99942642512725,-0.03386474209801,0.03386474209802,0.99942642512725,0,0);
+   position: relative;
+
+   @include media-m {
+      font-size: 7rem;
+
+      span {
+         display: block;
+      }
+   }
+
+   &--dark-color {
+      color: $font-color-dark-color;
+   }
+
+   &--decor-color {
+      color: $font-color-decor-subtitle-color;
+   }
+
+   &--light-decor-color {
+      color: $font-color-decor-color;
+      text-shadow: none;
+   }
+
+   &--rot-xs {
+      -moz-transform: matrix( 1.15530158913927,-0.07121656819439,0.07122197579552,1.15538943268379,0,0);
+      -webkit-transform: matrix( 1.15530158913927,-0.07121656819439,0.07122197579552,1.15538943268379,0,0);
+      -ms-transform: matrix( 1.15530158913927,-0.07121656819439,0.07122197579552,1.15538943268379,0,0);
+      transform: matrix( 1.15530158913927,-0.07121656819439,0.07122197579552,1.15538943268379,0,0);
+   }
+
+   &--no-transform {
+      -moz-transform: initial;
+      -webkit-transform: initial;
+      -ms-transform: initial;
+      transform: initial;
+      font-size: 2vw;
+      margin-top: 20px;
+
+      @include media-m {
+         display: block;
+         font-size: 3rem;
+      }
+
+      @include media-s {
+         font-size: 2rem;
+         margin-top: 5px;
+      }
+   }
+
+   &__before {
+      color: $font-color-before-title;
+      text-shadow: initial;
+      font-size: 1.5vw;
+      display: block;
+
+      @include media-m {
+         font-size: 2.4rem;
+
+         &.mb-20, &.mb-30 {
+            margin-bottom: 5px;
+         }
+      }
+
+      @include media-s {
+         font-size: 2rem;
+      }
+   }
+
+   &--lh1 {
+      line-height: 1;
+   }
+
+   &--lh0-8 {
+      line-height: .8;
+      @include media-m {
+         line-height: 1;
+      }
+   }
+
+   &--lh0-6 {
+      line-height: .6;
+   }
+
+   &--lh0-4 {
+      line-height: .4;
+      @include media-m {
+         line-height: 1;
+      }
+   }
+
+   &--fs-s {
+      font-size: 2vw;
+
+      @include media-m {
+         display: block;
+         font-size: 3rem;
+      }
+
+      @include media-s {
+         font-size: 2rem;
+         margin-top: 5px;
+      }
+   }
+
+   &--fs-l {
+      font-size: 5.5vw;
+
+      @include media-m {
+         font-size: 11rem;
+         line-height: 1;
+      }
+
+      @include media-s {
+         font-size: 8rem;
+      }
+
+      @include media-xs {
+         font-size: 6.5rem;
+      }
+   }
+
+   &--fs-m {
+      font-size: 3.5vw;
+
+      @include media-m() {
+         font-size: 3.5vw;         
+      }
+   }
+
+   &--fs-xl {
+      font-size: 7.8vw;
+
+      @include media-m {
+         font-size: 10rem;
+      }
+      
+   }
+
+   &--fs-xxl {
+      font-size: 9.3vw;
+
+      @include media-m {
+         font-size: 12rem;
+      }
+
+      @include media-s {
+         font-size: 8rem;
+      }
+
+      @include media-xs {
+         font-size: 6.5rem;
+      }
+   }
+
+   &--fs-xxxl {
+      font-size: 13vw;
+
+      @include media-m {
+         font-size: 15rem;
+         line-height: 1;
+      }
+
+      @include media-s {
+         font-size: 12rem;
+      }
+
+      // @include media-xs {
+      //    font-size: 9rem;
+      // }
+   }
+
+   &__xxl {
+      font-size: 7.2vw;
+
+      @include media-m {
+         font-size: 10rem;
+      }
+   }
+
+   &__xl {
+      font-size: 6.7vw;
+
+      @include media-m {
+         font-size: 7rem;
+      }
+      @include media-s {
+         font-size: 5rem;
+      }
+
+      @include media-xs {
+         font-size: 4rem;
+      }
+
+      &--mobile {
+         @include media-m {
+            font-size: 6rem !important;
+         }
+      }
+   }
+   
+   &__m {
+      font-size: 5.2vw;
+
+      @include media-m {
+         font-size: 3.9rem;
+      }
+
+      // @include media-xs {
+      //    font-size: 3.6rem;
+      // }
+   }
+
+   &__ms {
+      font-size: 4.2vw;
+
+      @include media-m {
+         font-size: 7rem;
+      }
+
+      @include media-s {
+         font-size: 5rem;
+      }
+
+      @include media-xs {
+         font-size: 4rem;
+      }
+   }
+
+   &__s {
+      font-size: 3.3vw;
+
+      @include media-m {
+         font-size: 5rem;
+      }
+
+      @include media-m {
+         font-size: 4.1rem;
+      }
+
+      // @include media-xs {
+      //    font-size: 2.4rem;
+      // }
+   }
+
+   &__xs {
+      font-size: 2.7vw;
+
+      @include media-m {
+         font-size: 3rem;
+         display: block;
+      }
+
+      @include media-m {
+         font-size: 2.6rem;
+      }
+
+      @include media-xs {
+         font-size: 2.2rem;
+      }
+   }
+
+   &__xxs {
+      font-size: 1.8vw;
+
+      @include media-m() {
+         font-size: 2.3rem;
+      }
+   }
+}
+
+.msubtitle {
+   @extend %title-width;
+   color: $font-color-base;
+   font-size: 1.15vw;
+   line-height: 1.2;
+   position: relative;
+
+   @include media-m {
+      font-size: 2.2rem;
+   }
+
+   @include media-s {
+      font-size: 1.8rem;
+   }
+
+   &--light-color {
+      color: $font-color-light-color;
+   }
+
+   &--dark-color {
+      color: $font-color-dark-subtitle-color;
+   }
+
+   &--decor-color {
+      color: $font-color-decor-subtitle-color;
+   }
+
+   strong {
+      font-family: 'Dosis600';
+   }
+}
+
+.small-title {
+   font-size: 3vw;
+   font-family: $decor-font-family;
+   color: rgb(255, 255, 255);
+   text-transform: uppercase;
+   line-height: .9;
+   text-shadow: 0.656px 0.755px 0px rgba(0, 0, 0, 0.3);
+   transform: rotate(-1.5deg);
+   position: relative;
+
+   &--lh0-6 {
+      line-height: .6;
+   }
+
+   @include media-m() {
+      font-size: 6rem;
+   }
+
+   small {
+      font-size: 2vw;
+      @include media-m() {
+         font-size: 3rem;
+      }
+   }
+}

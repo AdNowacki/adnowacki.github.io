@@ -1,0 +1,81 @@
+[data-paralax] {
+   position: relative;
+}
+
+.swing {
+   &-hide {
+      opacity: 0;
+      z-index: 2;
+   }
+
+   &-show {
+      animation-name: swing;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+   } 
+}
+
+@keyframes swing {
+   0% {
+      -webkit-transform: translateZ(-1400px) scale(.5);
+              transform: translateZ(-1400px) scale(.5);
+      opacity: 0;
+    }
+    40%, 100% {
+      -webkit-transform: translateZ(0) scale(1);
+              transform: translateZ(0) scale(1);
+      opacity: 1;
+    }
+} 
+
+@keyframes shake {
+   10%, 90% {
+     transform: translate3d(-1px, -50%, 0);
+   }
+   
+   20%, 80% {
+     transform: translate3d(2px, -50%, 0);
+   }
+ 
+   30%, 50%, 70% {
+     transform: translate3d(-4px, -50%, 0);
+   }
+ 
+   40%, 60% {
+     transform: translate3d(4px, -50%, 0);
+   }
+ }
+
+ @keyframes swingMainTitle {
+   0% {
+      transform: translateZ(-1400px) scale(.5);
+      opacity: 0;
+    }
+    40%, 100% {
+      transform: matrix( 0.99942642512725,-0.03386474209801,0.03386474209802,0.99942642512725,0,0);
+      opacity: 1;
+    }
+} 
+
+@keyframes resetSwing {
+   0%{
+      opacity: 1;
+      transform: rotate3d(0, 0, 1, 0);
+   }
+   100%{
+      opacity: 1;
+      transform: rotate3d(0, 0, 1, 0);
+   }
+}
+
+@keyframes moveToTop {
+   0% {
+      top: 0;
+      opacity: 1;
+   }
+   100% {
+      top: -140vh;
+      opacity: 1;
+   }
+}
+

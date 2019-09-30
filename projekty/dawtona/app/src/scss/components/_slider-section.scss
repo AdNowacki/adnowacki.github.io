@@ -1,0 +1,511 @@
+.mslider {
+   position: relative;
+   display: flex;
+   align-items: center;
+
+   &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 44%,  lighten(map-get($section-colors, 'default'), 35%) 0%, lighten(map-get($section-colors, 'default'), 22%) 18%, map-get($section-colors, 'default') 43%);
+      box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'default');
+      opacity: 0;
+      transition: opacity .3s ease-in-out .4s;
+
+      .view--animate-images & {
+         opacity: 1;
+      }
+
+      @include media-m() {
+         background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'default'), 35%) 0%, lighten(map-get($section-colors, 'default'), 22%) 18%, map-get($section-colors, 'default') 43%);
+      }
+   }
+
+   &--fruits {
+      align-items: flex-start;
+      &::before {
+         background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'fruits'), 35%) 0%, lighten(map-get($section-colors, 'fruits'), 22%) 18%, map-get($section-colors, 'fruits') 43%);
+         box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'fruits');
+
+         @include media-m() {
+            background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'fruits'), 35%) 0%, lighten(map-get($section-colors, 'fruits'), 22%) 18%, map-get($section-colors, 'fruits') 43%);
+         }
+      }
+   }
+
+   &--vegetables {
+      align-items: flex-start;
+      &::before {
+         background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'vegetables'), 25%) 0%, lighten(map-get($section-colors, 'vegetables'), 15%) 11%, map-get($section-colors, 'vegetables') 43%);
+         box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'vegetables');
+         background-size: contain;
+
+         @include media-m() {
+            background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'vegetables'), 25%) 0%, lighten(map-get($section-colors, 'vegetables'), 15%) 11%, map-get($section-colors, 'vegetables') 43%);
+         }
+      }
+   }
+
+   &--porridge {
+      align-items: flex-start;
+      &::before {
+         background: radial-gradient(circle at center,  #ffffff 0%,map-get($section-colors, 'porridge') 57%);
+         box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'porridge');
+
+         @include media-m() {
+            background: radial-gradient(circle at 43% 25%,  #ffffff 0%,map-get($section-colors, 'porridge') 57%);
+         }
+      }
+   }
+   
+   &--soup {
+      align-items: flex-start;
+      &::before {
+         background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'soup'), 25%) 0%, lighten(map-get($section-colors, 'soup'), 15%) 11%, map-get($section-colors, 'soup') 43%);
+         box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'soup');
+         background-size: contain;
+
+         @include media-m() {
+            background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'soup'), 25%) 0%, lighten(map-get($section-colors, 'soup'), 15%) 11%, map-get($section-colors, 'soup') 43%);
+         }
+      }
+   }
+
+   &__key {
+      width: 100%;
+      padding-bottom: 40px;
+      
+      &--fruits {
+         top: 0;
+      }
+
+      @include media-m {
+         text-align: center;
+      }
+
+      .mtitle {
+         opacity: 0;
+         position: relative;
+         z-index: 2;
+
+         @include media-m() {
+            margin-top: -25px;
+         }
+      }
+   }
+
+   &__next-view {
+      @include resetButton();
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transition: all .3s ease-in-out 1s;
+      overflow: hidden;
+      transform: translate3d(0, -50%, 0);
+
+      img {
+         transform: translate3d(50%, 0, 0);
+         transition: all .2s ease-in-out;
+      }
+
+      &:hover {
+         // animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+
+         img {
+            transform: translate3d(50%, 0, 0) rotate(-2deg) scale(1.05);
+            transition-delay: 0s;
+         }
+      }
+
+      @include media-m {
+         top: 19%;
+         text-align: right;
+         max-width: 33%;
+         // transform: translate3d(35%, -50%, 0);
+
+         &:hover {
+            // transform: translate3d(35%, -50%, 0) rotate(-2deg) scale(1.05);
+         }
+      }
+   }
+
+   &__more, &__open-fruit-details {
+      @include resetButton();
+      font-family: $decor-font-family;
+      color: #fff;
+      font-size: 2.5rem;
+      margin-top: 60px;
+      padding-right: 50px;
+      display: block;
+      width: 100%;
+      text-align: right;
+      opacity: 0;
+      transition: opacity .3s ease-in-out 0s;
+
+      &--dark {
+         color: $font-color-dark-color;
+      }
+
+      img {
+         margin-right: 15px;
+      }
+
+      [data-hover-state="static"], [data-hover-state="hover"] {
+         width: 80px;
+      }
+   
+      [data-hover-state="static"] {
+         display: initial;
+      }
+   
+      [data-hover-state="hover"] {
+         display: none;
+      }
+   
+      &:hover {
+         [data-hover-state="static"] {
+            display: none;
+         }
+      
+         [data-hover-state="hover"] {
+            display: initial;
+         }
+      }
+
+      @include media-m {
+         text-align: center;
+         padding-left: 30px;
+         transform: scale(.7);
+         margin-top: 20px;
+      }
+   }
+
+}
+
+.pslider {
+   pointer-events: none;
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   overflow-x: hidden;
+   overflow-y: hidden;
+   z-index: 10;
+   opacity: 0;
+   z-index: -1;
+   touch-action: pan-y;
+   user-select: none;
+
+   &.show-slider {
+      opacity: 1;
+      pointer-events: auto;
+      overflow-y: auto;
+      z-index: 4;
+      
+   }
+}
+
+[data-slider-view] {
+   opacity: 0;
+   pointer-events: none;
+   transition: transform .5s ease-in-out;
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 100%;
+
+   &.show-view {
+      opacity: 1;
+      pointer-events: auto;
+   }
+
+   &.hide-slider {
+      transform: translate3d(0, 100vh, 0);
+   }
+}
+
+[data-slider-product] {
+   width: 100%;
+   transform: translate3d(0, 100vh, 0);
+   height: 0;
+   overflow: hidden;
+   transition: transform .3s ease-in-out;
+   position: relative;
+   z-index: 1;
+
+   &.pslider__slide--visible {
+      transform: initial;
+      height: initial;
+   }
+
+   &.show-current-slide {
+      height: auto;
+      transform: translate3d(0, 0, 0);
+      transition: transform .3s ease-in-out .4s;
+      z-index: 2;
+
+      [data-bg] {
+         &::before {
+            opacity: 1;
+         }
+      }
+
+      &.hide-product-details {
+         .mtitle, img, .container {
+            transition: transform .6s ease-in-out, opacity .4s ease-in-out;
+            transform: translate3d(0, 100vh, 0);
+            opacity: 0;
+         }
+         [data-bg] {
+
+            &::before {
+               transition: all .4s ease-in-out .2s;
+               opacity: 0;
+            }
+         }
+      }
+   }
+
+   @include media-m {
+      text-align: center;
+   }
+}
+
+[data-bg] {
+   position: relative;
+   min-height: 100vh;
+   &::before {
+      content: '';
+      // background-repeat: no-repeat;
+      // background-position: center center;
+      // background-image: url('assets/images/product-fruits-slide-bg.jpg');
+      // background-size: 100% 100%;
+      background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'default'), 25%) 0%, lighten(map-get($section-colors, 'default'), 15%) 11%, map-get($section-colors, 'default') 43%);
+      box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'default');
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity .3s ease-in-out .5s;
+      z-index: 0;
+
+      .pslider__slide--visible & {
+         opacity: 1;
+      }
+
+      @include media-m() {
+         background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'default'), 25%) 0%, lighten(map-get($section-colors, 'default'), 15%) 6%, map-get($section-colors, 'default') 26%);
+      }
+   }
+}
+
+[data-bg="fruits"], [data-bg="fruits-first"] {
+   &::before {
+      background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'fruits'), 45%) 0%, lighten(map-get($section-colors, 'fruits'), 22%) 18%, map-get($section-colors, 'fruits') 43%);
+      box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'fruits');
+
+      @include media-m() {
+         background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'fruits'), 45%) 0%, lighten(map-get($section-colors, 'fruits'), 22%) 6%, map-get($section-colors, 'fruits') 26%);
+      }
+   }
+}
+
+[data-bg="vegetables"], [data-bg="vegetables-first"] {
+   &::before {
+      background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'vegetables'), 25%) 0%, lighten(map-get($section-colors, 'vegetables'), 15%) 11%, map-get($section-colors, 'vegetables') 43%);
+      box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'vegetables');
+      background-size: contain;
+
+      @include media-m() {
+         background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'vegetables'), 25%) 0%, lighten(map-get($section-colors, 'vegetables'), 15%) 6%, map-get($section-colors, 'vegetables') 26%);
+      }
+   }
+
+
+}
+
+[data-bg="porrdiges"], [data-bg="porrdiges-first"] {
+   &::before {
+      background: radial-gradient(circle at center,  #ffffff 0%,map-get($section-colors, 'porridge') 57%);
+      box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'porridge');
+
+      @include media-m() {
+         background: radial-gradient(circle at 43% 25%,  #ffffff 0%,map-get($section-colors, 'porridge') 37%);
+      }
+   }
+}
+
+[data-bg="soup"], [data-bg="soup-first"]  {
+   &::before {
+      background: radial-gradient(circle at center,  lighten(map-get($section-colors, 'soup'), 25%) 0%, lighten(map-get($section-colors, 'soup'), 15%) 11%, map-get($section-colors, 'soup') 43%);
+      box-shadow: 0 0 12vw 4vw inset map-get($section-colors, 'soup');
+      background-size: contain;
+
+      @include media-m() {
+         background: radial-gradient(circle at 43% 25%,  lighten(map-get($section-colors, 'soup'), 25%) 0%, lighten(map-get($section-colors, 'soup'), 15%) 6%, map-get($section-colors, 'soup') 26%);
+      }
+   }
+}
+
+.news-slider {
+   position: relative;
+   overflow: hidden;
+   min-height: 100vh;
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   justify-content: center;
+   font-family: "DosisNormal";
+   z-index: 2;
+
+   &__inner {
+      width: 100%;
+   }
+
+   &:before {
+      content: '';
+      background: map-get($section-colors, 'default');
+      display: block;
+      width: 40%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+   }
+
+   &__el {
+      display: flex;
+      padding: 0 40px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      transform: translate(15%, 0);
+      pointer-events: none;
+      transition: all .4s ease-in-out;
+      opacity: 0;
+      transition-delay: 0s;
+
+      &--active {
+         position: static;
+         transform: translate(0, 0);
+         pointer-events: auto;
+         opacity: 1;
+         transition-delay: .5s;
+      }
+
+      &--hide {
+         transform: translate(-15%, 0);
+         pointer-events: none;
+         opacity: 0;
+         transition-delay: 0s;
+      }
+
+      img {
+         max-width: 100%;
+      }
+   }
+
+   &__content {
+      color: $font-color-base;
+      font-size: 1.6vw;
+      line-height: 1.2;
+   }    
+}
+
+.news-date {
+   color: map-get($section-colors, 'default');
+   font-size: 2vw;
+   font-family: "Sheldon";
+   text-transform: uppercase;
+   line-height: 1.2;
+
+   &--s {
+      font-size: 1.6vw;
+   }
+}
+
+.news-title {
+   color: map-get($section-colors, 'default');
+   font-size: 4.5vw;
+   font-family: "Sheldon";
+   text-transform: uppercase;
+   line-height: 0.857;
+   margin: 30px 0 40px;
+
+   &--s {
+      font-size: 3vw;
+   }
+}
+
+.news {
+
+   &__el {
+      position: relative;
+   }
+
+   &:nth-of-type(2n+1) {
+      .news__el {
+         margin-top: 50px;
+
+         @include media-m(){
+            margin-top: 20px;
+         }
+      }
+   }
+
+   &__picture {
+      width: 100%;
+      height: 375px;
+      object-fit: cover;
+      object-position: center center;
+   }
+
+   a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+   }
+}
+
+.slider-summary {
+
+   .slick-prev, .slick-next {
+      top: auto;
+      transform: none;
+      bottom: -5%;
+      left: calc(50% - 40px);
+      background: url(assets/images/prev.png) no-repeat center;
+      background-size: 25px auto;
+      width: 30px;
+      height: 30px;
+
+      &::before {
+         display: none;
+      }
+   }
+
+   .slick-next {
+      right: calc(50% - 40px);
+      left: auto;
+      background-image: url(assets/images/next.png);
+   }
+
+   &__item {
+      figure {
+         text-align: center;
+      }
+
+      img {
+         margin: 0 auto;
+      }
+   }
+}
+ 
+ 

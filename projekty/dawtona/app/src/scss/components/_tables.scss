@@ -1,0 +1,51 @@
+.dtable {
+   max-width: $tables-max-width;
+   table-layout: auto;
+   margin: 60px auto;
+
+   @include media-m {
+      margin: 60px 15px;
+   }
+
+   tr {
+      @include borderDecoration('bottom', 3px, rgba(255, 255, 255,.6), dashed);
+
+      &:last-of-type {
+         border: 0;
+      }
+
+      td {
+         &:last-of-type {
+            border: 0;
+         }
+      }
+   }
+
+   td {
+      @include borderDecoration('right', 3px, rgba(255, 255, 255,.6), dashed);
+      padding: 40px;
+      position: relative;
+
+      @include media-m {
+         padding: 15px;
+      }
+
+      &.dtable__col--3 {
+         width: 33.33%;
+      }
+   }
+
+   img {
+      max-width: 90%;
+   }
+
+   &--dark {
+      tr {
+         @include borderDecoration('bottom', 3px, $tables-color-dark, dashed);
+      }
+      td {
+         @include borderDecoration('right', 3px, $tables-color-dark, dashed);
+      }
+   }
+}
+ 

@@ -1,0 +1,217 @@
+Gulp instalacja
+. Instalacja node
+
+. Usuniêcie starej wersji gulpa
+npm rm --global gulp
+
+. zainstalowanie globalnie gulp-cli
+npm install --global gulp-cli
+
+. stworzenie projektu 
+npm init
+
+. instalacja lokalnego gulpa
+npm install --save-dev gulp
+
+
+. sprawdzenie wersj gulpa
+gulp --version
+
+. stwórz w g³ównym katalogu projektu plik gulpfile.js
+
+. uzupe³nij go o kod:
+function defaultTask(cb) {
+  // place code for your default task here
+  cb();
+}
+
+exports.default = defaultTask
+
+
+.przetestuj w konsoli
+gulp
+
+
+
+==================================
+instalacja gulp sass
+npm install node-sass gulp-sass --save-dev
+
+* wczytanie gulp-sass do gulpfile
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+
+* utworzenie zadania css
+gulp.task('css', () => {
+   return gulp.src('./app/src/styles/**/*.scss')
+            .pipe(sass({ outputStyle: 'compressed' }))
+            .pipe(gulp.dest('./app/dist/'))
+});
+
+* utworzenie zadania default
+gulp.task('default', gulp.series('css'));
+
+
+* instalacja gulp-soucemaps
+npm install --save-dev gulp-souremaps
+
+* wczytanie gulp-sourcemaps
+const sourcemaps = require('gulp-sourcemaps');
+
+* zmodyfikowanie taska css aby generowa³ mapê
+gulp.task('css', () => {
+   return gulp.src('./app/src/styles/**/*.scss')
+            .pipe(sourcemaps.init())
+            .pipe(sass({ outputStyle: 'compressed' }))
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest('./app/dist/'))
+});
+
+
+* gulp autoprefixer
+npm install --save-dev gulp-autoprefixer
+
+* wczytanie do projektu 
+const autoprefixer = require('autoprefixer');
+
+* zmodyfikowanie taska css aby autoprefixowa³
+gulp.task('css', () => {
+   return gulp.src('./app/src/styles/**/*.scss')
+            .pipe(sourcemaps.init())
+            .pipe(sass({ outputStyle: 'compressed' }))
+            .pipe(autoprefixer())
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest('./app/dist/'))
+});
+
+* zmiana nazwy wynikowego pliku, wymagany plugin rename
+npm install --save-dev gulp-rename
+
+* wczytanie rename
+const rename = require('gulp-rename');
+
+
+* zmodyfikowanie taska css aby zmienia³ nazwê docelowego pliku
+gulp.task('css', () => {
+   return gulp.src('./app/src/styles/**/*.scss')
+            .pipe(sourcemaps.init())
+            // .pipe(sass({ outputStyle: 'expanded' }))
+            .pipe(sass({ outputStyle: 'compressed' }))
+            .pipe(autoprefixer({
+               cascade: false
+            }))
+            .pipe(rename({
+               dirname: "newdir",
+               basename: "newstyle",
+               prefix: "prefix-",
+               suffix: "-suffix",
+               extname: ".css"
+             }))
+            .pipe(sourcemaps.write())
+            .pipe(gulp.dest('./app/dist/'))
+});
+
+* zbudowanie watchera dla taska CSS
+gulp.task('watch', () => {
+   gulp.watch('./app/src/styles/**/*', gulp.series('css'));
+});
+
+* dodanie taska watch do default 
+gulp.task('default', gulp.series('css', 'watch'));
+
+
+* responsywne obrazki
+npm install --save-dev gulp-responsive
+const responsive = require('gulp-responsive');
+
+*dodanie taska responsive
+gulp.task('responsive', () => {
+   return gulp.src('./app/src/images/*.{png,jpg}')
+    .pipe(responsive({
+      '*.jpg': {
+        width: '45%',
+        quality: 50,
+        rename: {
+           suffix: '--mobile'
+        }
+      },
+       '*.png': [
+         {
+           width: 300,
+           rename: {
+            suffix: '--mobile'
+           }
+         },{
+           width: 300 * 2,
+           rename: {
+              suffix: '--mobile@2'
+           }
+         }
+       ],
+    }))
+    .pipe(gulp.dest('./app/dist/images/'));
+});
+
+!!! Uwaga dla opcji rename wymagany plugin gulp-rename
+
+* dodanie taska responsive do default
+gulp.task('default', gulp.series('css', 'responsive', 'watch'));
+
+* dodanie watchera dla responsive
+gulp.task('watch', () => {
+   gulp.watch('./app/src/styles/**/*', gulp.series('css'));
+   gulp.watch('./app/src/images/*', gulp.series('responsive'));
+});
+
+
+* ³¹czenie plików js
+npm install --save-dev gulp-concat
+
+* babel
+npm install --save-dev gulp-babel @babel/core @babel/preset-env
+const babel = require('gulp-babel');
+
+* task scripts-babel
+gulp.task('scripts-babel', () => {
+   return gulp.src('./app/dist/js/main.js')
+   .pipe(babel({
+       presets: ['@babel/env']
+   }))
+   .pipe(gulp.dest('./app/dist/js/'))
+});
+
+* dodanie babela do default i watchera
+gulp.task('default', gulp.series('css', 'scripts-concat', 'scripts-babel', 'compress-scripts', 'responsive', 'watch'));
+
+* minifikowanie js
+npm install --save-dev gulp-uglify
+
+* dodanie taska do minifikowania
+gulp.task('compress-scripts', () => {
+   return gulp.src('./app/dist/js/main.js')
+      .pipe(uglify())
+      .pipe(rename({
+         suffix: ".min",
+       }))
+      .pipe(gulp.dest('./app/dist/js/'))
+});
+
+* dodnie do default i watchera
+gulp.task('default', gulp.series('css', 'scripts-concat', 'scripts-babel', 'compress-scripts', 'responsive', 'watch'));
+
+gulp.task('watch', () => {
+   gulp.watch('./app/src/styles/**/*', gulp.series('css'));
+   gulp.watch('./app/src/images/*', gulp.series('responsive'));
+   gulp.watch('./app/src/js/**/*', gulp.series('scripts-concat', 'scripts-babel', 'compress-scripts'));
+});
+
+* usuwanie ca³ego dist przed wykonaniem nowych tasków
+npm install --save-dev del
+
+* dodanie taska do czyszczenia
+gulp.task('clean', function() {
+   return del(['./app/dist/**']);
+});
+
+
+

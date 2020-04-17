@@ -1,0 +1,54 @@
+$scrollbar-track-color: #fff;
+$scrollbar-thumb-color: #ccc;
+$scrollbar-width: 8px;
+
+$base-font: 'proxima-nova';
+$base-font-weight: 400;
+$base-font-size: 10px;
+
+$color-nav-link: #000;
+$color-nav-link-hover: #2f80ed;
+$color-more-link: #000;
+$color-more-link-hover: #2f80ed;
+
+$color-decor-label-default: #c2f4ff;
+$color-decor-label-violet: #dad1ff;
+$color-decor-label-yellow: #fdffa8;
+$color-decor-label-green: #c2ffc3;
+
+$color-m-nav-btn: #2f80ed;
+
+$color-excrept: #4a4a4a;
+$color-addons: #a6a6a6;
+
+$border-lang-select: #d7d7d7;
+$border-lang-select-arrow: #2f80ed;
+$border-blockquote-top: #000;
+$border-blockquote-bottom: #a6a6a6;
+$border-addons-top: #e1e1e1;
+$border-pagination-color: #e1e1e1;
+$color-text-pagination: #2f80ed;
+$color-text-pagination-hover: #fff;
+$color-bg-pagination: #fff;
+$color-bg-pagination-hover: #2f80ed;
+$color-arrow-pagination: #2F80ED;
+$color-arrow-pagination-hover: #fff;
+$color-arrow-pagination-disabled: #C4C4C4;
+
+$bg-footer: #f7f7f7;
+
+$light-color-text: #808080;
+$content-color-text: #4a4a4a;
+$cite-color: #2f80ed;
+
+%arrow-down {
+   content: '';
+   position: absolute;
+   right: 12px;
+   top: calc(50% + 4px);
+   transform: translateY(-50%);
+   width: 0;
+   height: 0;
+   border: 6px solid $border-lang-select-arrow;
+   border-color: $border-lang-select-arrow transparent transparent;
+}

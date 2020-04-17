@@ -1,5 +1,2 @@
 node_modules
 package-lock.json
-app/dist/
-app/dist/assets/images/
-bash.exe.stackdump
